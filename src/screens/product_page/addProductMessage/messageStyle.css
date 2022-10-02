@@ -1,0 +1,143 @@
+
+#addMessage {
+    margin-top: auto;
+    margin-bottom: auto;
+    top: 50%;
+    font-family: inherit;
+    font-size: 20px;
+    color: #ffffff;
+}
+
+.addMessageContainer {
+    height: 10%;
+    width: 50%;
+
+    text-align: center;
+    position: absolute;
+    align-self: center;
+    margin-left: auto;
+    margin-right: auto;
+    left: 25%;
+    margin-top: 50px;
+    border-radius: 15px;
+    justify-content: center;
+    display: inline-flex;
+    background-color: #10C135;
+}
+
+.sliding-addMessageContainer {
+    position: fixed;
+    top: 20px;
+
+}
+
+    .sliding-addMessageContainer.active {
+        position: fixed;
+        z-index: 15000;
+        background-color: rgba(0, 0, 0, 0.3);
+        will-change: transform;
+    }
+
+        .sliding-addMessageContainer.active.click-through {
+            pointer-events: none;
+            background-color: transparent;
+        }
+
+    .sliding-addMessageContainer.click-through > div {
+        pointer-events: none;
+    }
+
+.panel-content {
+    height: 100%;
+    width: 100%;
+    pointer-events: all;
+}
+
+.addMessageContainer-left-enter {
+    opacity: 0;
+    transform: translateX(-100%);
+}
+
+.addMessageContainer-left-enter-active {
+    opacity: 1;
+    transform: translateX(0);
+    transition: transform 500ms, opacity 500ms;
+}
+
+.addMessageContainer-left-exit {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.addMessageContainer-left-exit-active {
+    opacity: 0;
+    transform: translateX(-100%);
+    transition: transform 500ms, opacity 500ms;
+}
+
+.addMessageContainer-right-enter {
+    opacity: 0;
+    transform: translateX(100%);
+}
+
+.addMessageContainer-right-enter-active {
+    opacity: 1;
+    transform: translateX(0);
+    transition: transform 500ms, opacity 500ms;
+}
+
+.addMessageContainer-right-exit {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.addMessageContainer-right-exit-active {
+    opacity: 0;
+    transform: translateX(100%);
+    transition: transform 500ms, opacity 500ms;
+}
+
+.addMessageContainer-top-enter {
+    opacity: 0;
+    transform: translateY(-100%);
+}
+
+.addMessageContainer-top-enter-active {
+    opacity: 1;
+    transform: translateX(0);
+    transition: transform 500ms, opacity 500ms;
+}
+
+.addMessageContainer-top-exit {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.addMessageContainer-top-exit-active {
+    opacity: 0;
+    transform: translateY(-100%);
+    transition: transform 500ms, opacity 500ms;
+}
+
+.addMessageContainer-bottom-enter {
+    opacity: 0;
+    transform: translateY(100%);
+}
+
+.addMessageContainer-bottom-enter-active {
+    opacity: 1;
+    transform: translateX(0);
+    transition: transform 500ms, opacity 500ms;
+}
+
+.addMessageContainer-bottom-exit {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.addMessageContainer-bottom-exit-active {
+    opacity: 0;
+    transform: translateY(100%);
+    transition: transform 500ms, opacity 500ms;
+}
+

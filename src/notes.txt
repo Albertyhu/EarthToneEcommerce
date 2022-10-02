@@ -1,0 +1,26 @@
+color palette: 
+https://www.schemecolor.com/earth-tones.php
+
+
+order: {
+	orderID, 
+	ID, 
+	stock, 
+	total, 
+	deliveryDate, 
+	orderDate, 
+	trackingNumber, 
+}
+
+Information Panel 
+About Us 
+Careers 
+Sitemap 
+
+Customer Service Panel 
+Refund and Return Policy 
+Privacy Policy 
+Terms of Service 
+Order History 
+
+Contact Us

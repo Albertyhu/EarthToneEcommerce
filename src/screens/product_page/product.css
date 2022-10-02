@@ -1,0 +1,148 @@
+#mainContainer {
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+    background-image: none;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #ffffff;
+    font-family: serif;
+   /* margin-top: 210px; */
+}
+
+#buttonContainer {
+    text-align: center;
+    vertical-align: middle;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+#innerContainer {
+    top: 0px;
+    width: 100%;
+    background-color: rgba(255,255,255, 1);
+    align-items: center;
+    align-content: center;
+    font-family: inherit;
+}
+
+#row {
+    padding-bottom: 10px;
+    margin: 10px;
+    height: 544px;
+    max-height: 544px;
+    display: flex;
+    justify-content: center;
+  
+}
+
+
+/*product on product collection page*/
+.productDiv {
+    
+    max-width: 350px; 
+    height: 100%; 
+    display: inline-block;
+    margin-left: 5px;
+    margin-right: 5px;
+    border: 1px solid rgba(0,0,0, 0.3);
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+    .productDiv:hover {
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
+
+#productImage {
+    margin-top: 10px;
+    width: 100px; 
+    height: 100px; 
+    align-items: center; 
+    text-align: center; 
+    cursor: pointer; 
+}
+
+.descriptionArea {
+    max-height: 100px;
+    height: 100px;
+    padding-left: 5px;
+    padding-right: 5px; 
+}
+
+#stockSelection {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    align-self: center;
+    text-align: center;
+    margin-top:5px;
+    margin-bottom: 5px;
+}
+
+.price {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 30px;
+    color: #D19C4C;
+}
+
+#customStock {
+display: inline-block; 
+width: 100%;
+height: 40px;
+max-height: 40px;
+}
+
+#customStockInput {
+width: 30px; 
+display: inline-block;
+}
+
+#stockSelectionElement {
+display: inline-block
+}
+
+#ratingContainer span {
+    display: inline-block;
+}
+
+@media screen and (max-width: 540px) {
+    #mainContainer {
+        height: 120vh;
+        margin-top: 80px;
+    }
+    #row {
+        display: inline-table;
+        padding-bottom: 0; 
+        max-height: 600px; 
+        margin: 0;
+    }
+    #contentContainer{
+    }
+    .AddCartButton {
+        margin-bottom: 20px;
+    }
+
+    
+}
+
+#addToWishlist {
+    color: #787878;
+    text-decoration: underline;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border-radius: 25px;
+    cursor: pointer; 
+}
+    #addToWishlist:hover {
+        color: #9B9B9B;
+        text-decoration: none;
+    }
+
+    #addToWishlist:active {
+        color: #787878;
+        text-decoration: underline;
+    }

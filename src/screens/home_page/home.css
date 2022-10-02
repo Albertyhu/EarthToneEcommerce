@@ -1,0 +1,89 @@
+#home_mainContainer {
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+    background-image: url("../../images/pouring_tea.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #000000;
+    font-family: serif;
+   /* margin-top: 150px;*/
+}
+
+#titleContainer {
+    color: #ffffff;
+    font-family: inherit;
+    text-align: center;
+}
+
+#titleContainer p {
+    font-size: 20px;
+    line-height: 10px;
+}
+
+#centerElements {
+    margin: auto;
+    transform: translate(0, 10vh);
+    font-family: inherit;
+}
+
+#home_innerContainer {
+    width: 100%;
+    height: 100%; 
+    background-color: rgba(0,0,0, 0.5);
+    align-items: center;
+    align-content: center;
+    font-family: inherit;
+    
+}
+
+#tea_chinese_character {
+width: 200px;
+height: 200px;
+}
+
+#LinkStyle {
+    color: #ffffff; 
+    text-decoration: none; 
+
+}
+#LinkStyle:hover {
+    color: #333333;
+    transition-duration: 1s;
+}
+
+@media screen and (max-width: 540px) {
+    #home_mainContainer {
+
+        margin-top: 60px;
+    }
+}
+
+@media screen and (max-width: 450px) {
+        #home_mainContainer {
+            height: 120vh;
+            margin-top: 90px;
+        }
+
+        #title {
+            line-height: 35px;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
+        #titleContainer p {
+            line-height: 30px;
+        }
+
+        #tea_chinese_character {
+            height: 100px;
+            width: 100px;
+        }
+    }
+
+    @media screen and (max-width: 300px) {
+        #titleContainer p {
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+    }

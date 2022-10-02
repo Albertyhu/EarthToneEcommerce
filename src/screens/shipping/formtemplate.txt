@@ -1,0 +1,7 @@
+        <Container>
+            <Title>Shipping Address</Title> 
+            <InputField>
+                <Subtitle></Subtitle> 
+                <Input value='' onChange='' />
+            </InputField>
+        </Container>
