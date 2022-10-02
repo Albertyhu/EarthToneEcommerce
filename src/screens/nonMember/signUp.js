@@ -136,7 +136,7 @@ const SignUp = props => {
     }
 
     const goSignIn = useCallback(() => navigate('/sign_in', { replace: true }), [navigate]);
-    const goHome = useCallback(() => navigate('/tea-eCommerce-shop', { replace: true }), [navigate]);
+    const goHome = useCallback(() => navigate('/', { replace: true }), [navigate]);
 
     useEffect(() => {
         if (password.trim().length >= 6) {

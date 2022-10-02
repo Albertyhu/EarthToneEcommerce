@@ -1,3 +1,9 @@
+10/1/22
+The current live site utilizes 2 Firebase projects to function.
+It uses Tea-shop [id: tea-shop-dd55c] for authentication and storing data.
+It uses Earth Tone Project [id: tea-shop-dd55c] for hosting. 
+
+
 color palette: 
 https://www.schemecolor.com/earth-tones.php
 

@@ -32,7 +32,7 @@ const Header = props => {
         <div id="headerBar">
             <SecondaryHeaderBar />
             <div id="PrimaryHeaderBar">
-                <Link to="/tea-eCommerce-shop" id="LogoContainer"><img src={Logo} id="earthTonelogo" /></Link>
+                <Link to="/" id="LogoContainer"><img src={Logo} id="earthTonelogo" /></Link>
                 <SearchBar data={getTeaData()} />
                 {normalMenu ?
                     <HeaderMenu />

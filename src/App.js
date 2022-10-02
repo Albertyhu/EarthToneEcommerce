@@ -255,7 +255,7 @@ function App() {
           <BrowserRouter>
               <Routes>
                 <Route
-                    path="/tea-eCommerce-shop"
+                    path="/"
                     element={<Home
                         openPanel={openPanel}
                         openHamburger={hamburgerPanel}

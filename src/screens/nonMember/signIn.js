@@ -89,7 +89,7 @@ const SignIn = props => {
     }
 
     const goSignUp = useCallback(() => navigate('/sign_up', {replace: true}), [navigate])
-    const goHome = useCallback(() => navigate('/tea-eCommerce-shop', { replace: true }), [navigate])
+    const goHome = useCallback(() => navigate('/', { replace: true }), [navigate])
 
     useEffect(() => {
         if (checkEmail(email)) {

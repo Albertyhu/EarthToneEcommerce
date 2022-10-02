@@ -70,7 +70,7 @@ const SecondaryHeaderBar = props => {
     const navigate = useNavigate(); 
     const goCart = useCallback(() => navigate('../cart', {replace:true}), [navigate])
     const goSignin = useCallback(() => navigate('../sign_in', {replace: true}), [navigate])
-    const goHome = useCallback(() => navigate('../tea-eCommerce-shop', { replace: true }), [navigate])
+    const goHome = useCallback(() => navigate('../', { replace: true }), [navigate])
 
     return (
         <div>{!isMobile ? 

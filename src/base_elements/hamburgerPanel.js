@@ -38,7 +38,7 @@ const HamburgerPanel = props => {
         >
             <div className="panel-container" id="hamburgerPanel" ref={hamburgerRef}>
                 <LogoContainer ><img src={Logo} id="logoHamburger" /></LogoContainer >
-                <Link to="/tea-eCommerce-shop" className="hamburgerLinks" onClick={closeHamburgerPanel} ><img src={HomeIcon} className = 'burgerIcon' /><div>Home</div></Link>
+                <Link to="/" className="hamburgerLinks" onClick={closeHamburgerPanel} ><img src={HomeIcon} className = 'burgerIcon' /><div>Home</div></Link>
                 <Link to="/product_page" className="hamburgerLinks" onClick={closeHamburgerPanel} ><img src={ShoppingIcon} className='burgerIcon' /><div>Shop</div></Link>
                 <div onClick={() => {
                     closeHamburgerPanel();
