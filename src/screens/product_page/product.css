@@ -40,14 +40,13 @@
 /*product on product collection page*/
 .productDiv {
     
-    max-width: 350px; 
+    /*max-width: 350px; 
+*/    width: 350px;
     height: 100%; 
     display: inline-block;
-    margin-left: 5px;
-    margin-right: 5px;
     border: 1px solid rgba(0,0,0, 0.3);
     border-radius: 5px;
-    margin-bottom: 5px;
+    margin: 20px 5px;
 }
 
     .productDiv:hover {

@@ -8,7 +8,8 @@ width: 87%;
 text-align: left;
 margin-bottom: 10px;
 @media screen and (max-width: 540px){
-width: 51%;
+//width: 51%;
+text-align: center;
 
 }
 `

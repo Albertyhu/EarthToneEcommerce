@@ -1,5 +1,5 @@
-import React, { useState, useRef, useEffect } from 'react'; 
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import React, { useState, useRef, useEffect, useCallback } from 'react'; 
+import { BrowserRouter, Routes, Route, Link, useNavigate } from "react-router-dom";
 import Home from './screens/home_page';
 import ProductPage from './screens/product_page'; 
 import './style/myStyle.css'
@@ -50,7 +50,29 @@ function App() {
     const [hamburgerPanel, setHamburgerPanel] = useState(false); 
     const [accountPanel, setAccountPanel] = useState(false); 
     const [addProductMessage, setAddProductMessage] = useState(false); 
-    const [user, setUser] = useState(currentUser); 
+    const [user, setUser] = useState(currentUser);
+
+    const [data, setData] = useState(null); 
+
+    //const initiateAuthStateChange = () => {
+    //    unsubscribe = onAuthStateChanged(auth, async (user) => {
+    //        if (user) {
+    //            const docRef = doc(db, "users", user.uid)
+    //            const docSnap = await getDoc(docRef);
+    //            if (docSnap.exists()) {
+    //                setData(docSnap.data())
+    //            }
+    //        }
+    //        else {
+    //            setData(null)
+    //        }
+    //    })
+    //}
+
+    //window.onload = event => {
+    //    initiateAuthStateChange()
+    //}
+
     const [pendingOrders, setPendingOrders] = useState([{
         orderID: genKey(10), 
         cart: [{ ID: 2, stock: 5, price: 4.99 }, { ID: 0, stock: 3, price: 5.25 }],
@@ -99,6 +121,40 @@ function App() {
     const hamburgerRef = useRef()
     const messageRef = useRef() 
     const accountPanelRef = useRef()
+
+
+    //Code for determining whether the site should be displayed on desktop view or not 
+    const [desktopView, setDesktopView] = useState(true);
+
+    const handleResize = () => {
+        console.log("window.innerWdith: " + window.innerWidth)
+        if (window.innerWidth <= 770)
+            setDesktopView(false);
+        else
+            setDesktopView(true);
+    }
+
+    window.addEventListener('resize', handleResize)
+
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, async (user) => {
+            if (user) {
+                const docRef = doc(db, "users", user.uid)
+                const docSnap = await getDoc(docRef);
+                if (docSnap.exists()) {
+                    setData(docSnap.data())
+                }
+            }
+            else {
+                setData(null)
+            }
+        })
+        return () => {
+            window.removeEventListener('resize', handleResize)
+            unsubscribe();
+        }
+    }, [])
+
     const context = {
         addProduct: (productID, additionalStock, ProductPrice) => {
             var newArr = [...cart];
@@ -241,6 +297,9 @@ function App() {
             setProductRev(arr); 
         },
         getProductReviewCol: () => productRevCol, 
+        desktopView, 
+        //data of current user 
+        data,
     }
 
     const options = {

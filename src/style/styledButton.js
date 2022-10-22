@@ -14,15 +14,16 @@ export const ShopNowButton = styled.div`
     text-decoration: none;
     font-size: 20px;
     user-select: none;
-
+    white-space: nowrap;
 &:hover{
     background-color: #ffffff;
     color: #333333; 
     transition-duration: 1s;
 }
 
-@media screen and (max-width: 540px){
-    min-width: 100px
+@media screen and (max-width: 856px){
+    font-size: 15px;
+    padding: 5px;
 }
 `
 

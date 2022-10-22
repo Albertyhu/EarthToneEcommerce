@@ -29,6 +29,10 @@ const Subtitle = styled.div`
 font-weight: bold; 
 `
 
-const Para = styled.p`
+const Para = styled.span`
 line-height: 0px; 
+@media screen and (max-width: 1000px){
+line-height: 15px;
+
+}
 `

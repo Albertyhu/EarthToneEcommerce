@@ -1,13 +1,15 @@
 body {
     width: 100%;
     font-family: 'Palatino Linotype';
+    margin: 0;
+    overflow-x:hidden;
 }
 
 #headerBar {
     top: 0px;
     position: fixed;
     width: 100%;
-    z-index: 1;
+    z-index: 10;
 
 }
 
@@ -138,27 +140,27 @@ margin-left: 20px;
 @media screen and (max-width: 1300px) {
 }
 
-    @media screen and (max-width: 540px) {
-        #footer {
-            position: relative;
-            left: 0;
-            right: 0;
-        }
-
-        #headerBar {
-            height: 66px;
-        }
-
-        #earthTonelogo {
-            display: none;
-        }
-        #headerMenu {
-            margin-top:5px;
-        }
-        #PrimaryHeaderBar {
-            height: 56px;
-        }
+@media screen and (max-width: 540px) {
+    #footer {
+        position: relative;
+        left: 0;
+        right: 0;
     }
+
+    #headerBar {
+        height: 66px;
+    }
+
+    #earthTonelogo {
+        display: none;
+    }
+    #headerMenu {
+        margin-top:5px;
+    }
+    #PrimaryHeaderBar {
+        height: 56px;
+    }
+}
 
 @media screen and (max-height: 538px) {
 

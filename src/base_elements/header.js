@@ -9,32 +9,15 @@ import SecondaryHeaderBar from './SecondaryHeaderBar.js';
 import SearchBar from '../searchBar/searchbar.js'; 
 
 const Header = props => {
-    const [normalMenu, setMenu] = useState(true); 
-    const [screenWidth, setScreenWidth] = React.useState(window.innerWidth);
-    const { getTeaData } = useContext(MyContext)
-    const handleResize = () => {
-        if (window.innerWidth <= 468)
-            setMenu(false);
-        else
-            setMenu(true); 
-    }
+    const { getTeaData, desktopView } = useContext(MyContext)
     
-    useEffect(() => {
-        if (screenWidth <= 468)
-            setMenu(false);
-        else
-            setMenu(true); 
-    }, [screenWidth])
-    
-    window.addEventListener('resize', handleResize)
-
     return (
         <div id="headerBar">
             <SecondaryHeaderBar />
             <div id="PrimaryHeaderBar">
                 <Link to="/" id="LogoContainer"><img src={Logo} id="earthTonelogo" /></Link>
                 <SearchBar data={getTeaData()} />
-                {normalMenu ?
+                {desktopView ?
                     <HeaderMenu />
                     :
                    null

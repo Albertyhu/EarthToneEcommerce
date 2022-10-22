@@ -4,14 +4,26 @@ import { getFirestore } from 'firebase/firestore';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
+//const firebaseConfig = {
+//    apiKey: `${process.env.REACT_APP_FIREBASE_API_KEY}`,
+//    authDomain: "tea-shop-dd55c.firebaseapp.com",
+//    projectId: "tea-shop-dd55c",
+//    storageBucket: "tea-shop-dd55c.appspot.com",
+//    messagingSenderId: "411802201460",
+//    appId: "1:411802201460:web:382b8dab5f84fbc5f91021"
+//};
+
+
 const firebaseConfig = {
     apiKey: `${process.env.REACT_APP_FIREBASE_API_KEY}`,
-    authDomain: "tea-shop-dd55c.firebaseapp.com",
-    projectId: "tea-shop-dd55c",
-    storageBucket: "tea-shop-dd55c.appspot.com",
-    messagingSenderId: "411802201460",
-    appId: "1:411802201460:web:382b8dab5f84fbc5f91021"
+    authDomain: "earth-tone-project.firebaseapp.com",
+    projectId: "earth-tone-project",
+    storageBucket: "earth-tone-project.appspot.com",
+    messagingSenderId: "1056751194074",
+    appId: "1:1056751194074:web:7bf6df8ba590a9855ebae3"
+
 };
+
 
 export const getFirebaseConfig = () =>{
     if (!firebaseConfig || !firebaseConfig.apiKey) {

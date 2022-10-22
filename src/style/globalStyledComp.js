@@ -181,7 +181,9 @@ export const ContinueButton = styled.div``
 
 export const Filler = styled.div`
     height: 190px;
+
 @media screen and (max-width: 540px){
     height: 95px;
 }
+@media screen and (max-height: 540px){}
 `

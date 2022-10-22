@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\public",
+    "\\src",
+    "\\src\\components",
+    "\\src\\screens",
+    "\\src\\screens\\account",
+    "\\src\\screens\\account_panel",
+    "\\src\\screens\\checkout",
+    "\\src\\screens\\shipping",
+    "\\src\\searchBar"
+  ],
+  "SelectedNode": "\\public\\index.html",
+  "PreviewInSolutionExplorer": false
+}

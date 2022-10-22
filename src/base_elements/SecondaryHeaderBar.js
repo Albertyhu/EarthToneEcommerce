@@ -23,9 +23,7 @@ const auth = getAuth()
 
 
 const SecondaryHeaderBar = props => {
-    const [member, setMember] = useState(null)
-    const [data, setData] = useState(null)
-    const { getCurrentUser, openAccountPanel, openHamburgerPanel, toggleHamburgerPanel } = useContext(MyContext); 
+    const { openAccountPanel, toggleHamburgerPanel, desktopView, data } = useContext(MyContext); 
     const [isMobile, setIsMobile] = useState(window.innerWidth > 540 ? false : true)
     const handleOpenPanel = () => { openAccountPanel() }; 
 
@@ -41,31 +39,36 @@ const SecondaryHeaderBar = props => {
 
 
     useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, async (user) => {
-            if (user) {
-                setMember(user)
-                const docRef = doc(db, "users", user.uid)
-                const docSnap = await getDoc(docRef); 
-                if (docSnap.exists()) {
-                    setData(docSnap.data())
-                }
-            }
-            else {
-                setMember(null)
-                setData(null)
-            }
-        })
+        //const unsubscribe = onAuthStateChanged(auth, async (user) => {
+        //    if (user) {
+        //        setMember(user)
+        //        const docRef = doc(db, "users", user.uid)
+        //        const docSnap = await getDoc(docRef); 
+        //        if (docSnap.exists()) {
+        //            setData(docSnap.data())
+        //        }
+        //    }
+        //    else {
+        //        setMember(null)
+        //        setData(null)
+        //    }
+        //})
 
         window.addEventListener('resize', handleWindowResize)
 
         //The following code is necessary. The component needs to unmount for sliding panel to work
         return () => {
-            unsubscribe();
+            //unsubscribe();
             window.removeEventListener('resize', handleWindowResize)
         } 
         
     }, [])
 
+    useEffect(() => {
+        if (data !== null) {
+            console.log(data)
+        }
+    }, [data])
 
     const navigate = useNavigate(); 
     const goCart = useCallback(() => navigate('../cart', {replace:true}), [navigate])
@@ -73,7 +76,7 @@ const SecondaryHeaderBar = props => {
     const goHome = useCallback(() => navigate('../', { replace: true }), [navigate])
 
     return (
-        <div>{!isMobile ? 
+        <div>{desktopView? 
         <SecHeadBarCont>
             {
                 data ?
@@ -83,7 +86,7 @@ const SecondaryHeaderBar = props => {
                    
             <HeaderTagLine>Orders of $50 or more will receive free shipping</HeaderTagLine>
             {
-                member ?
+                data != null ?
                     <MemberTag onClick={handleOpenPanel}><BsFilePersonFill />Account</MemberTag>
                     :
                     <NonMemberTag><Link to="/sign_in" style={styledLink}>Sign in</Link>,
@@ -98,7 +101,7 @@ const SecondaryHeaderBar = props => {
                     <img src={EarthToneTextLogo} style={logoStyle} onClick={goHome} />
             </MobileMenuCont>
             <MobileMenuCont>
-                    {member ? <BsPersonSquare style={iconStyle} onClick={handleOpenPanel} /> : <div id="SignIn" ><MobileSignInText>Sign In</MobileSignInText><BsPersonSquare style={iconStyle} onClick={goSignin} /></div> }
+                    {data !== null ? <BsPersonSquare style={iconStyle} onClick={handleOpenPanel} /> : <div id="SignIn" ><MobileSignInText>Sign In</MobileSignInText><BsPersonSquare style={iconStyle} onClick={goSignin} /></div> }
                     <BsCartFill style={iconStyle} onClick={goCart} />
             </MobileMenuCont>
          </SecHeadBarCont>

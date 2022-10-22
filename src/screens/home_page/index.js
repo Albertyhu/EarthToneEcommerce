@@ -14,7 +14,6 @@ import { Filler } from '../../style/globalStyledComp.js';
 
 const Home = props => {
     const { openPanel, openHamburger, accountPanel } = props;
-    var windowWidth;  
     const navigate = useNavigate(); 
     const goProductPage = useCallback(() => navigate('../product_page', {}), [navigate])
     return (
@@ -25,18 +24,21 @@ const Home = props => {
                     cartTrigger={openPanel}
                     accountTrigger={accountPanel}
                 />
-                <Header windowWidth={windowWidth} />
-                <Filler />
+                <Header/>
                 <div id ="centerElements">
                     <div id="titleContainer">
-                        <img src={TeaCharacter} id="tea_chinese_character" />
-                        <h1 id="title">Your Peace Of Mind Is Only One Cup Away</h1>
-                        <p>Start your mornings with mental clarity.</p>
-                        <p>Browse our collection of authentic tea leaves.</p>
+                        <div id = "HomeTitleWrapper">
+                            <img src={TeaCharacter} id="tea_chinese_character" />
+                            <div>
+                                <h1 id="title">Your Peace Of Mind Is Only One Cup Away</h1>
+                                <p>Start your mornings with mental clarity.</p>
+                                    <p>Browse our collection of authentic tea leaves.</p>
+                            </div>
+                        </div>
                     </div>
                     <div id="buttonContainer">
                         <ShopNowButton onClick={goProductPage}>Shop Now</ShopNowButton>
-                        </div>
+                    </div>
                 </div>
       
             </div>

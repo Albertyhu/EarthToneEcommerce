@@ -111,7 +111,7 @@ const SignIn = props => {
             <Header />
             <ETLogoContainer><ETLogo src={EarthToneLogo} /></ETLogoContainer>
             <OuterShell logo={EarthToneLogo}>
-                <InnerShell loading={loading}>
+                <InnerShell Opacity={loading ? "0.3" : "1.0"}>
                 <h1>Sign In</h1>
                 <InputDiv>
                     <SubTitle>Email </SubTitle>

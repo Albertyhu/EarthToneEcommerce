@@ -1,8 +1,11 @@
-import React, { useState, useCallback, useEffect } from 'react'; 
+import React, { useState, useCallback, useEffect, useContext } from 'react'; 
 import styled from 'styled-components';
 import { checkEmail } from '../../screens/nonMember/checkEmail.js'
 import { FiCheckCircle } from "react-icons/fi";
+import { MyContext } from '../../components/contextItem.js'; 
+
 const RenderNewLetterSubsc = props => {
+    const {desktopView} = useContext(MyContext)
     const [email, setEmail] = useState('')
     const [validEmail, setValidEmail] = useState(false); 
     const [displayConf, setDisplayConf] = useState(false)
@@ -40,12 +43,12 @@ const RenderNewLetterSubsc = props => {
                 <Title>Get the latest news about our offers</Title> 
                 <div>Subscribe to our newsletter. </div>
             </TextBlock>
-            <InputCont> 
+            <InputCont Display={ desktopView ? "flex" : "grid"} id = "footer_InputCont"> 
                 <InputField>
                     <EmailInput value={email} placeholder="Type your email here" onChange={handleInput} />
                     {validEmail ? ValidIcon() : InvalidIcon()}
                 </InputField>
-                <TanButton id="ContinueButton" onClick={handleSubmit}>Subscribe</TanButton>
+                <TanButton id="NewsLetterSubscribeButton" onClick={handleSubmit}>Subscribe</TanButton>
             </InputCont> 
             <ConfirmMessCont>
                 <ConfirmationMessage display={displayConf ? "block" : "none"}>
@@ -102,18 +105,29 @@ outline: none;
 border: none;
 padding: 5px;
 background-color: rgba(0,0,0,0);
+@media screen and (max-width: 1086px){
+min-width: 50px;
+resize: auto;
+} 
 `
 
 const InputCont = styled.div`
 display: flex; 
+@media screen and (max-width: 1000px){
+    display: grid;
+} 
 
 `
 
 const InputField = styled.div`
-display: flex; 
+display: grid; 
+grid-template-columns: 85% 15%;
 border: 1px solid #000; 
 box-shadow: inset 0px 0px 5px 5px rgba(0,0,0,0.3); 
 background-color: #ffffff;
+@media screen and (max-width: 1140px){
+    
+} 
 @media screen and (max-width: 540px){
     display:flex;
 }
@@ -127,6 +141,12 @@ const Title = styled.h3``
 const TextBlock = styled.div`
 text-align: left;
 color: #fff;
+@media screen and (max-width: 1000px){
+& > div{
+    text-align: center;
+}
+}
+
 `
 
 const ConfirmationMessage = styled.div`
@@ -162,7 +182,12 @@ const TanButton = styled.div`
 &:hover{
     background-color: #bc8d45;
 }
-
+@media screen and (max-width: 1140px){
+    font-size: 15px;
+} 
+@media screen and (max-width: 1000px){
+    margin: 5px auto;
+}
 @media screen and (max-width: 540px){
 margin-left: auto; 
 margin-right: auto; 

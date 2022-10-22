@@ -3,33 +3,45 @@ import styled from 'styled-components'
 //import { app } from '../../firebase/initializeFirebase.js'; 
 import { GoogleAuthProvider, signInWithPopup, getAuth  } from 'firebase/auth'
 import { AiOutlineGoogle } from 'react-icons/ai';
-import {useNavigate} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+import { doc, setDoc } from 'firebase/firestore';
+import { db } from '../../firebase/initializeFirebase.js';
+const auth = getAuth();
 
-const auth = getAuth(); 
-
-const SignInWGoogle = props => {
+const SignUpWGoogle = props => {
+    const { setLoading } = props; 
     const navigate = useNavigate();
     const goHome = useCallback(() => navigate('/', {}), []);
-    const SignIn = async () => {
+    const SignUp = async () => {
         var provider = new GoogleAuthProvider();
-
+        setLoading(true);
         await signInWithPopup(auth, provider)
-            .then(re => {
+            .then(async (result) => {
+                try {
+                    await setDoc(doc(db, 'users', result.uid), {
+                        email: result.user.email,
+                        first_name: result.displayName.split(' ').join('_'),
+                        last_name: '',
+                    })
+                } catch (e){ console.log("error: " + e )}
+                
+                setLoading(false); 
                 goHome(); 
             })
             .catch((err) => {
-                console.log("Google Sign In Error: " + err)
+                console.log("Google Sign Up Error: " + err)
+                setLoading(false);
             })
     }
 
     return (
         <ButtonCont>
-            <GoogleButton onClick={SignIn}><Icon><AiOutlineGoogle id="GoogleIcon" /></Icon><Text>Sign In with Google</Text></GoogleButton>
+            <GoogleButton onClick={SignUp}><Icon><AiOutlineGoogle id="GoogleIcon" /></Icon><Text>Sign In with Google</Text></GoogleButton>
         </ButtonCont>
         )
 }
 
-export default SignInWGoogle; 
+export default SignUpWGoogle; 
 
 const ButtonCont = styled.div`
     margin-left: auto;

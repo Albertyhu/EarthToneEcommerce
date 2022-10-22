@@ -24,7 +24,7 @@ import { Bounce } from "react-activity";
 import "react-activity/dist/library.css";
 import RenderPanels from '../../components/renderPanels.js'; 
 import styled from 'styled-components'; 
-import SignInWGoogle from './signInWGoogle.js'; 
+import SignUpWGoogle from './signUpWGoogle.js'; 
 //firebase 
 import { getAuth, createUserWithEmailAndPassword} from 'firebase/auth'
 import firebase from 'firebase/compat/app'
@@ -195,7 +195,7 @@ const SignUp = props => {
             />
             <Header />
             <OuterShell id="SignUp-OuterShell">
-                <InnerShell loading={loading} id = "SignUp-InnerShell">
+                <InnerShell Opacity={loading ? "0.3" : "1.0" } id = "SignUp-InnerShell">
                         <h1>Create a New Account</h1>
 
                     <InputDiv id="SignUp-InputDiv">
@@ -276,7 +276,7 @@ const SignUp = props => {
                     </CheckBoxMainCont>
                     <SubmitButton onClick={handleSubmit}>Sign Up</SubmitButton>
                     <h2>Or Sign In With Google</h2>
-                    <SignInWGoogle />
+                    <SignUpWGoogle setLoading={setLoading} />
                     <h2>Already have an account with us?</h2>
                     <Button2 onClick={goSignIn}>Sign In</Button2>
 
