@@ -76,7 +76,7 @@ const SecondaryHeaderBar = props => {
     const goHome = useCallback(() => navigate('../', { replace: true }), [navigate])
 
     return (
-        <div>{desktopView? 
+        <div>{desktopView ? 
         <SecHeadBarCont>
             {
                 data ?

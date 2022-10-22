@@ -7,7 +7,7 @@ export const ShopNowButton = styled.div`
     border-radius: 25px;
     padding: 10px;
     background - color: none;
-    width: 10%;
+    width: 120px;
     text-align: center;
     color: #ffffff;
     cursor: pointer;

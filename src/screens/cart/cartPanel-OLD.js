@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-//import SlidingPanel from 'react-sliding-side-panel';
+import SlidingPanel from 'react-sliding-side-panel';
 import { MyContext } from '../../components/contextItem.js';
 import './cart.css';
 import RenderTeaItems from './renderTeaItems.js'; 
@@ -13,7 +13,6 @@ import {
     BrownButton,
 } from '../../style/styledButton.js';
 import { useNavigate } from 'react-router-dom'; 
-import styled from 'styled-components'; 
 
 
 const CartPanel = props => {
@@ -44,33 +43,33 @@ const CartPanel = props => {
         }
     }, [openPanel])
    
-    const [screenWidth, setScreenWidth] = useState(window.innerWidth);
-
-    const determinePanelWidth = () => {
-        if (window.innerWidth > 1000) {
-            return 100;
-        }
-        else if (window.innerWidth <= 900) {
-            return 80;
-        }
-        else {
-            return 100;
-        }
-    }
-    
-    const [cartPanelWidth, setCartPanelWidth] = useState(determinePanelWidth()); 
+    const [screenWidth, setScreenWidth] = useState(window.innerWidth); 
+    const [cartPanelWidth, setCartPanelWidth] = useState(50); 
     const handleResize = () => {
-        setCartPanelWidth(determinePanelWidth()); 
+        setScreenWidth(window.innerWidth); 
+        setCartPanelWidth(screenWidth >= 1000 ? 50 : 100); 
+
+        if (screenWidth >= 1000 && cartPanelWidth !== 50) {
+            setCartPanelWidth(50)
+        }
+        else if (screenWidth < 1000 && cartPanelWidth === 50) {
+            setCartPanelWidth(100)
+        }
     }
+    window.addEventListener("resize", handleResize)
+    //useEffect(() => {
+    //    if (screenWidth >= 1000 && cartPanelWidth !== 50) {
+    //        setCartPanelWidth(50)
+    //    }
+    //    else if (screenWidth < 1000 && cartPanelWidth === 50) {
+    //        setCartPanelWidth(100)
+    //    }
+    //}, [screenWidth])
 
     const goCheckout = useCallback(() => navigate('../checkout', {}), [navigate])
     const goCart = useCallback(() => navigate('../cart', {}), [navigate])
+    useEffect(() => {
 
-    window.addEventListener("resize", handleResize)
-    useEffect(() => {
-        console.log("OpenPanel: " + openPanel);
-    }, [openPanel])
-    useEffect(() => {
         return () => {
             setCart([]);
             window.removeEventListener("resize", handleResize)
@@ -80,14 +79,12 @@ const CartPanel = props => {
         <div >
         <SlidingPanel
                 type={'right'}
-                isOpen={openPanel ? "0" : `${cartPanelWidth}vh`}
-                Width={`${cartPanelWidth}vh`}
+                isOpen={openPanel}
+                size={cartPanelWidth}
                 panelContainerClassName="cartPanelContainer"
                 noBackdrop={true}
-                id="CartSlidingPanel"
-                
         >
-                <PanelContainer ref={ref}>
+                <div className="panel-container" ref={ref}>
                     <h1>Shopping Cart</h1>
                     
                     {cart.length > 0 ?
@@ -128,32 +125,9 @@ const CartPanel = props => {
                         <p>Your shopping cart is currently empty.</p>
                     }
                     <DarkGreenButton id="cartPanelButton" onClick={closeCartPanel}>Close</DarkGreenButton>
-                </PanelContainer>
+            </div>
             </SlidingPanel>
             </div>
         )
 }
 export default CartPanel; 
-
-const SlidingPanel = styled.div`
-    width: ${props => props.Width};
-    height: 100vh;
-    top: 0px;
-    right: 0px;
-    position: fixed;
-    overflow: auto;
-    z-index: 11;
-    transform: translateX(${props => props.isOpen}); 
-    transition: transform 1s; 
-@media screen and (max-width: 720px){}
-@media screen and (max-width: 360px){}
-`
-
-const PanelContainer = styled.div`
-    height: 100%;
-    width: 100%;
-    background-color: #ffffff;
-    display: flex;
-    flex-direction: column;
-    overflow-y: auto;
-`

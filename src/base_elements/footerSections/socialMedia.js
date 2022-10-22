@@ -15,7 +15,7 @@ const RenderSocialPanel= props => {
 
     return (
         <Container>
-            <h3 style={{textAlign: 'center'}}>Spread the world about us</h3>
+            <h3 style={{textAlign: 'center'}}>Spread the word about us</h3>
             <SocialMediaCont>
                 <ShareLink link='https://github.com/Albertyhu'>{link => (<a href={link} target="_blank"><FiFacebook style={iconStyle} /></a>)}</ShareLink>
                 <a href="https://www.instagram.com/" target="_blank"><FiInstagram style={iconStyle} /></a> 

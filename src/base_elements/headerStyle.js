@@ -16,7 +16,7 @@ export const SecHeadBarCont = styled.div`
     display: flex;
     text-align: center;
 
-   @media screen and (max-width: 540px) {
+   @media screen and (max-width: 770px) {
     justify-content: space-between;
 }
   @media screen and (max-width: 280px) {
