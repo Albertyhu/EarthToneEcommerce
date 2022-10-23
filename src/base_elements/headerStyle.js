@@ -20,7 +20,7 @@ export const SecHeadBarCont = styled.div`
     justify-content: space-between;
 }
   @media screen and (max-width: 280px) {
-    height: 80px;
+    
 }
 `
 export const NonMemberTag = styled.div`
@@ -90,6 +90,14 @@ export const MobileMenuCont = styled.div`
 
 & > div#SignIn{
     display: flex
+}
+`
+
+export const EarthToneIMG = styled.img`
+    width: auto;
+    height: 100%;
+@media screen and (max-width: 311px){
+    width: 60%; 
 }
 `
 

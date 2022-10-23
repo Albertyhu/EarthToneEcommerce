@@ -10,9 +10,10 @@ import { TeaData } from '../../../components/teaData.js';
 import { SecondInnerCont} from '../../../style/globalStyledComp.js';
 import PageTemplate from '../../../PageTemplate.js'; 
 import { PageTemplateContext } from '../../../components/pageTemplateContext.js'; 
-import { MyContext } from '../../../components/contextItem.js';
+import { MyContext, ProductProfileContext  } from '../../../components/contextItem.js';
 import styled from 'styled-components'; 
-import ReviewPanel from './reviewPanel.js'; 
+import ReviewPanel from './reviewPanel.js';
+import NoteBookView from './layouts/NoteBookView.js'; 
 
 const ProductProfile = props => {
 
@@ -27,7 +28,10 @@ const ProductProfile = props => {
         id,
     } = location.state;
 
-    const { getProductReviewCol } = useContext(MyContext)
+    const {
+        getProductReviewCol,
+        desktopView, 
+    } = useContext(MyContext)
 
 
     return (<PageTemplate MainContent={MainContent}
@@ -61,71 +65,98 @@ const MainContent = props => {
         setMessage(val)
     }
 
-    const changeHeight = () => {
-        console.log('window.innerWidth: ' + window.innerWidth)
-        if (window.innerWidth <= 540) {
-            makePageAuto();
-        }
-        else {
-            makePageInherit()
-        }
-    }
-
     useEffect(() => {
         if (review) {
             makePageAuto();
         }
     }, [review])
 
+    const [windowWidth, setWindowWidth ] = useState(window.innerWidth)
+
+    //const determineLayout = () => {
+    //    const windowWidth = window.innerWidth; 
+    //    if (windowWidth <= 960) {
+
+    //    }
+    //}
+
+    const resizeEvent = () => {
+        setWindowWidth(window.innerWidth)
+    }
 
     useEffect(() => {
        
         setProductID(ProductProfileID)
     }, [ProductProfileID])
-  
-    return (
-        <SecondInnerCont>
-            {product ?
-                <ThirdInnerContainer>
-                <UpperSection>
-                    {product.imageArray.length > 0 ?
-                        <ImagePanel imageArray={product.imageArray} initial={product.image} />
+
+    window.addEventListener('resize', resizeEvent)
+
+    useEffect(() => {
+        return () => { window.removeEventListener('resize', resizeEvent) }
+    }, [])
+
+    const context = {
+        productID,
+        product,
+        handleMessage,
+        review, 
+    }
+    if (windowWidth > 960) {
+        return (
+            <ProductProfileContext.Provider value={context}>
+                <SecondInnerCont>
+                    {product ?
+                        <ThirdInnerContainer>
+                            <UpperSection>
+                                {product.imageArray.length > 0 ?
+                                    <ImagePanel imageArray={product.imageArray} initial={product.image} />
+                                    :
+                                    null
+                                }
+                                <TextPanel name={product.name}
+                                    description={product.description}
+                                    price={product.price}
+                                    amount={product.amount}
+                                    weight={product.weight}
+                                    width={product.width}
+                                    length={product.length}
+                                    height={product.height}
+                                    ratingCount={product.ratingCount}
+                                    ratingAvg={product.ratingAvg}
+                                    displayTitle={true}
+                                />
+                                <CTAPanel price={product.price}
+                                    productID={productID}
+                                    shippingDays={product.shippingDays}
+                                    setMessage={handleMessage}
+                                />
+                            </UpperSection>
+                            <ReviewSection>
+                                {review ? <ReviewPanel
+                                    data={review}
+                                    productID={productID}
+                                />
+                                    :
+                                    null
+                                }
+                            </ReviewSection>
+                        </ThirdInnerContainer>
                         :
-                        null
+                        <p>There aren't any products displayed here.</p>
                     }
-                    <TextPanel name={product.name}
-                        description={product.description}
-                        price={product.price}
-                        amount={product.amount}
-                        weight={product.weight}
-                        width={product.width}
-                        length={product.length}
-                        height={product.height}
-                        ratingCount={product.ratingCount}
-                        ratingAvg={product.ratingAvg}
-                    />
-                    <CTAPanel price={product.price}
-                    productID={productID}
-                        shippingDays={product.shippingDays}
-                        setMessage={handleMessage}
-                    />
-                    </UpperSection>
-                    <ReviewSection>
-                        {review ? <ReviewPanel
-                            data={review}
-                            productID={productID}
-                        />
-                            :
-                            null
-                        }
-                    </ReviewSection>
-                </ThirdInnerContainer>
-                :
-                null
-                }
-        </SecondInnerCont>
+                </SecondInnerCont>
+            </ProductProfileContext.Provider>
         )
+    }
+    else if (windowWidth <= 960) {
+        return (
+            <ProductProfileContext.Provider value={context}>
+                <NoteBookView />
+            </ProductProfileContext.Provider>
+        )
+    }
 }
+
 
 export default ProductProfile; 
 

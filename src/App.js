@@ -26,7 +26,7 @@ import CareerPage from './screens/career';
 import PostSubmissionPage from './screens/career/PostSubmissionPage.js';
 import RenderSiteMap from './screens/sitemap'; 
 import ContactUsPage from './screens/contact'; 
-
+import Footer from './base_elements/footer.js'; 
 //firebase code 
 import { db } from './firebase/initializeFirebase.js';
 import { getAuth, onAuthStateChanged } from 'firebase/auth'; 
@@ -127,7 +127,6 @@ function App() {
     const [desktopView, setDesktopView] = useState(true);
 
     const handleResize = () => {
-        console.log("window.innerWdith: " + window.innerWidth)
         if (window.innerWidth <= 770)
             setDesktopView(false);
         else
@@ -503,9 +502,10 @@ function App() {
                                 accountPanel={accountPanel}
                             />}
                         />
-              </Routes>
+                        </Routes>
           </BrowserRouter>    
-      </div>
+                </div>
+
     </MyContext.Provider>
     </Elements>
   );

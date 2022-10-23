@@ -11,7 +11,10 @@ import {
 import { MyContext } from '../components/contextItem.js';
 import { BsFilePersonFill, BsCartFill  } from 'react-icons/bs';
 import HamburgerIcon from '../images/icon/hamburger_menu_white.png';
-import { MobileMenuCont } from './headerStyle.js';
+import {
+    MobileMenuCont,
+    EarthToneIMG
+} from './headerStyle.js';
 import { BsPersonSquare } from 'react-icons/bs';
 import { getAuth, onAuthStateChanged} from 'firebase/auth'
 import { doc, getDoc} from 'firebase/firestore' 
@@ -98,7 +101,7 @@ const SecondaryHeaderBar = props => {
         <SecHeadBarCont>
             <MobileMenuCont>
                     <img src={HamburgerIcon} id="hamburgerIcon" onClick={toggleHamburgerPanel} />
-                    <img src={EarthToneTextLogo} style={logoStyle} onClick={goHome} />
+                    <EarthToneIMG src={EarthToneTextLogo} onClick={goHome} />
             </MobileMenuCont>
             <MobileMenuCont>
                     {data !== null ? <BsPersonSquare style={iconStyle} onClick={handleOpenPanel} /> : <div id="SignIn" ><MobileSignInText>Sign In</MobileSignInText><BsPersonSquare style={iconStyle} onClick={goSignin} /></div> }
@@ -127,7 +130,7 @@ const iconStyle = {
     marginLeft: "10px",
 }
 
-const logoStyle = {
-    width: "auto",
-    height: "100%"
-}
+//const logoStyle = {
+//    width: "auto",
+//    height: "100%"
+//}

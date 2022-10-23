@@ -117,6 +117,7 @@ display: flex;
     display: grid;
 } 
 
+
 `
 
 const InputField = styled.div`
@@ -129,14 +130,20 @@ background-color: #ffffff;
     
 } 
 @media screen and (max-width: 540px){
-    display:flex;
+    display:grid;
+grid-template-columns: 93% 7%;
 }
 `
 const IconCont = styled.div`
 
 `
 
-const Title = styled.h3``
+const Title = styled.h3`
+@media screen and (max-width: 540px){
+    text-align: center;
+    margin-top: 50px;
+}
+`
 
 const TextBlock = styled.div`
 text-align: left;

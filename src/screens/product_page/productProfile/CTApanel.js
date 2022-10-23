@@ -98,7 +98,7 @@ const CTA = props => {
     }, [price])
 
     return (
-        <CTAPanelContainer>
+        <CTAPanelContainer id = "CTAPanelContainer">
             <InnerContainer>
                 <SalesPrice>${subtotal.toFixed(2)}</SalesPrice>
                 <RenderStockSelection

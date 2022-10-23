@@ -5,7 +5,8 @@
     top: 50%;
     font-family: inherit;
     font-size: 20px;
-    color: #ffffff;
+    /*color: #ffffff;*/
+    color: #000000;
 }
 
 .addMessageContainer {
@@ -22,7 +23,8 @@
     border-radius: 15px;
     justify-content: center;
     display: inline-flex;
-    background-color: #10C135;
+ /*   background-color: #10C135;*/
+    background-color: #ffffff;
 }
 
 .sliding-addMessageContainer {

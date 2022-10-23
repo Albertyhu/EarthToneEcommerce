@@ -2,16 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\src",
-    "\\src\\base_elements",
-    "\\src\\base_elements\\footerSections",
-    "\\src\\firebase",
-    "\\src\\images",
     "\\src\\screens",
-    "\\src\\screens\\home_page",
+    "\\src\\screens\\account_panel",
+    "\\src\\screens\\cart",
     "\\src\\screens\\nonMember",
     "\\src\\screens\\productReturn",
-    "\\src\\screens\\wishlist"
+    "\\src\\screens\\wishlist",
+    "\\src\\searchBar",
+    "\\src\\style"
   ],
-  "SelectedNode": "\\src\\screens\\product_page\\renderProduct.js",
+  "SelectedNode": "\\src\\base_elements\\headerStyle.js",
   "PreviewInSolutionExplorer": false
 }

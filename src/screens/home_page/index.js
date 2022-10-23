@@ -29,10 +29,10 @@ const Home = props => {
                     <div id="titleContainer">
                         <div id = "HomeTitleWrapper">
                             <img src={TeaCharacter} id="tea_chinese_character" />
-                            <div>
+                            <div id = "Home_Title_Text">
                                 <h1 id="title">Your Peace Of Mind Is Only One Cup Away</h1>
                                 <p>Start your mornings with mental clarity.</p>
-                                    <p>Browse our collection of authentic tea leaves.</p>
+                                <p>Browse our collection of authentic tea leaves.</p>
                             </div>
                         </div>
                     </div>

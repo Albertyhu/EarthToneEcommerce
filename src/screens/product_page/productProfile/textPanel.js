@@ -8,6 +8,10 @@ import {
     ItemDimTitle,
     DetailTable,
     TH,
+    Row,
+    RowLabel,
+    RowData,
+    InfoTable, 
 } from './profileStyledComp.js'; 
 import RenderRatings from '../../../components/rating/renderRatings.js'; 
 
@@ -22,25 +26,22 @@ const RenderTextPanel = props => {
         height, 
         ratingAvg, 
         ratingCount,
-
+        displayTitle = true, 
     } = props; 
 
     return (
         <TextPanel>
-            <ProductTitle>{name}</ProductTitle>
+            {displayTitle && <ProductTitle>{name}</ProductTitle>}
             <PriceBlock><b>Price:</b><SalesPrice> ${price.toFixed(2)}</SalesPrice></PriceBlock>
-            <DetailTable>
-                <tbody>
-                    <tr><th>Rating: </th><td><RenderRatings rating={ratingAvg} /></td><td> {ratingCount} vote(s)</td></tr>
-                    <tr><th>Weight:</th><td>{weight}</td></tr>
-                    <tr><TH><ItemDimTitle>Item Dimenions</ItemDimTitle><br /><ItemDimTitle> LxWxH </ItemDimTitle></TH><td>{length} x {width} x {height} in.</td></tr>
-                </tbody>
-            </DetailTable>
+            <InfoTable>
+                <Row><RowLabel>Rating: </RowLabel><RowData><RenderRatings rating={ratingAvg} /><span>{ratingCount} vote(s) </span></RowData></Row>
+                <Row><RowLabel>Weight:</RowLabel><RowData>{weight}</RowData></Row>
+                <Row><RowLabel><ItemDimTitle>Item Dimenions</ItemDimTitle></RowLabel><RowData>{length} x {width} x {height} in. <i>(L x W x H)</i></RowData></Row>
+            </InfoTable>
             <h3>About this product</h3>
             <TextBlock>{description}</TextBlock>
         </TextPanel>
-        )
-
+    )
 }
 
 export default RenderTextPanel; 
