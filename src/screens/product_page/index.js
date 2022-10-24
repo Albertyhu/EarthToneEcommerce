@@ -10,6 +10,8 @@ import RenderPanels from '../../components/renderPanels.js';
 import { ProductContext } from './productContext.js'; 
 import { Filler } from '../../style/globalStyledComp.js'; 
 import styled from 'styled-components'; 
+import PageTemplate from '../../PageTemplate.js'; 
+
 
 const ProductPage = props => {
     const { openPanel, accountPanel, addProductMessage, openHamburger } = props; 
@@ -36,7 +38,7 @@ const ProductPage = props => {
     useEffect(() => {
         const mainContainer = document.getElementById("mainContainer");
         var heightMultiplier = Math.floor(Object.keys(TeaData).length / 3) + ((Object.keys(TeaData).length % 3) > 0 ? 1 : 0);
-        const newHeight = 530 * heightMultiplier;
+        const newHeight = 582 * heightMultiplier;
         mainContainer.style.height = `${newHeight}px`; 
 
        
@@ -68,14 +70,14 @@ const ProductPage = props => {
                         <RenderCollection arrlength={count} />
                     </ContentContainer>
                 </div>
-                <Footer />
+                <Footer onDynamicPage={true} size={TeaData.length} /> 
+
             </MainContainer >
         </ProductContext.Provider>
         )
 }
 
 export default ProductPage; 
-
 
 const MainContainer = styled.div`
 width: 100%;

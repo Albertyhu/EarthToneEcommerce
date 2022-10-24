@@ -4,6 +4,10 @@ import { MyContext } from '../../components/contextItem.js';
 import RenderOrderItem from './renderOrderItem.js'; 
 import uuid from 'react-uuid'; 
 import { PageTemplateContext } from '../../components/pageTemplateContext.js'; 
+import {
+    NoItemScreen, 
+    Title
+} from '../../style/globalStyledComp.js';
 
 const OrderPage = props => {
     const {
@@ -38,8 +42,17 @@ const MainContent = props => {
         }
     }, [orderList])
 
-    return (<div>
-        <h2>Order History</h2>
-        {orderList.map(val => <RenderOrderItem {...val} key={uuid()} />)}
-    </div>)
+    if (orderList.length > 0) {
+        return (<div>
+            <h2>Order History</h2>
+            {orderList.map(val => <RenderOrderItem {...val} key={uuid()} />)}
+        </div>)
+    }
+    else {
+        return (
+            <NoItemScreen>
+                <Title>There are currently no orders to show here.</Title>
+            </NoItemScreen>
+            )
+    }
 }

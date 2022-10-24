@@ -66,6 +66,12 @@ export const BrownButton = styled.div`
 
 }
 
+@media screen and (max-width: 1138px){
+&#ContinueButton{
+    font-size: 18px;
+}
+}
+
 `
 
 export const TanButton = styled.div`

@@ -2,8 +2,9 @@ import styled from 'styled-components';
 
 export const MainContainer = styled.div`
     width: 100%;
-    height: 100vh;
-    height:  ${props => props.heightChange};
+    //height: 100vh;
+    //height:  ${props => props.heightChange};
+    height: fit-content;
     text-align: center;
     background-image: none;
     background-repeat: no-repeat;
@@ -11,6 +12,7 @@ export const MainContainer = styled.div`
     background-color: #ffffff;
     font-family: serif;
     //margin-top: 210px; 
+    position: relative;
 @media screen and (max-width: 540px){
     // margin-top: 110px; 
 }
@@ -151,7 +153,8 @@ export const Image = styled.img`
 
 `
 export const Title = styled.h2`
-
+   text-align: center; 
+    margin 20px auto;
 `
 export const SalesPrice = styled.div`
     color: #D19C4C;
@@ -186,4 +189,9 @@ export const Filler = styled.div`
     height: 95px;
 }
 @media screen and (max-height: 540px){}
+`
+
+export const NoItemScreen = styled.div`
+height: 50vh; 
+text-align: center; 
 `

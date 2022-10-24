@@ -2,14 +2,14 @@
   "ExpandedNodes": [
     "",
     "\\src",
+    "\\src\\firebase",
+    "\\src\\images",
     "\\src\\screens",
-    "\\src\\screens\\account_panel",
-    "\\src\\screens\\cart",
-    "\\src\\screens\\nonMember",
-    "\\src\\screens\\productReturn",
-    "\\src\\screens\\wishlist",
-    "\\src\\searchBar",
-    "\\src\\style"
+    "\\src\\screens\\product_page",
+    "\\src\\screens\\product_page\\addProductMessage",
+    "\\src\\screens\\product_page\\functions",
+    "\\src\\screens\\product_page\\productProfile",
+    "\\src\\screens\\product_page\\productProfile\\layouts"
   ],
   "SelectedNode": "\\src\\base_elements\\headerStyle.js",
   "PreviewInSolutionExplorer": false

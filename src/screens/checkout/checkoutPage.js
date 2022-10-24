@@ -13,7 +13,7 @@ import { MyContext } from '../../components/contextItem.js';
 import { useNavigate, Link } from 'react-router-dom'; 
 import RenderList from './renderList.js'; 
 import uuid from 'react-uuid'; 
-import { SecondInnerCont } from '../../style/globalStyledComp.js'
+import { SecondInnerCont, NoItemScreen  } from '../../style/globalStyledComp.js'
 import PageTemplate from '../../PageTemplate.js'; 
 import { PageTemplateContext } from '../../components/pageTemplateContext.js'; 
 //requires props for data, submitEvent, title
@@ -280,7 +280,9 @@ const MainContent = props => {
                             } 
                 </OuterShell>
                 :
-            <Title>There are currently no items in your cart.</Title>
+                <NoItemScreen>
+                    <Title>There are currently no items in your cart.</Title>
+                </NoItemScreen>
             }
 
         </SecondInnerCont>

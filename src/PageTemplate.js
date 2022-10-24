@@ -22,7 +22,10 @@ const PageTemplate = props => {
         wishlist,
         cart,
         ProductProfileID, 
-        data, 
+        data,
+        onDynamicPage,
+        numberOfDyamicItems
+
     } = props;
 
     const [height, setHeight] = useState("100vh")
@@ -85,8 +88,12 @@ const PageTemplate = props => {
                         cart={cart}
                     />
             </InnerContainer>
-            <Footer />
+
             </MainContainer>
+            <Footer
+                onDynamicPage={onDynamicPage}
+                size={numberOfDyamicItems}
+            />
         </PageTemplateContext.Provider>
         )
 }

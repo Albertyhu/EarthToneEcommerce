@@ -13,8 +13,11 @@ import {
     Title,
     CheckOutContainer,
     Shell, 
-    OuterShell
+    OuterShell, 
 } from './wishStyled.js'; 
+import {
+    NoItemScreen
+} from '../../style/globalStyledComp.js' 
 
 const RenderWishList = props => {
     const {
@@ -37,7 +40,7 @@ const RenderWishList = props => {
 }
 
 const MainContent = (props) => {
-    const { wishlist } = props; 
+    const { wishlist, changeHeight } = props; 
     const { removeWish } = React.useContext(MyContext);
     const { setUnitForMeasure, makePageAuto, makePageInherit } = React.useContext(PageTemplateContext)
     const LoadWishes = () => {
@@ -90,23 +93,26 @@ const MainContent = (props) => {
     return (<div id = "wishlistDiv">
     {
             wishlist.length !== 0 && wishlist !== null ?
-                <OuterShell>
-                    <Shell>
-                        <h1>Wish List</h1>
-                        {
-                            data.map(val => <RenderWishItem {...val}
-                                key={uuid()}
-                                deleteWish={deleteWish}
-                        />)}
-                    </Shell>
-                    <Shell id="rightPanel">
-                        <CheckOutContainer>
-                            <BrownButton id="ContinueButton" onClick={goProductPage}>Continue Shopping</BrownButton>
-                        </CheckOutContainer>
-                    </Shell>
-                </OuterShell>
-            :
-            <Title>You have no items currently in your wish list</Title> 
+                    <OuterShell Height="auto">
+                        <Shell>
+                            <Title>Wish List</Title>
+                            {
+                                data.map(val => <RenderWishItem {...val}
+                                    key={uuid()}
+                                    deleteWish={deleteWish}
+                            />)}
+                        </Shell>
+                        <Shell id="rightPanel">
+                            <CheckOutContainer>
+                                <BrownButton id="ContinueButton" onClick={goProductPage}>Continue Shopping</BrownButton>
+                            </CheckOutContainer>
+                        </Shell>
+                    </OuterShell>
+                :
+                <NoItemScreen
+                >
+                    <Title TextAlign={"center"}>You have no items currently in your wish list</Title> 
+                </NoItemScreen>
         }
 
     </div>)    

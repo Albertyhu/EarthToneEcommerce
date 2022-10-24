@@ -6,9 +6,14 @@ import CustomerSection from './footerSections/customerSection.js';
 import ContactSection from './footerSections/contactSection.js'; 
 import RenderSocialPanel from './footerSections/socialMedia.js'; 
 
-const Footer = () => {
+const Footer = props => {
+    const { onDynamicPage = false, size = 0} = props; 
     return (
-        <FooterContainer id="FooterContainer">
+        <FooterContainer
+            id="FooterContainer"
+            Position={onDynamicPage ? size > 0 ? "inherit" : "absolute" : "inherit"}
+            Bottom={onDynamicPage ? size > 0 ? "auto" : "0" : "auto"}
+        >
             <FooterWrapper id = "FooterWrapper">
                 <Section id="Information">
                     <RenderInformationSection />
@@ -34,17 +39,23 @@ export default Footer;
 
 
 const FooterContainer = styled.div`
-width: 100%; 
+    width: 100%; 
     background-color: #000000;
+    position: ${props => props.Position || "inherit"}; 
+    bottom: ${props => props.Bottom || "auto"}; 
 `
 const FooterWrapper = styled.div`
     margin: 0 auto;
-    width: 90%; 
+    width: 100%; 
+    background-color: #000000;
     height: auto;
+    //bottom: 0;
+    //left: 0;
+    //right: 0;
+    position: inherit;
     bottom: 0;
     left: 0;
     right: 0;
-    position: inherit;
     z-index: 2;
     display: grid;
     grid-template-columns:  17% 17% 17% 22% 27%;
@@ -52,8 +63,6 @@ const FooterWrapper = styled.div`
 
 @media screen and (max-width: 866px) {
         position: relative;
-        left: 0;
-        right: 0;
         width: 58%;
         display: grid;
         grid-template: "info customer" 1fr

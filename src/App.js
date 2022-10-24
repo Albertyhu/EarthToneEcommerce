@@ -124,7 +124,7 @@ function App() {
 
 
     //Code for determining whether the site should be displayed on desktop view or not 
-    const [desktopView, setDesktopView] = useState(true);
+    const [desktopView, setDesktopView] = useState(window.innerWidth > 770 ? true : false);
 
     const handleResize = () => {
         if (window.innerWidth <= 770)

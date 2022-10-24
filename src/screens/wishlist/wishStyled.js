@@ -17,6 +17,10 @@ export const InnerContainer = styled.div`
     width: 100%;
     height: inherit;
     background-color: rgba(255,255,255, 1);
+@media screen and (max-width: 770px){
+    height: auto;
+}
+
 `
 
 export const Shell = styled.div`
@@ -29,6 +33,15 @@ export const Shell = styled.div`
     &#rightPanel{
         width: 20%;
     }
+@media screen and (max-widtH: 770px){
+       margin: auto;
+       width: 95%;
+    &#rightPanel{   
+        width: 95%;
+       margin: 20px auto;
+    }
+    
+}
 @media screen and (max-widtH: 540px){
     width: 95%;
     &#rightPanel{
@@ -43,7 +56,9 @@ export const Shell = styled.div`
 
 export const OuterShell = styled.div`
     display: flex;
-@media screen and (max-widtH: 540px){
+    height: ${props => props.Height || "auto"}; 
+    text-align: ${props => props.TextAlign || "left"};
+@media screen and (max-widtH: 770px){
     display: block;
 }
 `
@@ -113,13 +128,20 @@ text-align: right;
 export const Image = styled.img`
     width: 200px;
     height: 200px; 
-    margin-left: 20px;
-    margin-right: 10px;
+    margin: 0 0 0 auto;
     display: inline-block; 
     cursor: pointer;
+    text-align: right;
+@media screen and (max-widtH: 408px){
+    margin: auto;
+    display: block;
+    text-align: center;     
+    
+}
 `
 export const Title = styled.h2`
-
+    text-align: center; 
+    margin 20px auto;
 `
 export const SalesPrice = styled.div`
     color: #D19C4C;
@@ -128,15 +150,20 @@ export const SalesPrice = styled.div`
     margin-left: 10px;
 `
 
-export const SecondaryLinks = styled.span`
+export const SecondaryLinks = styled.div`
     color: #a1a1a1; 
     cursor: pointer; 
+    margin: auto 0px;
     &:hover{
     text-decoration: underline; 
 }
     &:active{
         color: #6d6d6d; 
         text-decoration: none; 
+}
+
+@media screen and (max-width: 770px){
+    margin: auto;
 }
 `
 
@@ -178,7 +205,7 @@ export const BrownButton = styled.div`
 
 export const TanButton = styled.div`
     margin-left: auto;
-    margin-right: auto;
+    margin-right: 0;
     border-radius: 10px;
     padding: 5px;
     background-color: #D19C4C;
@@ -189,8 +216,6 @@ export const TanButton = styled.div`
     text-decoration: none;
     font-size: 15px;
     user-select: none;
-    margin-top: 10px;
-    margin-bottom: 10px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
 &:hover{
@@ -201,8 +226,71 @@ export const TanButton = styled.div`
     background-color: #D19C4C;
     transform: translate(4px, 4px)
 }
-
-@media screen and (max-widtH: 540px){
-width: 80%;
+@media screen and (max-width: 770px){
+    margin: auto;
 }
+@media screen and (max-widtH: 540px){
+
+}
+`
+export const InfoTable = styled.div`
+    text-align: left; 
+    display: grid; 
+    grid-template-columns: 40% 60%; 
+    vertical-align: top;
+    margin-bottom: 40px;
+@media screen and (max-widtH: 408px){
+    display: block;
+
+}
+`
+
+export const Row = styled.div`
+    display: grid; 
+    grid-template-columns: 50% 50%; 
+    gap: 10px;
+    margin: 10px auto;
+@media screen and (max-width: 770px){
+    display: block; 
+    margin: 20px auto;
+}
+`
+
+export const RowLabel = styled.div`
+    font-weight: bold; 
+    text-align: right;
+@media screen and (max-width: 770px){
+    text-align: center;
+}
+`
+
+export const RowData = styled.div`
+    text-align: left;
+    & > *{display: inline-block;   }
+
+    & > span{
+    margin: auto;
+}
+     &#TDseparator{
+        border-left: 1px solid #a1a1a1; 
+        width: 100px;
+        text-align: center;
+    }
+    @media screen and (max-width: 1140px){
+        & > span{
+        margin:0;
+    }
+@media screen and (max-width: 770px){
+    text-align: center;
+     &#TDseparator{
+        margin: auto;
+        text-align: center;
+        border: none;
+    }
+}
+}
+`
+
+export const TextTable = styled.div`
+
 `
