@@ -3,14 +3,14 @@
     "",
     "\\src",
     "\\src\\base_elements",
+    "\\src\\base_elements\\logo",
+    "\\src\\components",
     "\\src\\screens",
-    "\\src\\screens\\account",
-    "\\src\\screens\\checkout",
-    "\\src\\screens\\order",
+    "\\src\\screens\\loadingPage",
+    "\\src\\screens\\nonMember",
     "\\src\\screens\\product_page",
-    "\\src\\screens\\wishlist",
-    "\\src\\style"
+    "\\src\\screens\\product_page\\productProfile"
   ],
-  "SelectedNode": "\\src\\screens\\order\\order.js",
+  "SelectedNode": "\\src\\App.js",
   "PreviewInSolutionExplorer": false
 }

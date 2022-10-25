@@ -25,7 +25,7 @@ const MainContent = props => {
     const { makePageAuto, makePageInherit, getProductID } = useContext(PageTemplateContext);
 
     return (
-        <SecondInnerCont>
+        <SecondInnerCont id = "AboutUs_SecondInnerCont">
             <h2>About Us</h2>
             <Block>
             <Paragraph>Earth Tone was founded in 2003 and is the premier shop for premium tea leaves.

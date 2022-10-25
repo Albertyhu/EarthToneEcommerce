@@ -33,13 +33,25 @@ export const SecondInnerCont = styled.div`
     margin-top: 20px; 
     margin-bottom: 20px;
     opacity: ${props => props.opacityVal};
-&#PrivacyPolicyContainer{
-margin-left: 50px;
-margin-right: 50px;
-text-align: left;
-@media screen and (max-width: 540px){
-height:auto;
+    &#PrivacyPolicyContainer{
+    margin-left: 50px;
+    margin-right: 50px;
+    text-align: left;
+    }
+    &#SiteMap_SecondInnerCont, &#AboutUs_SecondInnerCont{
+    height: 60vh;
 }
+    @media screen and (max-width: 540px), and (max-height: 310px){
+      height:auto;
+     &#SiteMap_SecondInnerCont, &#AboutUs_SecondInnerCont{
+        height: auto !important;
+        }
+    }
+    @media screen and (max-height: 519px){
+     &#SiteMap_SecondInnerCont, &#AboutUs_SecondInnerCont{
+        height: auto !important;
+        }
+    }
 }
 `
 

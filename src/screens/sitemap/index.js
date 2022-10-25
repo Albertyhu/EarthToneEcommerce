@@ -27,7 +27,7 @@ const MainContent = props => {
 
 
     return (
-        <SecondInnerCont>
+        <SecondInnerCont id = "SiteMap_SecondInnerCont">
             <InnerCont>
                 <h2>Site Map</h2>
                 <Link style={LinkStyle} to="/tea-eCommerce-shop">Home</Link>
