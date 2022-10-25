@@ -18,6 +18,7 @@ import {
 import {
     NoItemScreen
 } from '../../style/globalStyledComp.js' 
+import { GetFirebase } from '../../firebase/firebaseCRUD.js'; 
 
 const RenderWishList = props => {
     const {

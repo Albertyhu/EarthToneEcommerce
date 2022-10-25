@@ -59,6 +59,10 @@ const GoogleButton = styled.div`
     background: $button-active-blue;
     transform: translate(4px, 4px)
   }
+
+@media screen and (max-width: 210px){
+    width: 100px;
+}
 `
 
 const Text = styled.div`
@@ -67,6 +71,9 @@ font-size: 12px;
 margin: auto;
 text-align: left;
 white-space: no-wrap;
+@media screen and (max-width: 210px){
+}
+
 `
 
 
@@ -77,5 +84,12 @@ margin: auto;
     height: 25px;
     width: 25px;
     color: orange;
+}
+
+@media screen and (max-width: 210px){
+    & > #GoogleIcon{
+        height: 15px;
+        width: 15px;
+    }
 }
 `

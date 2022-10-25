@@ -38,7 +38,7 @@ export const SubTitle = styled.h3`
 
 export const MainContainer = styled.div`
     width: 100%;
-    height: 100vh;
+    height: auto;
     text-align: center;
     background-repeat: no-repeat;
     background-size: cover;

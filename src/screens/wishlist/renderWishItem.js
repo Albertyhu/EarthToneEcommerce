@@ -33,7 +33,7 @@ const RenderWishItem = props => {
         width,
         length,
         height,
-        deleteWish, 
+        deleteWish, setWish
     } = props; 
 
     const { addProduct } = useContext(MyContext); 

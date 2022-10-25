@@ -4,13 +4,13 @@ import { TeaData } from '../../components/teaData.js';
 import { useNavigate } from 'react-router-dom'; 
 import PageTemplate from '../../PageTemplate.js'; 
 import { PageTemplateContext } from '../../components/pageTemplateContext.js'; 
-import { SecondInnerCont } from '../../style/globalStyledComp.js'; 
+import { SecondInnerCont, Title, NoItemScreen } from '../../style/globalStyledComp.js'; 
 import { MyContext } from '../../components/contextItem.js';
 import { RenderSubtotal } from './renderTotal.js'; 
 
 import uuid from 'react-uuid'; 
 import {
-    Title,
+
     CheckOutContainer,
     Shell, 
     OuterShell, 
@@ -193,8 +193,10 @@ const MainContent = props => {
                             </CheckOutContainer>
                         </Shell>
                     </OuterShell>
-                    :
+                :
+                <NoItemScreen>
                     <Title>Your shopping cart is currently empty</Title>
+                </NoItemScreen>
                 }
             </SecondInnerCont>
         )

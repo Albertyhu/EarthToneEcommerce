@@ -2,15 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\src",
-    "\\src\\firebase",
-    "\\src\\images",
+    "\\src\\base_elements",
     "\\src\\screens",
+    "\\src\\screens\\account",
+    "\\src\\screens\\checkout",
+    "\\src\\screens\\order",
     "\\src\\screens\\product_page",
-    "\\src\\screens\\product_page\\addProductMessage",
-    "\\src\\screens\\product_page\\functions",
-    "\\src\\screens\\product_page\\productProfile",
-    "\\src\\screens\\product_page\\productProfile\\layouts"
+    "\\src\\screens\\wishlist",
+    "\\src\\style"
   ],
-  "SelectedNode": "\\src\\base_elements\\headerStyle.js",
+  "SelectedNode": "\\src\\screens\\order\\order.js",
   "PreviewInSolutionExplorer": false
 }

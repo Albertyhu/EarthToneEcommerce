@@ -276,7 +276,12 @@ const SignUp = props => {
                     </CheckBoxMainCont>
                     <SubmitButton onClick={handleSubmit}>Sign Up</SubmitButton>
                     <h2>Or Sign In With Google</h2>
-                    <SignUpWGoogle setLoading={setLoading} />
+                    <SignUpWGoogle
+                        setLoading={setLoading}
+                        disabled={!termsConfirm}
+                        first={first}
+                        last={last}
+                    />
                     <h2>Already have an account with us?</h2>
                     <Button2 onClick={goSignIn}>Sign In</Button2>
 

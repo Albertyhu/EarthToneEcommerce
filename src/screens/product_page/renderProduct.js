@@ -5,6 +5,8 @@ import { MyContext } from '../../components/contextItem.js';
 import { useNavigate } from 'react-router-dom'; 
 import { ProductContext } from './productContext.js';
 import RenderRatings from '../../components/rating/renderRatings.js'; 
+import { PostFirebase } from '../../firebase/firebaseCRUD.js'; 
+
 //What does it need
 //Product ID
 //Product Image 
@@ -13,7 +15,7 @@ import RenderRatings from '../../components/rating/renderRatings.js';
 //Product title 
 const RenderProduct = props => {
     const { image, name, price, description, ID, amount, ratingAvg, ratingCount } = props
-    const { addProduct, openAddProductMessage, setWish } = React.useContext(MyContext)
+    const { addProduct, openAddProductMessage, addWish } = React.useContext(MyContext)
     const { changeMessage, changeOpacity } = useContext(ProductContext); 
     const [stockPurchase, setStock] = useState(1); 
     const [customStock, setCustomStock] = useState(0)
@@ -77,7 +79,7 @@ const RenderProduct = props => {
     const addToWishlist = () => {
         changeMessage('Product has been added to your wishlist')
         openAddProductMessage();
-        setWish(ID)
+        addWish(ID)
     }
     const RenderStars = useCallback((e) => <RenderRatings rating={ratingAvg} />, [ratingAvg])
     //The ratings is causing a bug where everytime a button is clicked, all the components look like they are twitching

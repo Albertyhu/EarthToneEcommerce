@@ -39,7 +39,7 @@ export const SubTitle = styled.h3`
 `
 export const MainSignInContainer = styled.div`
     width: 100%;
-    height: 60vh;
+    height: auto;
     text-align: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -47,7 +47,7 @@ export const MainSignInContainer = styled.div`
     font-family: serif;
     margin-top: 220px; 
    @media screen and (max-width: 540px) {
-    height: 70vh;
+
     margin-top: 175px; 
 }
 `
@@ -82,7 +82,7 @@ export const SubmitButton = styled.div`
     border-radius: 5px;
     padding: 10px;
     background-color: #25963E;
-    width: 20%;
+    width: 114px;
     text-align: center;
     color: #ffffff;
     font-family: Verdana;
@@ -95,6 +95,14 @@ export const SubmitButton = styled.div`
         background-color: #b8b8b8;
         transform: translate(4px, 4px)
 }
+@media screen and (max-width: 355px){
+    font-size: 12px;
+    width: 80px;
+}
+@media screen and (max-width: 114px){
+    width: 60px;
+}
+
 `
 
 export const Button2 = styled.div`
@@ -103,7 +111,7 @@ export const Button2 = styled.div`
     border-radius: 5px;
     padding: 10px;
     background-color: #10C135;
-    width: 20%;
+    width: 114px;
     text-align: center;
     color: #ffffff;
     font-family: Verdana;
@@ -115,6 +123,14 @@ export const Button2 = styled.div`
 &:active{
         background-color: #b8b8b8;
         transform: translate(4px, 4px)
+}
+
+@media screen and (max-width: 355px){
+    font-size: 12px;
+    width: 80px;
+}
+@media screen and (max-width: 114px){
+    width: 60px;
 }
 `
 

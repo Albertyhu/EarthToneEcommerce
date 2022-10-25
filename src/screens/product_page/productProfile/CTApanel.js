@@ -18,7 +18,7 @@ import { TeaData } from '../../../components/teaData.js';
 import { useNavigate } from 'react-router-dom'; 
 
 const CTA = props => {
-    const { addProduct, openAddProductMessage, setWish } = React.useContext(MyContext)
+    const { addProduct, openAddProductMessage, addWish } = React.useContext(MyContext)
     const { changeMessage } = React.useContext(PageTemplateContext); 
     const { shippingDays, productID, price, setMessage  } = props 
     const [quantity, setQuantity] = useState(1); 
@@ -73,7 +73,7 @@ const CTA = props => {
     const handleAddWish = () => {
         changeMessage("The product has been added to your wish list")
         openAddProductMessage()
-        setWish(productID)
+        addWish(productID)
   
     }
 

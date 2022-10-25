@@ -29,6 +29,7 @@ import ContactUsPage from './screens/contact';
 import Footer from './base_elements/footer.js'; 
 //firebase code 
 import { db } from './firebase/initializeFirebase.js';
+import { PostFirebase, GetFirebase } from './firebase/firebaseCRUD.js'; 
 import { getAuth, onAuthStateChanged } from 'firebase/auth'; 
 import { doc, getDoc } from "firebase/firestore";
 
@@ -36,12 +37,15 @@ import { doc, getDoc } from "firebase/firestore";
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 
+import RenderLoadingPage from './screens/loadingPage/loadingPage.js';
+
 const auth = getAuth(); 
 const currentUser = auth.currentUser;
 
 const stripePromise = loadStripe(`${process.env.REACT_APP_PUBLISHABLE_KEY}`);
 
 function App() {
+
     const [cart, setCart] = useState([])
     const [wishlist, setWish] = useState([]); 
     const [teaData, setTeaData] = useState(null)
@@ -51,7 +55,7 @@ function App() {
     const [accountPanel, setAccountPanel] = useState(false); 
     const [addProductMessage, setAddProductMessage] = useState(false); 
     const [user, setUser] = useState(currentUser);
-
+    const [loading, setLoading] = useState(true); 
     const [data, setData] = useState(null); 
 
     //const initiateAuthStateChange = () => {
@@ -136,17 +140,25 @@ function App() {
     window.addEventListener('resize', handleResize)
 
     useEffect(() => {
+
         const unsubscribe = onAuthStateChanged(auth, async (user) => {
+            setLoading(true)
             if (user) {
                 const docRef = doc(db, "users", user.uid)
-                const docSnap = await getDoc(docRef);
-                if (docSnap.exists()) {
-                    setData(docSnap.data())
-                }
+                const docSnap = await getDoc(docRef)
+                    .then(result => {
+                        if (result.exists()) {
+                            setData(result.data());
+                            GetFirebase("cart", setCart)
+                            GetFirebase("wishlist", setWish)
+                        }
+                    })
+                    .catch(e => console.log("Error with initialization: " + e))
             }
             else {
                 setData(null)
             }
+            setLoading(false); 
         })
         return () => {
             window.removeEventListener('resize', handleResize)
@@ -173,6 +185,7 @@ function App() {
                 newArr.push(newItem)
             }
             setCart([...newArr])
+            PostFirebase("cart", newArr)
         },
         removeFromCart: (productID) => {
             var arr = cart.filter(val => val.ID !== productID);
@@ -198,6 +211,7 @@ function App() {
             }
             setCart(arr); 
         },
+        cart, 
         getCart: () => { return cart },
         toggleCartPanel: () => {
             setOpenPanel(!openPanel); 
@@ -256,14 +270,16 @@ function App() {
         }, 
         getTeaData: () => { return teaData },
         getWish: () => { return wishlist },
-        setWish: (productID) => {
+        addWish: (productID) => {
             var arr = wishlist; 
             arr.push(productID)
             setWish(arr)
+            PostFirebase("wishlist", arr)
         },
         removeWish: (productID) => {
             var arr = wishlist.filter(val => val !== productID);
             setWish(arr)
+            PostFirebase("wishlist", arr)
         }, 
         getShippingAdd: () => { return shipping },
         setShippingAdd: (address) => {
@@ -305,6 +321,10 @@ function App() {
         // passing the client secret obtained from the server
         clientSecret: '{{CLIENT_SECRET}}',
     };
+
+    if (loading) {
+        return(<RenderLoadingPage />)
+    }
 
     return (
       <Elements stripe={stripePromise}>

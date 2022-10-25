@@ -18,18 +18,24 @@ import styled from 'styled-components';
 
 const CartPanel = props => {
     const { openPanel } = props; 
-    const { closeCartPanel, getCart, getRef, calculateTotalCost, calculateTotalItems } = React.useContext(MyContext);
-    const [cart, setCart] = useState([])
+    const {cart, closeCartPanel, getCart, getRef, calculateTotalCost, calculateTotalItems } = React.useContext(MyContext);
+    //const [cart, setCart] = useState([])
     const [subtotal, setSubTotal] = useState(0); 
     const [totalItems, setTotalItems] = useState(0); 
     const navigate = useNavigate(); 
    const ref = getRef(); 
 
     useEffect(() => {
-        var cartItems = getCart()
-        setCart([...cartItems])
-        setSubTotal(calculateTotalCost());
-        setTotalItems(calculateTotalItems()); 
+        if (cart !== null && cart.length > 0) {
+
+            setSubTotal(calculateTotalCost());
+            setTotalItems(calculateTotalItems()); 
+        }
+    }, [cart])
+
+    useEffect(() => {
+       // var cartItems = getCart()
+        //setCart([...cartItems])
 
     /*code for allowing user to click outside the cart panel to close it*/
         const checkIfClickedOutside = e => {
@@ -67,12 +73,10 @@ const CartPanel = props => {
     const goCart = useCallback(() => navigate('../cart', {}), [navigate])
 
     window.addEventListener("resize", handleResize)
-    useEffect(() => {
-        console.log("OpenPanel: " + openPanel);
-    }, [openPanel])
+
     useEffect(() => {
         return () => {
-            setCart([]);
+          //  setCart([]);
             window.removeEventListener("resize", handleResize)
         }
     },[])
