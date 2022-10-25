@@ -41,6 +41,8 @@ const ProductProfile = props => {
         addProductMessage={addProductMessage}
         ProductProfileID={id}
         data={getProductReviewCol()}
+        onDynamicPage={true}
+        numberOfDyamicItems={1}
     />)
 }
 
@@ -104,7 +106,7 @@ const MainContent = props => {
     if (windowWidth > 960) {
         return (
             <ProductProfileContext.Provider value={context}>
-                <SecondInnerCont>
+                <SecondInnerCont id ="ProductProfile_SecondInnerCont">
                     {product ?
                         <ThirdInnerContainer>
                             <UpperSection>

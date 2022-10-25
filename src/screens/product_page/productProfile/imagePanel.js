@@ -43,7 +43,7 @@ const ImagePanel = props => {
     }, [horizontal])
 
     return (
-        <ImageMainContainer>
+        <ImageMainContainer id = "ImageMainContainer">
             {horizontal ?
                 <ImageInnerShell id = "ImageInnerShell">
                     <ImageList>

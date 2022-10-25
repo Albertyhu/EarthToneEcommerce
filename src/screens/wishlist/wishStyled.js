@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const MainContainer = styled.div`
     width: 100%;
-    height: 100vh;
+    min-height: 60vh;
     text-align: center;
     background-image: none;
     background-repeat: no-repeat;

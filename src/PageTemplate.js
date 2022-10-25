@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'; 
+import React, { useEffect, useState, useRef } from 'react'; 
 import Header from './base_elements/header.js';
 import Footer from './base_elements/footer.js';
 import RenderPanels from './components/renderPanels.js';
@@ -25,7 +25,6 @@ const PageTemplate = props => {
         data,
         onDynamicPage,
         numberOfDyamicItems
-
     } = props;
 
     const [height, setHeight] = useState("100vh")
@@ -40,10 +39,33 @@ const PageTemplate = props => {
         setHeight(change)
     }
 
+    const MainContRef = useRef();
+    var MainContElem = document.querySelector("#PageTemplate_MainContainer"); 
+    const [MainContHeight, setMainContHeight] = useState(0); 
+
+
+    
     useEffect(() => {
-        window.scrollTo(0, 0)
+        window.scrollTo(0, 0); 
+
     }, [])
 
+    useEffect(() => {
+        if (MainContRef.current) {
+            MainContElem = document.querySelector("#PageTemplate_MainContainer");
+            setMainContHeight(MainContElem.offsetHeight);
+        }
+    }, [MainContRef.current])
+
+    const resizeEvent = event => {
+        MainContElem = document.querySelector("#PageTemplate_MainContainer");
+        setMainContHeight(MainContElem.offsetHeight);
+    }
+
+    useEffect(() => {
+        window.addEventListener('resize', resizeEvent); 
+        return () => { window.removeEventListener('resize', resizeEvent); }
+    }, [])
     const context = {
         ProductProfileID, 
         //The following is to make sure that the footer stays in the right position by controlling the value of the height of <InnerContainer> 
@@ -72,7 +94,10 @@ const PageTemplate = props => {
 
     return (
         <PageTemplateContext.Provider value = {context}>
-        <MainContainer heightChange={height} id = "MainContainer">
+            <MainContainer
+                heightChange={height}
+                id="PageTemplate_MainContainer"
+                ref={MainContRef}>
                 <InnerContainer heightType={InnerContHeight} id = "InnerContainer">
                 <RenderPanels
                     burgerTrigger={openHamburger}
@@ -81,7 +106,7 @@ const PageTemplate = props => {
                 />
                 <RenderMessage addProductMessage={addProductMessage} message={message} />
                 <Header />
-                <Filler />
+                    <Filler id = 'filler'/>
                     <MainContent
                         wishlist={wishlist}
                         changeHeight={changeHeight}
@@ -93,6 +118,7 @@ const PageTemplate = props => {
             <Footer
                 onDynamicPage={onDynamicPage}
                 size={numberOfDyamicItems}
+                MainContHeight={MainContHeight}
             />
         </PageTemplateContext.Provider>
         )

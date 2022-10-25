@@ -37,14 +37,24 @@ export const SecondInnerCont = styled.div`
     margin-left: 50px;
     margin-right: 50px;
     text-align: left;
+    min-height: 60vh;
+    }
+    &#Checkout_SecondInnerCont{
+        height: 100vh;
+}
+    &#ProductProfile_SecondInnerCont{
+       min-height: 60vh;
     }
     &#SiteMap_SecondInnerCont, &#AboutUs_SecondInnerCont{
-    height: 60vh;
+    min-height: 60vh;
 }
     @media screen and (max-width: 540px), and (max-height: 310px){
       height:auto;
      &#SiteMap_SecondInnerCont, &#AboutUs_SecondInnerCont{
-        height: auto !important;
+      //  height: auto !important;
+        }
+        &#SecondInnerCont_careerpage{
+            margin-top: 80px;
         }
     }
     @media screen and (max-height: 519px){
@@ -61,6 +71,10 @@ export const OuterShell = styled.div`
         display:block; 
         margin-bottom: 40px;
     }
+    &#AccountPageOuterShell{
+        display: block;
+        height: 100vh;
+}
 `
 
 export const Shell = styled.div`
@@ -196,11 +210,13 @@ export const ContinueButton = styled.div``
 
 export const Filler = styled.div`
     height: 190px;
+@media screen and (max-height: 538px){
+ height:95px;
 
+}
 @media screen and (max-width: 540px){
     height: 95px;
 }
-@media screen and (max-height: 540px){}
 `
 
 export const NoItemScreen = styled.div`

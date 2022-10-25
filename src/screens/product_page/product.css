@@ -126,22 +126,29 @@ display: inline-block
     
 }
 
-#addToWishlist {
-    color: #787878;
-    text-decoration: underline;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    border-radius: 25px;
-    cursor: pointer; 
-}
-    #addToWishlist:hover {
-        color: #9B9B9B;
-        text-decoration: none;
+@media screen and (max-width: 350px) {
+    .productDiv {
+        width: 260px;
     }
+}
 
-    #addToWishlist:active {
+    #addToWishlist {
         color: #787878;
         text-decoration: underline;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        border-radius: 25px;
+        cursor: pointer;
     }
+
+        #addToWishlist:hover {
+            color: #9B9B9B;
+            text-decoration: none;
+        }
+
+        #addToWishlist:active {
+            color: #787878;
+            text-decoration: underline;
+        }

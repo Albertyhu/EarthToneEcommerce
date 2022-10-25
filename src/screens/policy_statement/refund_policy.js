@@ -11,6 +11,8 @@ const RefundPolicy = props => {
         openHamburger={openHamburger}
         openPanel={openPanel}
         accountPanel={accountPanel}
+        onDynamicPage={false}
+        numberOfDyamicItems={0}
     />)
 }
 

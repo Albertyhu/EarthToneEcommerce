@@ -33,6 +33,8 @@ const RenderCartPage = props => {
         accountPanel={accountPanel}
         addProductMessage={addProductMessage}
         cart={cart}
+        onDynamicPage={true}
+        numberOfDyamicItems={cart.length}
     />)
 }
 

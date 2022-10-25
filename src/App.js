@@ -295,6 +295,7 @@ function App() {
             setPendingOrders(arr); 
         }, 
         getOrders: () => pendingOrders, 
+        getNumberOfOrders: ()=> pendingOrders.length, 
         deleteOrder: (ID) => {
             var arr = pendingOrders.filter(val => val.orderID === ID); 
             setPendingOrders(arr); 
@@ -524,7 +525,7 @@ function App() {
                         />
                         </Routes>
           </BrowserRouter>    
-                </div>
+          </div>
 
     </MyContext.Provider>
     </Elements>

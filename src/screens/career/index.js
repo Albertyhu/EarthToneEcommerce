@@ -18,6 +18,8 @@ const CareerPage = props => {
         openHamburger={openHamburger}
         openPanel={openPanel}
         accountPanel={accountPanel}
+        onDynamicPage={false}
+        numberOfDyamicItems={1}
     />)
 }
 
@@ -102,7 +104,7 @@ const MainContent = props => {
     }, [])
 
     return (
-        <SecondInnerCont>
+        <SecondInnerCont id="SecondInnerCont_careerpage">
             <h2>Interesting in joining our team?</h2>
             <Paragraph>Share your love of tea by becoming part of Earth Tone family. </Paragraph>
             <FormDiv id="FormDiv">

@@ -1,4 +1,6 @@
-import '../style/myStyle.css'
+
+import React, { useState, useRef, useEffect } from 'react'; 
+import '../style/myStyle.css'; 
 import styled from "styled-components"; 
 import RenderNewLetterSubsc from './footerSections/newsLetterSubsc.js'; 
 import RenderInformationSection from './footerSections/infoSection.js'; 
@@ -7,12 +9,79 @@ import ContactSection from './footerSections/contactSection.js';
 import RenderSocialPanel from './footerSections/socialMedia.js'; 
 
 const Footer = props => {
-    const { onDynamicPage = false, size = 0} = props; 
+   
+    //Because the footer had to be contructed inside the Root div it's positioning has to be 
+    //manually adjusted depending on the height of the main body and the footer.
+    //This is to make sure that the footer doesn't overlap the content and it always stay at the 
+    //bottom. 
+
+    //The idea is that if the window.innerHeight is greater than the sum of the offsetHeights of 
+    //the Main Body and the footer, the position of the footer should be set to 'fixed' and 
+    //the "bottom" set to 0.
+    //Otherwise, the position will be set to 'inherit' and the bottom will be set to 'auto'
+
+    //MainContHeight is the offsetHeight of the main body of the content 
+    const { onDynamicPage = false, size = 0, MainContHeight } = props;
+    const FooterRef = useRef();
+    var FooterElement = document.querySelector("#FooterContainer");
+
+    //footerHeight stores the offsetHeight of the footer
+    //This changes depending on the window size. 
+    //The height of the footer increases and decreases based on the width of the window 
+    const [footerHeight, setFooterHeight] = useState(0);
+
+    //Boolean value to determine how the footer is positioned. 
+    const [fixedPosition, setfixedPosition] = useState(false);
+
+    const determinePosition = () => {
+        if (window.innerHeight > (footerHeight + MainContHeight)) {
+            setfixedPosition(true)
+        }
+        else {
+            setfixedPosition(false)
+        }
+    }
+
+    useEffect(() => {
+        if (FooterRef.current) {
+            FooterElement = document.querySelector("#FooterContainer");
+            resizeEvent(); 
+        }
+    }, [FooterRef.current])
+
+    //Keep track of offsetHeight of the footer every time the size of the window changes 
+    const resizeEvent = event => {
+        FooterElement = document.querySelector("#FooterContainer");
+        setFooterHeight(FooterElement.offsetHeight)
+    }
+
+    useEffect(() => {
+        if(footerHeight !== 0)
+            determinePosition()
+    }, [footerHeight])
+
+    useEffect(() => {
+        if (MainContHeight !== 0) {
+            determinePosition();
+        }
+    }, [MainContHeight])
+
+    useEffect(() => {
+        window.addEventListener('resize', resizeEvent)
+        return () => { window.removeEventListener('resize', resizeEvent) }
+    }, [])
+
     return (
         <FooterContainer
+            ref={FooterRef}
             id="FooterContainer"
-            Position={onDynamicPage ? size > 0 ? "inherit" : "absolute" : "inherit"}
-            Bottom={onDynamicPage ? size > 0 ? "auto" : "0" : "auto"}
+            //Position={onDynamicPage ? size > 0 ? "inherit" : "absolute" : "inherit"}
+            //Bottom={onDynamicPage ? size > 0 ? "auto" : "0" : "auto"}
+             Position={fixedPosition ? "fixed" : "inherit"}
+            //Bottom={fixedPosition ? "auto" : "0"}
+            //Position={onDynamicPage ? size > 0 ? "inherit" : "inherit" : fixedPosition ? "inherit" : "absolute"}
+           // Position={'inherit'}
+            Bottom={onDynamicPage ? size > 0 ? "auto" : "0" : fixedPosition ? "auto" : "0"}
         >
             <FooterWrapper id = "FooterWrapper">
                 <Section id="Information">
@@ -41,8 +110,8 @@ export default Footer;
 const FooterContainer = styled.div`
     width: 100%; 
     background-color: #000000;
-    position: ${props => props.Position || "inherit"}; 
-    bottom: ${props => props.Bottom || "auto"}; 
+    position: ${props => props.Position}; 
+    bottom: ${props => props.Bottom}; 
 `
 const FooterWrapper = styled.div`
     margin: 0 auto;

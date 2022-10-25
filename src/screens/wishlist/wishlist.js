@@ -37,6 +37,8 @@ const RenderWishList = props => {
         addProductMessage={addProductMessage}
         message={message}
         wishlist={wishlist}
+        onDynamicPage={true}
+        numberOfDyamicItems={wishlist.length}
         />)
 }
 
@@ -91,7 +93,7 @@ const MainContent = (props) => {
         return () => { document.removeEventListener('resize', resizeEvent)}
     }, [])
 
-    return (<div id = "wishlistDiv">
+    return (<MainContainer id = "wishlistDiv">
     {
             wishlist.length !== 0 && wishlist !== null ?
                     <OuterShell Height="auto">
@@ -116,7 +118,7 @@ const MainContent = (props) => {
                 </NoItemScreen>
         }
 
-    </div>)    
+    </MainContainer>)    
 }
 
 export default RenderWishList; 

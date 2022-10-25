@@ -51,6 +51,8 @@ const RenderCheckout = props => {
         message={message}
         heightType={innerContHeight}
         cart={cart}
+        onDynamicPage={false}
+        numberOfDyamicItems={cart.length}
     />)
 
 }
@@ -231,7 +233,7 @@ const MainContent = props => {
     }
 
     return (
-        <SecondInnerCont opacityVal={processingIndicator ? 0.3 : 1.0 }>
+        <SecondInnerCont id ="Checkout_SecondInnerCont" opacityVal={processingIndicator ? 0.3 : 1.0 }>
             <h1>Checkout</h1>
             {checkoutList !== null && checkoutList.length !== 0 ?
                 <OuterShell id = "checkout_outershell">

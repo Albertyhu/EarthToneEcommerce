@@ -9,27 +9,18 @@ export const MainSection = styled.div`
 }
 `
 
-//image panel 
+
 export const ImageMainContainer = styled.div`
-    max-width: 600px; 
-    max-height: 600px;
-    width: 100%; 
+
+    width: fit-content; 
     margin-right: 10px;
-@media screen and (max-width: 1380px){
-    max-width: 400px; 
-    max-height: 400px;
-}
+
 @media screen and (max-width: 960px){
     margin-right: auto;
     margin-left: auto;
-    max-width: 400px; 
-    max-height: 400px;
-    
+    text-align: center;
 }
-@media screen and (max-width: 372px){
-   max-width: 400px; 
-    max-height: 400px;
-}
+
 `
 export const InnerShell = styled.div`
     display: flex; 
@@ -38,15 +29,38 @@ export const InnerShell = styled.div`
 export const ImageInnerShell = styled.div`
     display: flex; 
     width: 100%;
+    & > *{
+        display: inline-block;
+    }
+@media screen and (width: 960px){
+    margin-right: auto;
+    margin-left: auto;
+}
  @media screen and (max-width: 340px){
     display: grid;
 }
 `
-export const MainImage = styled.img`
-    width: 100%; 
-    height: auto; 
-    overflow: hidden;
 
+export const MainImage = styled.img`
+    width: 400px; 
+    height: 400px;
+    overflow: hidden;
+@media screen and (max-width: 1380px){
+    width: 400px; 
+    height: 400px;
+}
+
+@media screen and (max-width: 960px){
+    margin-right: auto;
+    margin-left: auto;
+    width: 400px; 
+    height: 400px;
+    
+}
+@media screen and (max-width: 500px){
+   width: 200px; 
+    height: 200px;
+}
 `
 
 export const ImageList = styled.ul`

@@ -18,7 +18,7 @@ const OrderPage = props => {
         message
     } = props; 
 
-    
+    const { getNumberOfOrders } = useContext(MyContext) 
 
     return (<PageTemplate MainContent={MainContent}
         openHamburger={openHamburger}
@@ -27,6 +27,8 @@ const OrderPage = props => {
         addProductMessage={addProductMessage}
         message={message}
         heightType={"inherit"}
+        onDynamicPage={true}
+        numberOfDyamicItems={getNumberOfOrders()}
     />)
 }
 

@@ -16,6 +16,7 @@ const AboutUsPage = props => {
         openHamburger={openHamburger}
         openPanel={openPanel}
         accountPanel={accountPanel}
+
     />)
 }
 

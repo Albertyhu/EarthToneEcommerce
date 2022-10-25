@@ -2,14 +2,14 @@
   "ExpandedNodes": [
     "",
     "\\src",
-    "\\src\\base_elements",
-    "\\src\\base_elements\\logo",
-    "\\src\\components",
     "\\src\\screens",
-    "\\src\\screens\\loadingPage",
-    "\\src\\screens\\nonMember",
+    "\\src\\screens\\account",
+    "\\src\\screens\\career",
+    "\\src\\screens\\cart",
+    "\\src\\screens\\order",
+    "\\src\\screens\\policy_statement",
     "\\src\\screens\\product_page",
-    "\\src\\screens\\product_page\\productProfile"
+    "\\src\\screens\\wishlist"
   ],
   "SelectedNode": "\\src\\App.js",
   "PreviewInSolutionExplorer": false

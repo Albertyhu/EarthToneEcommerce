@@ -11,6 +11,23 @@ import TeaCharacter from '../../base_elements/logo/Tea_chinese_character.png';
 import RenderPanels from '../../components/renderPanels.js';
 import { ShopNowButton } from '../../style/styledButton.js'; 
 import { Filler } from '../../style/globalStyledComp.js'; 
+import PageTemplate from '../../PageTemplate.js'; 
+import { PageTemplateContext } from '../../components/pageTemplateContext.js'; 
+
+const Template = props => {
+    const {
+        openHamburger,
+        openPanel,
+        accountPanel,
+    } = props;
+    return (
+        <PageTemplate MainContent={Home}
+            openHamburger={openHamburger}
+            openPanel={openPanel}
+            accountPanel={accountPanel}
+        />
+    )
+}
 
 const Home = props => {
     const { openPanel, openHamburger, accountPanel } = props;
@@ -42,11 +59,11 @@ const Home = props => {
                 </div>
       
             </div>
-            <Footer />
+            {/*<Footer />*/}
         </div>
         )
 }
 
-export default Home; 
+export default Template; 
 
 

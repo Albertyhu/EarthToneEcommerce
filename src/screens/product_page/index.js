@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'; 
+import React, { useEffect, useState, useRef } from 'react'; 
 import './product.css'; 
 import '../../style/button.css';
 import Header from '../../base_elements/header.js';
@@ -19,7 +19,11 @@ const ProductPage = props => {
     //this is for the message that appears when product is added to cart or wishlist
     const [renderMessage, setMessage] = useState('')
     const [opacityLevel, setOpacityLevel] = useState(1.0)
-    const [timeoutID, setTimeoutID] = useState(null)
+    const [timeoutID, setTimeoutID] = useState(null);
+    var MainContRef = useRef(); 
+    const [MainContHeight, setMainContHeight] = useState(0)
+
+    var mainContainer = document.getElementById("ProductIndex_MainContainer");
     var count = Object.keys(TeaData).length;
     var windowWidth; 
 
@@ -36,12 +40,11 @@ const ProductPage = props => {
     }, [opacityLevel])
 
     useEffect(() => {
-        const mainContainer = document.getElementById("mainContainer");
+        mainContainer = document.getElementById("ProductIndex_MainContainer");
         var heightMultiplier = Math.floor(Object.keys(TeaData).length / 3) + ((Object.keys(TeaData).length % 3) > 0 ? 1 : 0);
         const newHeight = 582 * heightMultiplier;
+        setMainContHeight(newHeight)
         mainContainer.style.height = `${newHeight}px`; 
-
-       
     }, [])
 
     const context = {
@@ -51,12 +54,20 @@ const ProductPage = props => {
             setOpacityLevel(0.3)
             setTimeoutID(setTimeout(() => {setOpacityLevel(1)}, 2000))
         }, 
-
     }
+
+    useEffect(() => {
+        if (MainContRef.current) {
+            mainContainer = document.getElementById("ProductIndex_MainContainer");
+        }
+    }, [MainContRef.current])
 
     return (
         <ProductContext.Provider value={context} >
-            <MainContainer id="mainContainer" opacity={opacityLevel}>
+            <MainContainer
+                id="ProductIndex_MainContainer" opacity={opacityLevel}
+                ref={MainContRef}
+            >
                 <div id='innerContainer'>
                     <RenderPanels
                         burgerTrigger={openHamburger}
@@ -70,8 +81,11 @@ const ProductPage = props => {
                         <RenderCollection arrlength={count} />
                     </ContentContainer>
                 </div>
-                <Footer onDynamicPage={true} size={TeaData.length} /> 
-
+                {MainContHeight !== 0 && <Footer
+                    onDynamicPage={true}
+                    size={TeaData.length}
+                    MainContHeight={MainContHeight}
+                />}
             </MainContainer >
         </ProductContext.Provider>
         )

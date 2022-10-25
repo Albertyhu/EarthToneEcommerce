@@ -27,10 +27,14 @@ const RenderCollection = props => {
             return ProductCollection.length; 
         }
     }
+
     const [display, setDisplay] = useState(determineGrid())
 
     window.addEventListener("resize", ()=>setDisplay(determineGrid()))
     useEffect(() => {
+        //This line is to make sure that every time user switches from other pages to product collection page
+        //the grid gets displayed correctly.
+        setDisplay(determineGrid())
         return () => { window.removeEventListener("resize", () => { setDisplay(determineGrid()) })}
     }, [])
 
@@ -57,5 +61,6 @@ const MainSection = styled.div`
     }
     @media screen and (max-width: 770px){
         display: block;
+        width: auto;
 }
 `
