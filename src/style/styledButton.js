@@ -121,9 +121,7 @@ export const TanButton = styled.div`
     padding-left: 15px;
     padding-right: 15px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; 
-    
 }
-
 
 &#ContinueBrowsing{
         font-size: 20px; 
@@ -163,6 +161,50 @@ export const TanButton = styled.div`
     font-size: 16px;
 }
 
+}
+`
+
+export const CartPageButtons = styled.div`
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    border-radius: 15px;
+    padding: 10px;
+    background-color: #D19C4C;
+    width: 185px;
+    text-align: center;
+    color: #ffffff;
+    cursor: pointer;
+    text-decoration: none;
+    text-transform: none;
+    user-select: none;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    font-size: 20px; 
+    white-space: nowrap;
+&#ContinueToCheckoutButton{
+    background-color: #D19C4C;
+}
+&#ContinueToCheckoutButton:hover{
+    background-color: #BD8C42; 
+}
+&#ContinueToCheckoutButton:active{
+   background-color: #D19C4C;
+}
+&#ContinueButton{
+    background-color: #9D5F38;
+}
+&#ContinueButton:hover{
+    background-color: #AB683E;
+}
+&#ContinueButton:active{
+    background-color: #9D5F38;
+}
+&:active {
+    transform: translate(4px, 4px)
+}
+@media screen and (max-width: 1174px){
+    width: 150px;  
+    font-size: 15px;
 }
 `
 

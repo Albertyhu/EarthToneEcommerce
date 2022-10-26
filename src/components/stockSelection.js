@@ -33,7 +33,7 @@ const RenderStockSelection = props => {
     return (
         <div>
            {!displayCustomStock ?
-            <StockSelection>
+            <StockSelection id = "StockSelection">
                     <StockSelectionElement onChange={handleStockChange} value={quantity}>
                     <option>0</option>
                     <option>1</option>
@@ -64,19 +64,18 @@ export default RenderStockSelection;
 
 export const StockSelection = styled.div`
     display: block;
-    margin-left: auto;
-    margin-right: auto;
     align-self: center;
     text-align: center;
     margin-top:5px;
     margin-bottom: 5px;
-
+@media screen and (max-width: 378px){
+    margin: 5px auto;
+}
 
 `
 
 export const StockSelectionElement = styled.select`
-margin-left: auto;
-margin-right: auto;
+
 display: block;
 border-radius: 10px; 
 border: none;
@@ -84,6 +83,9 @@ outline: none;
 background-color: #cbcbcb;
 padding: 5px;
 box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+@media screen and (max-width: 378px){
+    margin: 5px auto;
+}
 `
 
 

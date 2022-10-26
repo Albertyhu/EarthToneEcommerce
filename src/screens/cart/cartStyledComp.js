@@ -30,22 +30,29 @@ export const Shell = styled.div`
         width: 20%;
     }
 
-@media screen and (max-width: 540px){
+@media screen and (max-width: 969px){
+    &#rightPanel{
+        min-width: 198px;
+    }
+}
+@media screen and (max-width: 640px){
     width: 95%; 
     margin-left: auto;
     margin-right: auto;
     &#rightPanel{
         margin-top: 10px;
-        width: 95%;
+        width:95%;
     }
 }
 `
 
 export const OuterShell = styled.div`
     display: flex;
-@media screen and (max-width: 540px){
+
+@media screen and (max-width: 640px){
     display: grid;
     margin-bottom: 20px;
+ 
 }
 `
 

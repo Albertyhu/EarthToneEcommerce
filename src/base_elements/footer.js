@@ -21,10 +21,15 @@ const Footer = props => {
     //Otherwise, the position will be set to 'inherit' and the bottom will be set to 'auto'
 
     //MainContHeight is the offsetHeight of the main body of the content 
-    const { onDynamicPage = false, size = 0, MainContHeight } = props;
+    const { onDynamicPage = false,
+        size = 0,
+        MainContHeight,
+        MainContainerID,  
+        MainContRef, 
+    } = props;
     const FooterRef = useRef();
     var FooterElement = document.querySelector("#FooterContainer");
-
+    
     //footerHeight stores the offsetHeight of the footer
     //This changes depending on the window size. 
     //The height of the footer increases and decreases based on the width of the window 
@@ -32,10 +37,17 @@ const Footer = props => {
 
     //Boolean value to determine how the footer is positioned. 
     const [fixedPosition, setfixedPosition] = useState(false);
-
+    var MainContainerElem = document.querySelector(MainContainerID); 
     const determinePosition = () => {
-        if (window.innerHeight > (footerHeight + MainContHeight)) {
-            setfixedPosition(true)
+
+        MainContainerElem = document.querySelector(MainContainerID); 
+        if (MainContainerElem !== null) {
+            if (window.innerHeight > (FooterElement.offsetHeight + MainContainerElem.offsetHeight)) {
+                setfixedPosition(true)
+            }
+            else {
+                setfixedPosition(false)
+            }
         }
         else {
             setfixedPosition(false)
@@ -52,21 +64,13 @@ const Footer = props => {
     //Keep track of offsetHeight of the footer every time the size of the window changes 
     const resizeEvent = event => {
         FooterElement = document.querySelector("#FooterContainer");
-        setFooterHeight(FooterElement.offsetHeight)
+        determinePosition()
     }
 
-    useEffect(() => {
-        if(footerHeight !== 0)
-            determinePosition()
-    }, [footerHeight])
 
     useEffect(() => {
-        if (MainContHeight !== 0) {
-            determinePosition();
-        }
-    }, [MainContHeight])
-
-    useEffect(() => {
+        FooterElement = document.querySelector("#FooterContainer"); 
+        determinePosition();
         window.addEventListener('resize', resizeEvent)
         return () => { window.removeEventListener('resize', resizeEvent) }
     }, [])

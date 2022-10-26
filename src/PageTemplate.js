@@ -91,13 +91,15 @@ const PageTemplate = props => {
     //This is to prevent the footer from being positioned in the middle of the screen.
     //If there are more than one items displayed on the screen, set height of <InnerContainer> to auto
     //...so that the last product at the bottom doesn't overlap the footer. 
+    const MainContainerID = "PageTemplate_MainContainer"
 
     return (
         <PageTemplateContext.Provider value = {context}>
             <MainContainer
                 heightChange={height}
                 id="PageTemplate_MainContainer"
-                ref={MainContRef}>
+                ref={MainContRef}
+            >
                 <InnerContainer heightType={InnerContHeight} id = "InnerContainer">
                 <RenderPanels
                     burgerTrigger={openHamburger}
@@ -119,6 +121,8 @@ const PageTemplate = props => {
                 onDynamicPage={onDynamicPage}
                 size={numberOfDyamicItems}
                 MainContHeight={MainContHeight}
+                MainContRef={MainContRef}
+                MainContainerID={`#${MainContainerID}`}
             />
         </PageTemplateContext.Provider>
         )

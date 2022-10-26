@@ -87,7 +87,7 @@ export const WelcomeTag = styled.div`
 
 export const MobileMenuCont = styled.div`
    display: flex;
-
+   cursor: pointer;
 & > div#SignIn{
     display: flex
 }
@@ -96,8 +96,12 @@ export const MobileMenuCont = styled.div`
 export const EarthToneIMG = styled.img`
     width: auto;
     height: 100%;
+    cursor: pointer;
 @media screen and (max-width: 311px){
     width: 60%; 
+}
+@media screen and (max-width: 311px){
+    display: none;
 }
 `
 

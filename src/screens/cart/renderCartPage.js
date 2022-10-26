@@ -15,7 +15,7 @@ import {
     Shell, 
     OuterShell, 
 } from './cartStyledComp.js'; 
-import { TanButton, BrownButton } from '../../style/styledButton.js';
+import { TanButton, BrownButton, CartPageButtons } from '../../style/styledButton.js';
 import styled from 'styled-components'; 
 
 const RenderCartPage = props => {
@@ -127,28 +127,7 @@ const MainContent = props => {
         setTotalItems(newTotalItems)
         setSubtotal(newSubtotal)
     }
-    
-    const resizeEvent = () => {
-        if (cartList.length === 0) {
-            makePageInherit();
-        }
-        else if (cartList.length === 1) {
-            if (window.innerWidth > 540) {
-                makePageInherit()
-            }
-            else {
-                makePageAuto()
-            }
-        }
-        else {
-            makePageAuto()
-        } 
-    }
-
-    useEffect(() => {
-        resizeEvent()
-    }, [cart])
-
+   
 
     const updateCartList = (productID, newStock) => {
         var arr = null; 
@@ -164,13 +143,6 @@ const MainContent = props => {
         }
         setCartList(arr); 
     }
-
-    
-
-    document.addEventListener('resize', resizeEvent);
-    useEffect(() => {
-        return () => { document.removeEventListener('resize', resizeEvent);}
-    }, [])
     
     return (
             <SecondInnerCont>
@@ -190,8 +162,8 @@ const MainContent = props => {
                         <Shell id="rightPanel">
                             <CheckOutContainer>
                             <RenderSubtotal totalItems={totalItems} subtotal={subtotal} /> 
-                                <TanButton id="ContinueToCheckoutButton" onClick={goCheckout}>Continue to Checkout</TanButton>
-                                <BrownButton id="ContinueButton" onClick={goProductPage}>Continue Shopping</BrownButton>
+                            <CartPageButtons id="ContinueToCheckoutButton" onClick={goCheckout}>Continue to Checkout</CartPageButtons>
+                            <CartPageButtons id="ContinueButton" onClick={goProductPage}>Continue Shopping</CartPageButtons>
                             </CheckOutContainer>
                         </Shell>
                     </OuterShell>

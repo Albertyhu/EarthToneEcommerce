@@ -1,4 +1,4 @@
-import React, { useState, useContext, useCallback, useEffect } from 'react'; 
+import React, { useState, useContext, useCallback, useEffect} from 'react'; 
 import RenderStockSelection from '../../components/stockSelection.js'; 
 import {
     ListItem,
@@ -12,8 +12,9 @@ import {
     TDseparator,
 
 } from './checkoutStyle.js'; 
-import { MyContext } from '../../components/contextItem.js'; 
+import { MyContext, CheckoutListContext } from '../../components/contextItem.js'; 
 import { useNavigate } from 'react-router-dom'; 
+import styled from 'styled-components'; 
 
 const RenderList = props => {
     const { ID,
@@ -83,6 +84,21 @@ const RenderList = props => {
         updateProductStockInCart(ID, quantity)
     }
 
+    const determineView = () => {
+        return window.innerWidth > 1007 ? true : false;
+    }
+
+    const [desktopView, setdesktopView] = useState(determineView ())
+
+    const resizeEvent = () => {
+        setdesktopView(determineView())
+    }
+
+    useEffect(() => {
+        window.addEventListener('resize', resizeEvent)
+
+        return () => { window.removeEventListener('resize', resizeEvent) }
+    }, [])
     
     useEffect(() => {
         if (quantity !== "custom") {
@@ -90,33 +106,160 @@ const RenderList = props => {
         }
     }, [quantity])
 
+    const context = {
+        name,
+        description,
+        price,
+        amount,
+        image,
+        imageArray,
+        weight,
+        width,
+        length,
+        height,
+        shippingDays,
+        stock,
+        refreshList,
+        removeItem,
+        updateCartList,
+        updateSubtotal,
+        ID, 
+        goProductProfile, 
+        handleStockChange,
+        quantity,
+        customQuan,
+        displayCustomStock,
+        handleCustomStock, 
+        setDisplayCustomStock,
+        handleCustomSubmit, 
+        setQuan, 
+        removeFromCart,
+        removeItem, 
+        moveToWishList
+    }
 
     return (
-        <ListItem>
-            <Image src={image} onClick={() => goProductProfile(ID)} />
-            <DetailTable>
-                <tbody>
-                    <tr><th><Title>{name}</Title></th></tr>
-                    <tr><TH>Price: </TH><td><SalesPrice>${price.toFixed(2)}</SalesPrice></td></tr>
-                    <tr><TH>Quantity: </TH><td><RenderStockSelection
-                        handleStockChange={handleStockChange}
-                        quantity={quantity}
-                        customQuan={customQuan}
-                        displayCustomStock={displayCustomStock}
-                        handleCustomStock={handleCustomStock}
-                        setDisplayCustomStock={setDisplayCustomStock}
-                        handleCustomSubmit={handleCustomSubmit}
-                        setQuan={setQuan}
-                    /></td><TDseparator><SecondaryLinks onClick={() => {
-                            removeFromCart(ID);
-                            removeItem(ID);
-                        }}>Delete</SecondaryLinks></TDseparator><TDseparator><SecondaryLinks onClick={moveToWishList}>Save to Wishlist</SecondaryLinks></TDseparator></tr>
-                </tbody>
-            </DetailTable>
-            
-        </ListItem>
+        <CheckoutListContext.Provider value ={context}>
+            <ListItem>
+                <div>
+                    <Title>{name}</Title>
+                    <Image src={image} onClick={() => goProductProfile(ID)} />
+                </div>
+                {desktopView ?
+                    <DetailTable>
+                        <tbody>
+                            <tr><TH>Price: </TH><td><SalesPrice>${price.toFixed(2)}</SalesPrice></td></tr>
+                            <tr><TH>Quantity: </TH><td><RenderStockSelection
+                                handleStockChange={handleStockChange}
+                                quantity={quantity}
+                                customQuan={customQuan}
+                                displayCustomStock={displayCustomStock}
+                                handleCustomStock={handleCustomStock}
+                                setDisplayCustomStock={setDisplayCustomStock}
+                                handleCustomSubmit={handleCustomSubmit}
+                                setQuan={setQuan}
+                            /></td><TDseparator><SecondaryLinks onClick={() => {
+                                removeFromCart(ID);
+                                removeItem(ID);
+                            }}>Delete</SecondaryLinks></TDseparator><TDseparator><SecondaryLinks onClick={moveToWishList}>Move to Wishlist</SecondaryLinks></TDseparator></tr>
+                        </tbody>
+                    </DetailTable>
+                    :
+                    <TabletTable />
+                    }
+            </ListItem>
+        </CheckoutListContext.Provider>
         )
 
  }
 
 export default RenderList; 
+
+const TabletTable = props => {
+    const {
+        name,
+        description,
+        price,
+        amount,
+        image,
+        imageArray,
+        weight,
+        width,
+        length,
+        height,
+        shippingDays,
+        stock,
+        refreshList,
+        removeItem,
+        updateCartList,
+        updateSubtotal,
+        ID,
+        goProductProfile,
+        handleStockChange,
+        quantity,
+        customQuan,
+        displayCustomStock,
+        handleCustomStock,
+        setDisplayCustomStock,
+        handleCustomSubmit,
+        setQuan,
+        removeFromCart,
+        moveToWishList
+    } = useContext(CheckoutListContext); 
+
+    return (
+        <VerticalTable>
+                <TextRow><RowLabel>Price: </RowLabel><RowData><SalesPrice>${price.toFixed(2)}</SalesPrice></RowData></TextRow>
+                <TextRow><RowLabel>Quantity: </RowLabel><RowData id = "SelectionComp"><RenderStockSelection
+                    handleStockChange={handleStockChange}
+                    quantity={quantity}
+                    customQuan={customQuan}
+                    displayCustomStock={displayCustomStock}
+                    handleCustomStock={handleCustomStock}
+                    setDisplayCustomStock={setDisplayCustomStock}
+                    handleCustomSubmit={handleCustomSubmit}
+                    setQuan={setQuan}
+                /></RowData></TextRow>
+            <ButtonWrapper>
+                <SecondaryLinks onClick={() => {
+                    removeFromCart(ID);
+                    removeItem(ID);
+                }}>Delete</SecondaryLinks>
+                <SecondaryLinks onClick={moveToWishList}>Move to Wishlist</SecondaryLinks>
+            </ButtonWrapper>
+        </VerticalTable>
+        )
+}
+
+const VerticalTable = styled.div`
+    display: inline-block;
+    margin: auto 0;
+@media screen and (max-width: 378px){
+    margin: 10px auto;
+    display: block;
+ 
+}
+`
+
+
+const TextRow = styled.div`
+    display: block;
+`
+
+const RowLabel = styled.div`
+    font-weight: bold; 
+`
+const RowData = styled.div`
+@media screen and (max-width: 378px){
+    &#SelectionComp{
+        & > *{
+            margin: 5px auto;
+        }
+    }
+}
+`
+
+const ButtonWrapper = styled.div`
+    display: grid; 
+  //  & > *{margin: 10px auto;}
+`

@@ -60,8 +60,14 @@ export const ListItem = styled.div`
     margin-bottom: 20px;
     text-align: left;
     cursor: pointer; 
-@media screen and (max-width: 540px){
-    text-align: center;
+    display: grid; 
+    grid-template-columns: 1fr 1fr;
+    border-bottom: 1px solid #dbdbdb;
+@media screen and (max-width: 378px){
+    display: block;
+    & > * {
+    text-align: center; 
+    }
 }
 `
 export const ListDetails = styled.div`
@@ -119,10 +125,14 @@ export const Image = styled.img`
   //  margin-left: auto;
     margin-right: 10px;
     display: inline-block; 
-
+@media screen and (max-width: 248px){
+    width: 100px;
+    height: 100px; 
+}
 `
-export const Title = styled.h2`
-
+export const Title = styled.div`
+    font-weight: bold;
+    font-size: 30px;
 `
 export const SalesPrice = styled.div`
     color: #D19C4C;

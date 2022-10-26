@@ -21,6 +21,7 @@ import { doc, getDoc} from 'firebase/firestore'
 import { db } from '../firebase/initializeFirebase.js';
 import EarthToneTextLogo from './logo/EarthToneTextLogoTan.png'; 
 import {useNavigate} from 'react-router-dom'
+import styled from 'styled-components'
 
 const auth = getAuth() 
 
@@ -42,21 +43,6 @@ const SecondaryHeaderBar = props => {
 
 
     useEffect(() => {
-        //const unsubscribe = onAuthStateChanged(auth, async (user) => {
-        //    if (user) {
-        //        setMember(user)
-        //        const docRef = doc(db, "users", user.uid)
-        //        const docSnap = await getDoc(docRef); 
-        //        if (docSnap.exists()) {
-        //            setData(docSnap.data())
-        //        }
-        //    }
-        //    else {
-        //        setMember(null)
-        //        setData(null)
-        //    }
-        //})
-
         window.addEventListener('resize', handleWindowResize)
 
         //The following code is necessary. The component needs to unmount for sliding panel to work
@@ -104,8 +90,20 @@ const SecondaryHeaderBar = props => {
                     <EarthToneIMG src={EarthToneTextLogo} onClick={goHome} />
             </MobileMenuCont>
             <MobileMenuCont>
-                    {data !== null ? <BsPersonSquare style={iconStyle} onClick={handleOpenPanel} /> : <div id="SignIn" ><MobileSignInText>Sign In</MobileSignInText><BsPersonSquare style={iconStyle} onClick={goSignin} /></div> }
-                    <BsCartFill style={iconStyle} onClick={goCart} />
+                    {data !== null ?
+                        <IconWrapper>
+                            <BsPersonSquare onClick={handleOpenPanel} />
+                        </IconWrapper>
+                        :
+                        <SignInButton id="SignIn" onClick={goSignin} >
+                            <MobileSignInText>Sign In</MobileSignInText>
+                            <IconWrapper>
+                                <BsPersonSquare  />
+                            </IconWrapper>
+                        </SignInButton>}
+                    <IconWrapper>
+                        <BsCartFill onClick={goCart} />
+                    </IconWrapper>
             </MobileMenuCont>
          </SecHeadBarCont>
             }
@@ -130,7 +128,22 @@ const iconStyle = {
     marginLeft: "10px",
 }
 
-//const logoStyle = {
-//    width: "auto",
-//    height: "100%"
-//}
+const IconWrapper = styled.div`
+ 
+position: relative;
+& > *{
+    color: #ffffff;
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+    margin-top: 10px;
+    margin-bottom: 0;
+    margin-left: 10px;
+
+}
+`
+
+const SignInButton = styled.div`
+    cursor: pointer; 
+    
+`
