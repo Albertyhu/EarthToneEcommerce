@@ -62,6 +62,8 @@ const ProductPage = props => {
         }
     }, [MainContRef.current])
 
+    const MainContID = "ProductIndex_MainContainer"; 
+
     return (
         <ProductContext.Provider value={context} >
             <MainContainer
@@ -84,7 +86,7 @@ const ProductPage = props => {
                 {MainContHeight !== 0 && <Footer
                     onDynamicPage={true}
                     size={TeaData.length}
-                    MainContHeight={MainContHeight}
+                    MainContainerID={`#${MainContID}`}
                 />}
             </MainContainer >
         </ProductContext.Provider>

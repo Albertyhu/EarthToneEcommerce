@@ -120,8 +120,6 @@ const PageTemplate = props => {
             <Footer
                 onDynamicPage={onDynamicPage}
                 size={numberOfDyamicItems}
-                MainContHeight={MainContHeight}
-                MainContRef={MainContRef}
                 MainContainerID={`#${MainContainerID}`}
             />
         </PageTemplateContext.Provider>
