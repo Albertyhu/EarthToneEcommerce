@@ -110,7 +110,7 @@ height: 200px;
 
 @media screen and (max-width: 450px) {
     #home_mainContainer {
-        height: 120vh;
+        height: 66vh;
         margin-top: 0px;
     }
 

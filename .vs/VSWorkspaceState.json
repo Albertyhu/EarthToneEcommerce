@@ -2,15 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\src",
+    "\\src\\base_elements",
     "\\src\\screens",
-    "\\src\\screens\\account",
-    "\\src\\screens\\career",
-    "\\src\\screens\\cart",
-    "\\src\\screens\\order",
-    "\\src\\screens\\policy_statement",
+    "\\src\\screens\\loadingPage",
+    "\\src\\screens\\nonMember",
     "\\src\\screens\\product_page",
-    "\\src\\screens\\wishlist"
+    "\\src\\screens\\shipping",
+    "\\src\\screens\\sitemap",
+    "\\src\\style"
   ],
-  "SelectedNode": "\\src\\App.js",
+  "SelectedNode": "\\src\\base_elements\\footer.js",
   "PreviewInSolutionExplorer": false
 }
