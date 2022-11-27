@@ -10,7 +10,7 @@ const createCol = (name) => {
     
 }
 
-export const TeaData = [
+export const ProductCollection = [
     {
         ID: 0,
         name: "Black Tea Leaves",

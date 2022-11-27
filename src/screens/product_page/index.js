@@ -4,14 +4,12 @@ import '../../style/button.css';
 import Header from '../../base_elements/header.js';
 import Footer from '../../base_elements/footer.js';
 import RenderCollection from './renderCollection.js'; 
-import { TeaData } from '../../components/teaData.js'; 
+import { ProductCollection } from '../../components/ProductCollection.js'; 
 import RenderMessage from './addProductMessage/renderMessagePanel.js';
 import RenderPanels from '../../components/renderPanels.js'; 
 import { ProductContext } from './productContext.js'; 
 import { Filler } from '../../style/globalStyledComp.js'; 
 import styled from 'styled-components'; 
-import PageTemplate from '../../PageTemplate.js'; 
-
 
 const ProductPage = props => {
     const { openPanel, accountPanel, addProductMessage, openHamburger } = props; 
@@ -24,7 +22,7 @@ const ProductPage = props => {
     const [MainContHeight, setMainContHeight] = useState(0)
 
     var mainContainer = document.getElementById("ProductIndex_MainContainer");
-    var count = Object.keys(TeaData).length;
+    var count = Object.keys(ProductCollection).length;
     var windowWidth; 
 
 
@@ -41,7 +39,7 @@ const ProductPage = props => {
 
     useEffect(() => {
         mainContainer = document.getElementById("ProductIndex_MainContainer");
-        var heightMultiplier = Math.floor(Object.keys(TeaData).length / 3) + ((Object.keys(TeaData).length % 3) > 0 ? 1 : 0);
+        var heightMultiplier = Math.floor(Object.keys(ProductCollection).length / 3) + ((Object.keys(ProductCollection).length % 3) > 0 ? 1 : 0);
         const newHeight = 582 * heightMultiplier;
         setMainContHeight(newHeight)
         mainContainer.style.height = `${newHeight}px`; 
@@ -85,7 +83,7 @@ const ProductPage = props => {
                 </div>
                 {MainContHeight !== 0 && <Footer
                     onDynamicPage={true}
-                    size={TeaData.length}
+                    size={ProductCollection.length}
                     MainContainerID={`#${MainContID}`}
                 />}
             </MainContainer >

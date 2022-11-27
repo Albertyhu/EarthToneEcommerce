@@ -13,6 +13,7 @@ import { ShopNowButton } from '../../style/styledButton.js';
 import { Filler } from '../../style/globalStyledComp.js'; 
 import PageTemplate from '../../PageTemplate.js'; 
 import { PageTemplateContext } from '../../components/pageTemplateContext.js'; 
+import FeaturedProducts from '../../components/featuredProducts/FeaturedProducts.js'; 
 
 const Template = props => {
     const {
@@ -34,6 +35,7 @@ const Home = props => {
     const navigate = useNavigate(); 
     const goProductPage = useCallback(() => navigate('../product_page', {}), [navigate])
     return (
+        <>
         <div id="home_mainContainer">
             <div id='home_innerContainer'>
                 <RenderPanels
@@ -41,26 +43,26 @@ const Home = props => {
                     cartTrigger={openPanel}
                     accountTrigger={accountPanel}
                 />
-                <Header/>
-                <div id ="centerElements">
-                    <div id="titleContainer">
-                        <div id = "HomeTitleWrapper">
-                            <img src={TeaCharacter} id="tea_chinese_character" />
-                            <div id = "Home_Title_Text">
-                                <h1 id="title">Your Peace Of Mind Is Only One Cup Away</h1>
-                                <p>Start your mornings with mental clarity.</p>
-                                <p>Browse our collection of authentic tea leaves.</p>
+                    <Header/>
+                    <div id ="centerElements">
+                        <div id="titleContainer">
+                            <div id = "HomeTitleWrapper">
+                                <img src={TeaCharacter} id="tea_chinese_character" />
+                                <div id = "Home_Title_Text">
+                                    <h1 id="title">Your Peace Of Mind Is Only One Cup Away</h1>
+                                    <p>Start your mornings with mental clarity.</p>
+                                    <p>Browse our collection of authentic tea leaves.</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div id="buttonContainer">
-                        <ShopNowButton onClick={goProductPage}>Shop Now</ShopNowButton>
+                        <div id="buttonContainer">
+                            <ShopNowButton onClick={goProductPage}>Shop Now</ShopNowButton>
+                        </div>
                     </div>
                 </div>
-      
             </div>
-            {/*<Footer />*/}
-        </div>
+            <FeaturedProducts />
+        </>
         )
 }
 

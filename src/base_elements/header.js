@@ -9,14 +9,14 @@ import SecondaryHeaderBar from './SecondaryHeaderBar.js';
 import SearchBar from '../searchBar/searchbar.js'; 
 
 const Header = props => {
-    const { getTeaData, desktopView } = useContext(MyContext)
+    const { getProductCollection, desktopView } = useContext(MyContext)
     
     return (
         <div id="headerBar">
             <SecondaryHeaderBar />
             <div id="PrimaryHeaderBar">
                 <Link to="/" id="LogoContainer"><img src={Logo} id="earthTonelogo" /></Link>
-                <SearchBar data={getTeaData()} />
+                <SearchBar data={getProductCollection()} />
                 {desktopView ?
                     <HeaderMenu />
                     :

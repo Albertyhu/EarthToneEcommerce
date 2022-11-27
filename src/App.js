@@ -26,7 +26,8 @@ import CareerPage from './screens/career';
 import PostSubmissionPage from './screens/career/PostSubmissionPage.js';
 import RenderSiteMap from './screens/sitemap'; 
 import ContactUsPage from './screens/contact'; 
-import Footer from './base_elements/footer.js'; 
+import Footer from './base_elements/footer.js';
+import FeaturedProducts from './components/featuredProducts/FeaturedProducts.js'; 
 //firebase code 
 import { db } from './firebase/initializeFirebase.js';
 import { PostFirebase, GetFirebase } from './firebase/firebaseCRUD.js'; 
@@ -48,7 +49,7 @@ function App() {
 
     const [cart, setCart] = useState([])
     const [wishlist, setWish] = useState([]); 
-    const [teaData, setTeaData] = useState(null)
+    const [ProductCollection, setProductCollection] = useState(null)
     const [openPanel, setOpenPanel] = useState(false);
     //for users with small mobile devices 
     const [hamburgerPanel, setHamburgerPanel] = useState(false); 
@@ -57,25 +58,6 @@ function App() {
     const [user, setUser] = useState(currentUser);
     const [loading, setLoading] = useState(true); 
     const [data, setData] = useState(null); 
-
-    //const initiateAuthStateChange = () => {
-    //    unsubscribe = onAuthStateChanged(auth, async (user) => {
-    //        if (user) {
-    //            const docRef = doc(db, "users", user.uid)
-    //            const docSnap = await getDoc(docRef);
-    //            if (docSnap.exists()) {
-    //                setData(docSnap.data())
-    //            }
-    //        }
-    //        else {
-    //            setData(null)
-    //        }
-    //    })
-    //}
-
-    //window.onload = event => {
-    //    initiateAuthStateChange()
-    //}
 
     const [pendingOrders, setPendingOrders] = useState([{
         orderID: genKey(10), 
@@ -268,7 +250,7 @@ function App() {
         openAccountPanel: () => {
             setAccountPanel(true)
         }, 
-        getTeaData: () => { return teaData },
+        getProductCollection: () => { return ProductCollection },
         getWish: () => { return wishlist },
         addWish: (productID) => {
             var arr = wishlist; 
@@ -522,7 +504,13 @@ function App() {
                                 openHamburger={hamburgerPanel}
                                 accountPanel={accountPanel}
                             />}
-                        />
+                            />
+                            <Route
+                                path='/featured_products'
+                                element={
+                                    <FeaturedProducts />
+                                }
+                            />
                         </Routes>
           </BrowserRouter>    
           </div>

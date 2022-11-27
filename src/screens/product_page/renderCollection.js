@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { TeaData } from '../../components/teaData.js'; 
-import RenderRow from './renderRow.js'; 
+import { ProductCollection } from '../../components/ProductCollection.js'; 
 import uuid from 'react-uuid'
 import RenderProduct from './renderProduct.js'; 
 import styled from 'styled-components'; 
@@ -8,14 +7,14 @@ import styled from 'styled-components';
 const RenderCollection = props => {
     //props.arrlength carries the length of the array that has all the tea data
     var count = props.arrlength; 
-    var ProductCollection = [...TeaData]; 
+    var Collection = [...ProductCollection]; 
 
     useEffect(() => {
-        setDisplay(ProductCollection.length < 3 ? ProductCollection.length : 3)
-    }, [ProductCollection.length])
+        setDisplay(Collection.length < 3 ? Collection.length : 3)
+    }, [Collection.length])
 
     const determineGrid = event => {
-        if (ProductCollection.length >= 3) {
+        if (Collection.length >= 3) {
             if (window.innerWidth <= 1145) {
                 return 2;
             }
@@ -24,7 +23,7 @@ const RenderCollection = props => {
             }
         }
         else {
-            return ProductCollection.length; 
+            return Collection.length; 
         }
     }
 
@@ -40,7 +39,7 @@ const RenderCollection = props => {
 
     return (
         <MainSection id="ProductCollectionMainSection" Repeat={`${display}`}>
-            {ProductCollection.map(item => <RenderProduct key={uuid()} {...item} />)}
+            {Collection.map(item => <RenderProduct key={uuid()} {...item} />)}
         </MainSection>
         )
 }

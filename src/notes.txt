@@ -1,3 +1,10 @@
+11/27/22
+Written content for the front page: 
+
+Find your perfect tea. 
+As a direct importer and distributor who prides ourselves in offering high-quality tea leaves, we source our products from the most exotic places in the world to bring you the best. 
+
+
 10/1/22
 The current live site utilizes 2 Firebase projects to function.
 It uses Tea-shop [id: tea-shop-dd55c] for authentication and storing data.

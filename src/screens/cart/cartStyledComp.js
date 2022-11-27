@@ -142,3 +142,42 @@ export const CartPanelButtonContainer = styled.div`
     margin-right: auto; 
     margin-top: 20px;
 `
+
+export const SlidingPanel = styled.div`
+    width: ${props => props.Width};
+    height: 100vh;
+    top: 0px;
+    right: 0px;
+    position: fixed;
+    overflow: auto;
+    z-index: 11;
+    transform: translateX(${props => props.isOpen}); 
+    transition: transform 1s; 
+@media screen and (max-width: 720px){}
+@media screen and (max-width: 360px){}
+`
+
+export const PanelContainer = styled.div`
+    height: 100%;
+    width: 100%;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+`
+
+export const Container = styled.div`
+    margin-left: auto;
+    margin-right: auto; 
+    margin-bottom: 20px;
+`
+
+export const Detail = styled.div`
+text-align: left;
+line-height: 20px;
+justify-content: space-between;
+display: flex;
+&#shippingFeeInfo > span{
+    border-bottom: 1px solid rgba(0,0,0, 0.4);
+
+`

@@ -6,7 +6,7 @@ import ImagePanel from './imagePanel.js';
 import TextPanel from './textPanel.js'; 
 import { MainSection } from './profileStyledComp.js';
 import CTAPanel from './CTApanel.js'
-import { TeaData } from '../../../components/teaData.js'; 
+import { ProductCollection } from '../../../components/ProductCollection.js'; 
 import { SecondInnerCont} from '../../../style/globalStyledComp.js';
 import PageTemplate from '../../../PageTemplate.js'; 
 import { PageTemplateContext } from '../../../components/pageTemplateContext.js'; 
@@ -56,10 +56,10 @@ const MainContent = props => {
     //Acquire reviews of all products 
     const review = getData();
     const [productID, setProductID] = useState(getProductID());
-    const [product, setProduct] = useState(TeaData.find(val => val.ID === productID))
+    const [product, setProduct] = useState(ProductCollection.find(val => val.ID === productID))
     const [renderMessage, setMessage] = useState('')
     useEffect(() => {
-        var item = TeaData.find(val => val.ID === productID)
+        var item = ProductCollection.find(val => val.ID === productID)
         setProduct(item)
     }, [productID])
 

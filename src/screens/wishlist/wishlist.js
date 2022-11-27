@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useEffect } from 'react'; 
-import { TeaData } from '../../components/teaData.js';
+import { ProductCollection } from '../../components/ProductCollection.js';
 import { MyContext } from '../../components/contextItem.js'; 
 import uuid from 'react-uuid'; 
 import RenderWishItem from './renderWishItem.js'; 
@@ -47,7 +47,7 @@ const MainContent = (props) => {
     const { removeWish } = React.useContext(MyContext);
     const { setUnitForMeasure, makePageAuto, makePageInherit } = React.useContext(PageTemplateContext)
     const LoadWishes = () => {
-        var arr = TeaData.filter(val => {
+        var arr = ProductCollection.filter(val => {
             return wishlist.some(wish => wish === val.ID)
         })
         return arr; 

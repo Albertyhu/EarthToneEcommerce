@@ -3,7 +3,7 @@ import { MyContext } from '../components/contextItem.js';
 import styled from 'styled-components'; 
 import { BiSearchAlt2 } from 'react-icons/bi';
 import RenderSearchResults from './renderList.js'; 
-import { TeaData } from '../components/teaData.js'; 
+import { ProductCollection } from '../components/ProductCollection.js'; 
 
 const SearchBar = props => {
     const { data } = props; 
@@ -22,8 +22,8 @@ const SearchBar = props => {
     }
 
     const filterData = () => {
-        if (TeaData) {
-            let newArray = TeaData.filter(val => searchByCriteria(val, "name") > -1
+        if (ProductCollection) {
+            let newArray = ProductCollection.filter(val => searchByCriteria(val, "name") > -1
             )
      
             setResults(newArray.map(val => val))

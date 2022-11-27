@@ -3,7 +3,7 @@ import '../../product.css';
 import { useLocation, useNavigate } from 'react-router-dom';
 import ImagePanel from './../imagePanel.js';
 import CTAPanel from './../CTApanel.js'
-import { TeaData } from '../../../../components/teaData.js';
+import { ProductCollection } from '../../../../components/ProductCollection.js';
 import {
     SecondInnerCont,
     ThirdInnerContainer,

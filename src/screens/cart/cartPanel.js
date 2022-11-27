@@ -2,28 +2,30 @@ import React, { useState, useEffect, useCallback } from 'react';
 //import SlidingPanel from 'react-sliding-side-panel';
 import { MyContext } from '../../components/contextItem.js';
 import './cart.css';
-import RenderTeaItems from './renderTeaItems.js'; 
+import RenderItems from './renderItems.js'; 
 import uuid from 'react-uuid';
-import { TeaData } from '../../components/teaData.js'; 
-import { CartPanelButtonContainer } from './cartStyledComp.js'; 
+import { ProductCollection } from '../../components/ProductCollection.js'; 
+import {
+    CartPanelButtonContainer,
+    SlidingPanel,
+    PanelContainer, 
+} from './cartStyledComp.js'; 
 import {
     TanButton,
     DarkGreenButton,
-    GreenButton, 
     BrownButton,
 } from '../../style/styledButton.js';
 import { useNavigate } from 'react-router-dom'; 
-import styled from 'styled-components'; 
+
 
 
 const CartPanel = props => {
     const { openPanel } = props; 
     const {cart, closeCartPanel, getCart, getRef, calculateTotalCost, calculateTotalItems } = React.useContext(MyContext);
-    //const [cart, setCart] = useState([])
     const [subtotal, setSubTotal] = useState(0); 
     const [totalItems, setTotalItems] = useState(0); 
     const navigate = useNavigate(); 
-   const ref = getRef(); 
+    const ref = getRef(); 
 
     useEffect(() => {
         if (cart !== null && cart.length > 0) {
@@ -34,9 +36,6 @@ const CartPanel = props => {
     }, [cart])
 
     useEffect(() => {
-       // var cartItems = getCart()
-        //setCart([...cartItems])
-
     /*code for allowing user to click outside the cart panel to close it*/
         const checkIfClickedOutside = e => {
             if (openPanel && ref.current && !ref.current.contains(e.target)) {
@@ -110,8 +109,8 @@ const CartPanel = props => {
                             </CartPanelButtonContainer>
                             {
                                 cart.map(item => {
-                                    const cartItem = TeaData.find(val => val.ID === item.ID)
-                                    return (<RenderTeaItems
+                                    const cartItem = ProductCollection.find(val => val.ID === item.ID)
+                                    return (<RenderItems
                                         id={item.ID}
                                         image={cartItem.image}
                                         name={cartItem.name}
@@ -138,26 +137,3 @@ const CartPanel = props => {
         )
 }
 export default CartPanel; 
-
-const SlidingPanel = styled.div`
-    width: ${props => props.Width};
-    height: 100vh;
-    top: 0px;
-    right: 0px;
-    position: fixed;
-    overflow: auto;
-    z-index: 11;
-    transform: translateX(${props => props.isOpen}); 
-    transition: transform 1s; 
-@media screen and (max-width: 720px){}
-@media screen and (max-width: 360px){}
-`
-
-const PanelContainer = styled.div`
-    height: 100%;
-    width: 100%;
-    background-color: #ffffff;
-    display: flex;
-    flex-direction: column;
-    overflow-y: auto;
-`

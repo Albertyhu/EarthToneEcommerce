@@ -14,7 +14,7 @@ import {
 import RenderStockSelection from '../functions/stockSelection.js'
 import RenderShippingInfo from '../functions/renderShippingInfo.js'; 
 import { AiFillLock } from 'react-icons/ai';
-import { TeaData } from '../../../components/teaData.js'; 
+import { ProductCollection } from '../../../components/ProductCollection.js'; 
 import { useNavigate } from 'react-router-dom'; 
 
 const CTA = props => {

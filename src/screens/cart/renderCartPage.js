@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useCallback, useContext } from 'react'
 import RenderList from '../checkout/renderList.js';  
-import { TeaData } from '../../components/teaData.js'; 
+import { ProductCollection } from '../../components/ProductCollection.js'; 
 import { useNavigate } from 'react-router-dom'; 
 import PageTemplate from '../../PageTemplate.js'; 
 import { PageTemplateContext } from '../../components/pageTemplateContext.js'; 
@@ -51,7 +51,7 @@ const MainContent = props => {
     const loadData = () => {
         var arr = []; 
         cart.forEach(val => {
-            var obj = TeaData.find(tea => tea.ID === val.ID)
+            var obj = ProductCollection.find(tea => tea.ID === val.ID)
             arr.push({
                 ID: obj.ID, 
                 name: obj.name,
@@ -179,22 +179,3 @@ const MainContent = props => {
 export default RenderCartPage; 
 
 
-const DetailContainer = styled.div`
-    margin-left: auto;
-    margin-right: auto; 
-    margin-bottom: 20px;
-`
-
-const Detail = styled.div`
-text-align: left;
-line-height: 20px;
-justify-content: space-between;
-display: flex;
-&#shippingFeeInfo > span{
-    border-bottom: 1px solid rgba(0,0,0, 0.4);
-}
-`
-
-const Update = styled.div`
-
-`

@@ -3,7 +3,7 @@ import PageTemplate from '../../PageTemplate.js';
 import { PageTemplateContext } from '../../components/pageTemplateContext.js'; 
 import { MyContext } from '../../components/contextItem.js'; 
 import { useLocation, useNavigate } from 'react-router-dom'; 
-import { TeaData } from '../../components/teaData.js'; 
+import { ProductCollection } from '../../components/ProductCollection.js'; 
 import { SecondInnerCont } from '../../style/globalStyledComp.js'; 
 import styled from 'styled-components'; 
 import { GreenButton, DarkGreenButton } from '../../style/styledButton.js'; 
@@ -40,7 +40,7 @@ const MainContent = props => {
     //for resizing textarea to make website responsive
     const [colLength, setColLength] = useState(window.innerWidth > 540 ? 150 : 49)
     useEffect(() => {
-        setProduct(TeaData.find(val => val.ID === productID)); 
+        setProduct(ProductCollection.find(val => val.ID === productID)); 
     }, [productID])
 
     const handleInput = event => {

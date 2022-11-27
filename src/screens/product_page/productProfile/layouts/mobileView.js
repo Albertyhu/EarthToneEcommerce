@@ -5,7 +5,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import ImagePanel from './../imagePanel.js';
 import TextPanel from './../textPanel.js'; 
 import CTAPanel from './../CTApanel.js'
-import { TeaData } from '../../../../components/teaData.js'; 
+import { ProductCollection } from '../../../../components/ProductCollection.js'; 
 import { SecondInnerCont } from '../../../../style/globalStyledComp.js';
 import { MyContext, ProductProfileContext } from '../../../../components/contextItem.js';
 import styled from 'styled-components';

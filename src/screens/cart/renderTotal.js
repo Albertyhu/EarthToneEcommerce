@@ -1,5 +1,8 @@
 import React, {useEffect, useState} from 'react'
-import styled from 'styled-components';
+import {
+    Container, 
+    Detail
+} from './cartStyledComp.js';
 
 export const RenderSubtotal = props => {
 
@@ -13,18 +16,4 @@ export const RenderSubtotal = props => {
     )
 }
 
-const Container = styled.div`
-    margin-left: auto;
-    margin-right: auto; 
-    margin-bottom: 20px;
-`
 
-const Detail = styled.div`
-text-align: left;
-line-height: 20px;
-justify-content: space-between;
-display: flex;
-&#shippingFeeInfo > span{
-    border-bottom: 1px solid rgba(0,0,0, 0.4);
-
-`

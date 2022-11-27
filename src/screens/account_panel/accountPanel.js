@@ -38,7 +38,6 @@ const AccountPanel = props => {
                 type={'right'}
                 isOpen={openPanel}
                 size={window.innerWidth > 540 ? 20 : 75}
-              //  panelContainerClassName="accountPanelContainer"
                 noBackdrop={true}
             >
                 <div className="panel-container" ref={accountRef}>

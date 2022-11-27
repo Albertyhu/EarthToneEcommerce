@@ -38,10 +38,8 @@
 
 
 /*product on product collection page*/
-.productDiv {
-    
-    /*max-width: 350px; 
-*/    width: 350px;
+.productDiv {   
+    width: 350px;
     height: 100%; 
     display: inline-block;
     border: 1px solid rgba(0,0,0, 0.3);
@@ -121,9 +119,7 @@ display: inline-block
     }
     .AddCartButton {
         margin-bottom: 20px;
-    }
-
-    
+    }  
 }
 
 @media screen and (max-width: 350px) {

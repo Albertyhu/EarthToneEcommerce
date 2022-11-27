@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from 'react'; 
-import { TeaData } from '../../components/teaData.js'; 
+import { ProductCollection } from '../../components/ProductCollection.js'; 
 import { RenderSubtotal } from '../../components/renderTotal.js';
 import {
     Title,
@@ -77,7 +77,7 @@ const MainContent = props => {
         if (cart) {
             var newArr = []
             cart.forEach(item => {
-                var obj = TeaData.find(val => val.ID === item.ID)
+                var obj = ProductCollection.find(val => val.ID === item.ID)
                 var checkoutItem = {
                     ID: obj.ID,
                     name: obj.name, 
