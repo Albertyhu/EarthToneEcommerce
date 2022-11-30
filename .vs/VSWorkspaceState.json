@@ -2,16 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\src",
-    "\\src\\base_elements",
     "\\src\\components",
     "\\src\\components\\featuredProducts",
+    "\\src\\images",
+    "\\src\\images\\icon",
     "\\src\\screens",
-    "\\src\\screens\\order",
-    "\\src\\screens\\policy_statement",
-    "\\src\\screens\\productReview",
-    "\\src\\screens\\product_page",
-    "\\src\\style"
+    "\\src\\screens\\home_page",
+    "\\src\\screens\\home_page\\SectionTwo",
+    "\\src\\screens\\home_page\\SectionTwo\\icons"
   ],
-  "SelectedNode": "\\README.md",
+  "SelectedNode": "\\src\\screens\\home_page\\home.css",
   "PreviewInSolutionExplorer": false
 }

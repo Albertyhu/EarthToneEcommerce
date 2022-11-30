@@ -18,7 +18,7 @@ import {
 const App = () => {
     return (
         <MainCont id="Home_Sect2_MainCont">
-            <Header>Our meticulous standards goes a long way</Header>
+            <Header>Our meticulous standards go a long way</Header>
             <Paragraph  >All of our tea leaves are hand-picked in good shape, whole, and without any tear. We avoid  the use of any industrial machines to pick the leaves in order to maintain excellent quality. </Paragraph>
             <Shell id="Home_Sect2_Shell">
             <IconWrapper>
