@@ -2,12 +2,12 @@
     width: 100%;
     height: 100vh;
     text-align: center;
-    background-image: url("../../images/pouring_tea.jpg");
+    background-image: url("../../images/tea_set.jpg");
+    background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     background-color: #000000;
     font-family: serif;
- 
 }
 
 #titleContainer {

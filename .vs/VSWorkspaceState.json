@@ -9,8 +9,9 @@
     "\\src\\screens",
     "\\src\\screens\\home_page",
     "\\src\\screens\\home_page\\SectionTwo",
-    "\\src\\screens\\home_page\\SectionTwo\\icons"
+    "\\src\\screens\\home_page\\SectionTwo\\icons",
+    "\\src\\screens\\product_page"
   ],
-  "SelectedNode": "\\src\\screens\\home_page\\home.css",
+  "SelectedNode": "\\src\\screens\\home_page\\SectionTwo\\icons\\satisfaction_icon.png",
   "PreviewInSolutionExplorer": false
 }
