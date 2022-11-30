@@ -28,6 +28,7 @@ import RenderSiteMap from './screens/sitemap';
 import ContactUsPage from './screens/contact'; 
 import Footer from './base_elements/footer.js';
 import FeaturedProducts from './components/featuredProducts/FeaturedProducts.js'; 
+import SectionTwo from './screens/home_page/SectionTwo'
 //firebase code 
 import { db } from './firebase/initializeFirebase.js';
 import { PostFirebase, GetFirebase } from './firebase/firebaseCRUD.js'; 
@@ -509,6 +510,12 @@ function App() {
                                 path='/featured_products'
                                 element={
                                     <FeaturedProducts />
+                                }
+                            />
+                            <Route
+                                path='/section2'
+                                element={
+                                    <SectionTwo />
                                 }
                             />
                         </Routes>

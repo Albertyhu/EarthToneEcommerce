@@ -1,19 +1,19 @@
 import React, { createRef, useEffect, useCallback } from 'react'; 
 import './home.css'; 
 import '../../images/pouring_tea.jpg'
-import { Link, useNavigate } from "react-router-dom";
+import {useNavigate } from "react-router-dom";
 import '../../style/button.css';  
 import '../../style/myStyle.css'; 
 import Header from '../../base_elements/header.js';
-import Footer from '../../base_elements/footer.js';
 import TeaCharacter from '../../base_elements/logo/Tea_chinese_character.png'; 
 //renders the panels 
 import RenderPanels from '../../components/renderPanels.js';
 import { ShopNowButton } from '../../style/styledButton.js'; 
-import { Filler } from '../../style/globalStyledComp.js'; 
+import { Filler, Divider } from '../../style/globalStyledComp.js'; 
 import PageTemplate from '../../PageTemplate.js'; 
 import { PageTemplateContext } from '../../components/pageTemplateContext.js'; 
 import FeaturedProducts from '../../components/featuredProducts/FeaturedProducts.js'; 
+import SectionTwo from './SectionTwo'; 
 
 const Template = props => {
     const {
@@ -61,6 +61,8 @@ const Home = props => {
                     </div>
                 </div>
             </div>
+            <SectionTwo />
+            <Divider />
             <FeaturedProducts />
         </>
         )

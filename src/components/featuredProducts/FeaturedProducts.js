@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react'
+import React from 'react'
 import { MainCont, Title, Shell } from './myStyle.js'; 
 import { ProductCollection } from '../ProductCollection.js'; 
 import RenderPanel from './productPanel.js'; 

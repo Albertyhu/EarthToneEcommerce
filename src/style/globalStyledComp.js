@@ -223,3 +223,12 @@ export const NoItemScreen = styled.div`
 height: 50vh; 
 text-align: center; 
 `
+
+export const Divider = styled.hr`
+    border: 0; 
+    height: 1px;
+    background: radial-gradient(ellipse at center, rgba(0,0,0,0.8) 0%,rgba(0,0,0,0) 56%);
+    background-color: #f4f4f4;
+    margin: 50px auto;
+
+`

@@ -25,7 +25,7 @@
     margin: auto;
     font-family: inherit;
     position: absolute;
-    top: 22%;
+    top: 12%;
     left: 0; 
     right: 0;
 }
@@ -77,7 +77,7 @@ height: 200px;
             width: 150px;
         }
         #centerElements {
-           top: 13%;
+           top: 11%;
         }
         #home_mainContainer {
             height: 77vh;
@@ -98,9 +98,9 @@ height: 200px;
             display: block;
         }
     }
-    @media screen and (max-height: 538px) {
-        #home_mainContainer {
-            //margin-top: 100px;
+    @media screen and (max-width: 600px) {
+        #centerElements {
+            top: 8%;
         }
     }
 
@@ -142,7 +142,7 @@ height: 200px;
 
     @media screen and (max-width: 450px) {
         #home_mainContainer {
-            height: 66vh;
+            height: 100vh;
             margin-top: 0px;
         }
         #centerElements {

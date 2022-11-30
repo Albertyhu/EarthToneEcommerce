@@ -2,15 +2,16 @@
   "ExpandedNodes": [
     "",
     "\\src",
+    "\\src\\base_elements",
     "\\src\\components",
-    "\\src\\images",
-    "\\src\\images\\tea",
-    "\\src\\images\\tea\\ginseng_tea",
+    "\\src\\components\\featuredProducts",
     "\\src\\screens",
-    "\\src\\screens\\home_page",
-    "\\src\\screens\\sitemap",
+    "\\src\\screens\\order",
+    "\\src\\screens\\policy_statement",
+    "\\src\\screens\\productReview",
+    "\\src\\screens\\product_page",
     "\\src\\style"
   ],
-  "SelectedNode": "\\src\\images\\tea\\ginseng_tea\\GinsengProduct.jpg",
+  "SelectedNode": "\\README.md",
   "PreviewInSolutionExplorer": false
 }
