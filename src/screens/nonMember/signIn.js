@@ -1,13 +1,11 @@
 import React, {useState, useCallback, useEffect, useContext} from 'react'
-import { Link, useNavigate } from "react-router-dom"; 
+import { useNavigate } from "react-router-dom"; 
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'; 
-import styled from 'styled-components'; 
 import SignInWGoogle from './signInWGoogle.js';
 import {
     InputField,
     InputContainer,
     InputDiv, 
-    MainContainer,
     MainSignInContainer, 
     OuterShell,
     InnerShell,
@@ -22,9 +20,9 @@ import {
 import '../../style/myStyle.css'; 
 import Header from '../../base_elements/header.js';
 import Footer from '../../base_elements/footer.js';
-import { MyContext } from '../../components/contextItem.js';
+import { MyContext } from '../../context/contextItem.js';
 import EarthToneLogo from '../../base_elements/logo/Earth Tone-black-transparent.png'
-import { checkEmail } from './checkEmail.js';
+import { checkEmail } from '../../hooks/checkEmail.js';
 import { ValidIcon, InvalidIcon } from './checkmarkIcon.js';
 import { MdMailOutline } from 'react-icons/md';
 import { AiOutlineLock } from 'react-icons/ai'; 

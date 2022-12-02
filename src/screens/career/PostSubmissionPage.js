@@ -1,6 +1,6 @@
-import React, { useState, useCallback, useEffect, useContext } from 'react';
+import React, { useCallback, useContext } from 'react';
 import PageTemplate from '../../PageTemplate.js';
-import { PageTemplateContext } from '../../components/pageTemplateContext.js';
+import { PageTemplateContext } from '../../context/contextItem.js';
 import { SecondInnerCont } from '../../style/globalStyledComp.js'
 import styled from 'styled-components';
 import { WhiteButton } from '../../style/styledButton.js';

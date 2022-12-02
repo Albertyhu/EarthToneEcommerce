@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { MyContext } from '../components/contextItem.js'; 
+import { MyContext } from '../context/contextItem.js'; 
 import styled from 'styled-components'; 
 import { BiSearchAlt2 } from 'react-icons/bi';
 import RenderSearchResults from './renderList.js'; 
-import { ProductCollection } from '../components/ProductCollection.js'; 
+import { ProductCollection } from '../data/ProductCollection.js'; 
 
 const SearchBar = props => {
     const { data } = props; 

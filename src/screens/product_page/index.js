@@ -4,7 +4,7 @@ import '../../style/button.css';
 import Header from '../../base_elements/header.js';
 import Footer from '../../base_elements/footer.js';
 import RenderCollection from './renderCollection.js'; 
-import { ProductCollection } from '../../components/ProductCollection.js'; 
+import { ProductCollection } from '../../data/ProductCollection.js'; 
 import RenderMessage from './addProductMessage/renderMessagePanel.js';
 import RenderPanels from '../../components/renderPanels.js'; 
 import { ProductContext } from './productContext.js'; 

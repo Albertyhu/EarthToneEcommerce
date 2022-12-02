@@ -1,23 +1,21 @@
-import React, { useState, useRef, useEffect, useCallback } from 'react'; 
-import { BrowserRouter, Routes, Route, Link, useNavigate } from "react-router-dom";
+import React, { useState, useRef, useEffect} from 'react'; 
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from './screens/home_page';
 import ProductPage from './screens/product_page'; 
 import './style/myStyle.css'
-import { MyContext } from './components/contextItem.js'; 
+import { MyContext } from './context/contextItem.js'; 
 import SignIn from './screens/nonMember/signIn.js';
 import SignUp from './screens/nonMember/signUp.js'; 
 import AccountPage from './screens/account/accountPage.js';
-import { LoadProducts } from './components/loadProducts.js'; 
 import ProductProfilePage from './screens/product_page/productProfile/productProfile.js'; 
 import RenderCheckOut from './screens/checkout/checkoutPage.js'; 
 import RenderWishList from './screens/wishlist/wishlist.js';
 import RenderCartPage from './screens/cart/renderCartPage.js'; 
-import OrderPage from './screens/order/order.js'; 
+import OrderPage from './screens/order'; 
 import OrderCompletePage from './screens/order/orderComplete.js'; 
 import PrivacyPolicy from './screens/policy_statement/privacy_policy.js'; 
 import RefundPolicy from './screens/policy_statement/refund_policy.js'; 
 import TermsAndConditions from './screens/policy_statement/termsAndCondition.js'; 
-import { genKey } from './components/randGen.js'
 import ProductReviewPage from './screens/productReview/productReviewPage.js'; 
 import ReturnProductPage from './screens/productReturn/returnProdPage.js'; 
 import PostReturnRequest from './screens/productReturn/postReturnRequest.js'; 
@@ -26,12 +24,13 @@ import CareerPage from './screens/career';
 import PostSubmissionPage from './screens/career/PostSubmissionPage.js';
 import RenderSiteMap from './screens/sitemap'; 
 import ContactUsPage from './screens/contact'; 
-import Footer from './base_elements/footer.js';
 import FeaturedProducts from './components/featuredProducts/FeaturedProducts.js'; 
-import SectionTwo from './screens/home_page/SectionTwo'
+import SectionTwo from './screens/home_page/SectionTwo';
+import { SampleReviews, SampleAddress } from './test/sampleData.js';
+
 //firebase code 
-import { db } from './firebase/initializeFirebase.js';
-import { PostFirebase, GetFirebase } from './firebase/firebaseCRUD.js'; 
+import { db } from './services/firebase/initializeFirebase.js';
+import { PostFirebase, GetFirebase } from './services/firebase/firebaseCRUD.js'; 
 import { getAuth, onAuthStateChanged } from 'firebase/auth'; 
 import { doc, getDoc } from "firebase/firestore";
 
@@ -60,55 +59,18 @@ function App() {
     const [loading, setLoading] = useState(true); 
     const [data, setData] = useState(null); 
 
-    const [pendingOrders, setPendingOrders] = useState([{
-        orderID: genKey(10), 
-        cart: [{ ID: 2, stock: 5, price: 4.99 }, { ID: 0, stock: 3, price: 5.25 }],
-        amountPaid: 50.31,
-        orderDate: new Date(), 
-    }]); 
+    const [pendingOrders, setPendingOrders] = useState([]); 
 
     //For storing reviews of each of the products 
-    const [productRevCol, setProductRev] = useState([
-        {
-            ID: 0,
-            rating: 4,
-            review: "I have always had peppermint tea in the cupboard, having to take lots of medication, including indigestion tablets, I find this drink helps me a lot.",
-        },
-        {
-            ID: 1,
-            rating: 4,
-            review: "Tried and bought it in a store in US. My sister loved it and I gave her more than half of my package. Perfect for the holiday..",
-        },
-       {
-        ID: 2, 
-        rating: 4, 
-        review: "The leaves arrived fresh. I made a pot from them immediately and one sip gave me a sense of alertness and clarity. I would recommend this product to anyone.",
-        },
-    ])
+    const [productRevCol, setProductRev] = useState(SampleReviews)
 
     //This is for storing the user's shipping information. The information initialized here is just the sample. 
-    const [shipping, setShipping] = useState({
-        address1: '742 Evergreen Terrace',
-        address2: 'n/a',
-        city: 'Springfield',
-        state: 'Illinois',
-        zipcode: '94575',
-        country: "US"
-      
-    })
-    const [billingAddress, setBillingAdd] = useState({
-        address1: '742 Evergreen Terrace',
-        address2: 'n/a',
-        city: 'Springfield',
-        state: 'Illinois',
-        zipcode: '94575',
-        country: "US"
-    })
+    const [shipping, setShipping] = useState(SampleAddress)
+    const [billingAddress, setBillingAdd] = useState(SampleAddress)
     const ref = useRef();
     const hamburgerRef = useRef()
     const messageRef = useRef() 
     const accountPanelRef = useRef()
-
 
     //Code for determining whether the site should be displayed on desktop view or not 
     const [desktopView, setDesktopView] = useState(window.innerWidth > 770 ? true : false);
@@ -123,7 +85,6 @@ function App() {
     window.addEventListener('resize', handleResize)
 
     useEffect(() => {
-
         const unsubscribe = onAuthStateChanged(auth, async (user) => {
             setLoading(true)
             if (user) {
@@ -521,7 +482,6 @@ function App() {
                         </Routes>
           </BrowserRouter>    
           </div>
-
     </MyContext.Provider>
     </Elements>
   );

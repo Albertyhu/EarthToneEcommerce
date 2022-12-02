@@ -1,9 +1,8 @@
-import React, { useEffect, useState, useContext, onFocus } from 'react';
+import React, { useContext } from 'react';
 import '../style/myStyle.css'
 import Logo from './logo/Earth Tone.png'
 import HeaderMenu from './headerMenu.js'; 
-import { MyContext } from '../components/contextItem.js';
-import HamburgerIcon from '../images/icon/hamburger_menu_white.png';
+import { MyContext } from '../context/contextItem.js';
 import { Link } from 'react-router-dom'; 
 import SecondaryHeaderBar from './SecondaryHeaderBar.js'; 
 import SearchBar from '../searchBar/searchbar.js'; 

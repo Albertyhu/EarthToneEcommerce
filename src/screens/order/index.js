@@ -1,9 +1,8 @@
 import React, { useEffect, useContext, useState } from 'react'; 
 import PageTemplate from '../../PageTemplate.js'; 
-import { MyContext } from '../../components/contextItem.js'; 
+import { MyContext, PageTemplateContext  } from '../../context/contextItem.js'; 
 import RenderOrderItem from './renderOrderItem.js'; 
 import uuid from 'react-uuid'; 
-import { PageTemplateContext } from '../../components/pageTemplateContext.js'; 
 import {
     NoItemScreen, 
     Title

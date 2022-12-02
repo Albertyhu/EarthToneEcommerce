@@ -1,8 +1,7 @@
 import React, { useState, useContext, useCallback, useEffect} from 'react'; 
-import RenderStockSelection from '../../components/stockSelection.js'; 
+import RenderStockSelection from '../../components/stockSelection'; 
 import {
     ListItem,
-    ListDetails, 
     Image, 
     Title, 
     DetailTable,
@@ -10,9 +9,8 @@ import {
     SalesPrice, 
     SecondaryLinks,
     TDseparator,
-
 } from './checkoutStyle.js'; 
-import { MyContext, CheckoutListContext } from '../../components/contextItem.js'; 
+import { MyContext, CheckoutListContext } from '../../context/contextItem.js'; 
 import { useNavigate } from 'react-router-dom'; 
 import styled from 'styled-components'; 
 

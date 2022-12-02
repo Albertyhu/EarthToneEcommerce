@@ -1,15 +1,14 @@
 import React, { useState, useCallback, useEffect } from 'react'; 
-import { ProductCollection } from '../../components/ProductCollection.js';
-import { MyContext } from '../../components/contextItem.js'; 
+import { ProductCollection } from '../../data/ProductCollection.js';
+import { MyContext } from '../../context/contextItem.js'; 
 import uuid from 'react-uuid'; 
 import RenderWishItem from './renderWishItem.js'; 
 import PageTemplate from '../../PageTemplate.js';
-import { PageTemplateContext } from '../../components/pageTemplateContext.js'; 
+import { PageTemplateContext } from '../../context/contextItem.js'; 
 import { useNavigate } from 'react-router-dom'; 
 import { BrownButton } from '../../style/styledButton.js';
 import {
     MainContainer,
-    InnerContainer,
     Title,
     CheckOutContainer,
     Shell, 
@@ -18,7 +17,6 @@ import {
 import {
     NoItemScreen
 } from '../../style/globalStyledComp.js' 
-import { GetFirebase } from '../../firebase/firebaseCRUD.js'; 
 
 const RenderWishList = props => {
     const {

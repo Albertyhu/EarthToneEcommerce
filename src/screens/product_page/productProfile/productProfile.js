@@ -6,11 +6,11 @@ import ImagePanel from './imagePanel.js';
 import TextPanel from './textPanel.js'; 
 import { MainSection } from './profileStyledComp.js';
 import CTAPanel from './CTApanel.js'
-import { ProductCollection } from '../../../components/ProductCollection.js'; 
+import { ProductCollection } from '../../../data/ProductCollection.js'; 
 import { SecondInnerCont} from '../../../style/globalStyledComp.js';
 import PageTemplate from '../../../PageTemplate.js'; 
-import { PageTemplateContext } from '../../../components/pageTemplateContext.js'; 
-import { MyContext, ProductProfileContext  } from '../../../components/contextItem.js';
+import { PageTemplateContext } from '../../../context/contextItem.js'; 
+import { MyContext, ProductProfileContext  } from '../../../context/contextItem.js';
 import styled from 'styled-components'; 
 import ReviewPanel from './reviewPanel.js';
 import NoteBookView from './layouts/NoteBookView.js'; 

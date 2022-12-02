@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import SlidingPanel from 'react-sliding-side-panel';
-import { MyContext } from '../../../components/contextItem.js';
+import { MyContext } from '../../../context/contextItem.js';
 import './messageStyle.css'; 
 
 const RenderMessage = props => {

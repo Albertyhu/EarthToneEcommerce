@@ -1,5 +1,5 @@
 import React, {useState, useContext, useEffect} from 'react'
-import { MyContext } from './contextItem.js'; 
+import { MyContext } from '../context/contextItem.js'; 
 import styled from 'styled-components'; 
 
 export const RenderSubtotal= props => {

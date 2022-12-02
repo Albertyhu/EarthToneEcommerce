@@ -1,4 +1,4 @@
-import React, { createRef, useEffect, useCallback } from 'react'; 
+import React, { useCallback } from 'react'; 
 import './home.css'; 
 import '../../images/pouring_tea.jpg'
 import {useNavigate } from "react-router-dom";
@@ -9,9 +9,9 @@ import TeaCharacter from '../../base_elements/logo/Tea_chinese_character.png';
 //renders the panels 
 import RenderPanels from '../../components/renderPanels.js';
 import { ShopNowButton } from '../../style/styledButton.js'; 
-import { Filler, Divider } from '../../style/globalStyledComp.js'; 
+import { Divider } from '../../style/globalStyledComp.js'; 
 import PageTemplate from '../../PageTemplate.js'; 
-import { PageTemplateContext } from '../../components/pageTemplateContext.js'; 
+import { PageTemplateContext } from '../../context/contextItem.js'; 
 import FeaturedProducts from '../../components/featuredProducts/FeaturedProducts.js'; 
 import SectionTwo from './SectionTwo'; 
 

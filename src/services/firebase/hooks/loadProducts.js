@@ -1,6 +1,5 @@
-import React from 'react';
-import { doc, getDocs, collection, query, where, } from 'firebase/firestore'; 
-import { db } from '../firebase/initializeFirebase.js'; 
+import { getDocs, collection, query } from 'firebase/firestore'; 
+import { db } from '../initializeFirebase.js'; 
 
 export const LoadProducts = async setData => {
     var arr = []; 

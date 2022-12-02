@@ -1,7 +1,17 @@
-import React, { useState, useCallback, useEffect } from 'react'; 
-import styled from 'styled-components';
-import { checkEmail } from '../screens/nonMember/checkEmail.js'
+import React, { useState, useEffect } from 'react'; 
+import { checkEmail } from '../hooks/checkEmail.js'
 import { FiCheckCircle } from "react-icons/fi";
+import {
+    Container, 
+    EmailInput,
+    InputCont,
+    InputField,
+    Title,
+    TextBlock,
+    ConfirmationMessage,
+    ConfirmMessCont,
+    TanButton
+} from './myStyle.js';
 const RenderNewLetterSubsc = props => {
     const [email, setEmail] = useState('')
     const [validEmail, setValidEmail] = useState(false); 
@@ -85,72 +95,3 @@ export const InvalidIcon = () => {
         }} />
     )
 }
-
-const Container = styled.div`
-
-`
-
-const EmailInput = styled.input`
-min-width: 100px; 
-resize: none; 
-outline: none;
-border: none;
-padding: 5px;
-background-color: rgba(0,0,0,0);
-`
-
-const InputCont = styled.div`
-display: flex; 
-
-`
-
-const InputField = styled.div`
-display: flex; 
-border: 1px solid #000; 
-box-shadow: inset 0px 0px 5px 5px rgba(0,0,0,0.3); 
-background-color: #ffffff;
-`
-const IconCont = styled.div`
-display: inline-block; 
-`
-const Title = styled.h3``
-
-const TextBlock = styled.div`
-text-align: left;
-color: #fff;
-`
-
-const ConfirmationMessage = styled.div`
-display: ${props => props.display};
-color: #ffffff;
-`
-const ConfirmMessCont = styled.div`
-min-height: 30px;
-resize: none; 
-`
-
-
-const TanButton = styled.div`
-    padding: 10px;
-    background-color: #D19C4C;
-    text-align: center;
-    color: #ffffff;
-    cursor: pointer;
-    text-decoration: none;
-    font-size: 25px;
-    user-select: none;
-
-    font-size: 20px; 
-    border-radius: 15px;
-    width: auto;
-    text-transform: none;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    margin-left: 10px; 
-&:active{
-    background-color: #D19C4C;
-    transform: translate(4px, 4px)
-}
-&:hover{
-    background-color: #bc8d45;
-}
-`

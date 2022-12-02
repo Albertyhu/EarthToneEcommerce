@@ -1,7 +1,12 @@
 import React, { useState, useEffect, createRef,  } from 'react'; 
 import { BsStar, BsStarFill } from 'react-icons/bs';
 import styled from 'styled-components';
-
+import {
+    EmptyStarStyle,
+    StarContainer,
+    FilledStarStyle,
+    RatingsInputContainer,
+} from './ratingStyle.js';  
 
 const RenderRatingInput = props => {
     const {pickedStar, setPickedStar} = props;  
@@ -18,7 +23,7 @@ const RenderRatingInput = props => {
     }
 
     return (
-        <RatingsContainer>
+        <RatingsInputContainer>
                 <RenderStar
                 passedRef={refOne}
                 id={1}
@@ -59,7 +64,7 @@ const RenderRatingInput = props => {
                 tempStar={tempStar}
                 setTempStar={setTempStar}
             />
-        </RatingsContainer>
+        </RatingsInputContainer>
         )
 }
 
@@ -71,15 +76,12 @@ const RenderStar = props => {
     const { tempStar, setTempStar, setPickedStar, passedRef, id, pickedNumber } = props;
     const ContID = `StarCont-${id}`
 
-    //console.log(passedRef)
     const IsHover = e => {
         if (passedRef.current && passedRef.current.contains(e.target)) {
             //send parent info that the mouse is overing over the star
              setTempStar(id)
-            //console.log("mouse in")
         }
     }
-
 
     const MouseOut = e => {
         if (passedRef.current && passedRef.current.contains(e.target)) {
@@ -124,29 +126,3 @@ const RenderStar = props => {
         </StarContainer>
         )
 }
-
-const EmptyStarStyle = {
-    color: "#8B8B8B", 
-    width: "25px",
-    height: "25px",
-    cursor: "pointer",
-}
-
-const FilledStarStyle = {
-    color: "#DECB17",
-    width: "25px",
-    height: "25px",
-    cursor: "pointer",
-}
-
-const StarContainer = styled.div`
-   display: inline-block;
-   width: auto;
-   height: auto;
-`
-
-const RatingsContainer = styled.div`
-    margin-left: auto;
-    margin-right: auto;
-
-`

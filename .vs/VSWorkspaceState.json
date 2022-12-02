@@ -3,15 +3,14 @@
     "",
     "\\src",
     "\\src\\components",
-    "\\src\\components\\featuredProducts",
-    "\\src\\images",
-    "\\src\\images\\icon",
+    "\\src\\components\\rating",
+    "\\src\\firebase",
     "\\src\\screens",
-    "\\src\\screens\\home_page",
-    "\\src\\screens\\home_page\\SectionTwo",
-    "\\src\\screens\\home_page\\SectionTwo\\icons",
-    "\\src\\screens\\product_page"
+    "\\src\\screens\\shipping",
+    "\\src\\screens\\wishlist",
+    "\\src\\searchBar",
+    "\\src\\style"
   ],
-  "SelectedNode": "\\src\\screens\\home_page\\SectionTwo\\icons\\satisfaction_icon.png",
+  "SelectedNode": "\\src\\firebase\\initializeFirebase.js",
   "PreviewInSolutionExplorer": false
 }

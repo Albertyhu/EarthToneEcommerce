@@ -1,8 +1,7 @@
-import React, { useState, useCallback, useEffect, useContext } from 'react';
+import React, { useContext } from 'react';
 import PageTemplate from '../../PageTemplate.js';
-import { PageTemplateContext } from '../../components/pageTemplateContext.js'; 
+import { PageTemplateContext } from '../../context/contextItem.js'; 
 import { SecondInnerCont } from '../../style/globalStyledComp.js'
-import { WhiteButton, BlackButton } from '../../style/styledButton.js'; 
 import styled from 'styled-components'; 
 
 const AboutUsPage = props => {

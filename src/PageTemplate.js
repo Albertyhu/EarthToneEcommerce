@@ -3,7 +3,7 @@ import Header from './base_elements/header.js';
 import Footer from './base_elements/footer.js';
 import RenderPanels from './components/renderPanels.js';
 import RenderMessage from './screens/product_page/addProductMessage/renderMessagePanel.js';
-import { PageTemplateContext } from './components/pageTemplateContext.js'; 
+import { PageTemplateContext } from './context/contextItem.js'; 
 
 import {
     MainContainer,

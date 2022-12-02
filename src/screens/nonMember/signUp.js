@@ -17,9 +17,9 @@ import {
 import '../../style/myStyle.css';
 import Header from '../../base_elements/header.js';
 import Footer from '../../base_elements/footer.js';
-import { MyContext } from '../../components/contextItem.js';
+import { MyContext } from '../../context/contextItem.js';
 import { ValidIcon, InvalidIcon } from './checkmarkIcon.js';
-import { checkEmail } from './checkEmail.js'
+import { checkEmail } from '../../hooks/checkEmail.js'
 import { Bounce } from "react-activity";
 import "react-activity/dist/library.css";
 import RenderPanels from '../../components/renderPanels.js'; 
@@ -27,9 +27,8 @@ import styled from 'styled-components';
 import SignUpWGoogle from './signUpWGoogle.js'; 
 //firebase 
 import { getAuth, createUserWithEmailAndPassword} from 'firebase/auth'
-import firebase from 'firebase/compat/app'
 import { doc, setDoc } from 'firebase/firestore';
-import { db } from '../../firebase/initializeFirebase.js';
+import { db } from '../../services/firebase/initializeFirebase.js';
 
 const auth = getAuth(); 
 

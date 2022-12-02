@@ -1,5 +1,5 @@
 import { getAuth, signOut } from 'firebase/auth'; 
-import { BrownButton } from '../style/styledButton.js'; 
+import { BrownButton } from '../../../style/styledButton.js'; 
 
 const auth = getAuth(); 
 

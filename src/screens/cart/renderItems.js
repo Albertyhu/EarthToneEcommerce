@@ -1,21 +1,17 @@
 import React from 'react'; 
 import { Link } from 'react-router-dom'
-import { MyContext } from '../../components/contextItem.js'; 
+import { MyContext } from '../../context/contextItem.js'; 
 
 const RenderTeaItems = props => {
     const { 
         id, 
         name,
         image,
-        description,
         price,
         amount,
-        imageArray, 
-        weight, 
         width,
         length,
         height, 
-        shippingDays, 
         stock,        
     } = props; 
     const { closeCartPanel } = React.useContext(MyContext)

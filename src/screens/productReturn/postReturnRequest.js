@@ -2,10 +2,7 @@ import React, { useState, useCallback, useEffect, useContext } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom'
 import PageTemplate from '../../PageTemplate.js';
 import { SecondInnerCont } from '../../style/globalStyledComp.js'
-import { PageTemplateContext } from '../../components/pageTemplateContext.js';
-import { WhiteButton, BlackButton, TanButton } from '../../style/styledButton.js';
-import {useNavigation} from 'react-router-dom'
-import styled from 'styled-components'; 
+import {  TanButton } from '../../style/styledButton.js';
 
 const PostReturnRequest = props => {
     const {
@@ -13,9 +10,6 @@ const PostReturnRequest = props => {
         openPanel,
         accountPanel,
     } = props;
-
-    const location = useLocation();
-    // const { } = location.state; 
 
     return (<PageTemplate MainContent={MainContent}
         openHamburger={openHamburger}

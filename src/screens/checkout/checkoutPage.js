@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from 'react'; 
-import { ProductCollection } from '../../components/ProductCollection.js'; 
+import { ProductCollection } from '../../data/ProductCollection.js'; 
 import { RenderSubtotal } from '../../components/renderTotal.js';
 import {
     Title,
@@ -8,19 +8,18 @@ import {
     OuterShell,
     LoadingContainer
 } from './checkoutStyle.js'; 
-import { TanButton, BrownButton } from '../../style/styledButton.js';
-import { MyContext } from '../../components/contextItem.js'; 
+import { TanButton } from '../../style/styledButton.js';
+import { MyContext, PageTemplateContext } from '../../context/contextItem.js'; 
 import { useNavigate, Link } from 'react-router-dom'; 
 import RenderList from './renderList.js'; 
 import uuid from 'react-uuid'; 
 import { SecondInnerCont, NoItemScreen  } from '../../style/globalStyledComp.js'
 import PageTemplate from '../../PageTemplate.js'; 
-import { PageTemplateContext } from '../../components/pageTemplateContext.js'; 
 //requires props for data, submitEvent, title
 import { RenderAddress } from '../account/accountPage.js';
 import RenderShippingForm from '../shipping/shippingForm.js';
 import styled from 'styled-components'
-import { PaymentElement, CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
+import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import './stripe.css';
 import axios from 'axios'; 
 import { Bounce } from "react-activity";
@@ -123,9 +122,7 @@ const MainContent = props => {
     }, [cart])
 
     const OpenEditShippingDiv = () => {
-
         setEditShipping(true)
-
     }
 
     const UpdateShipping = newAdd => {
@@ -134,9 +131,7 @@ const MainContent = props => {
     }
 
     const OpenEditBillingDiv = () => {
-
         setEditBilling(true)
-
     }
 
     const UpdateBilling = newAdd => {

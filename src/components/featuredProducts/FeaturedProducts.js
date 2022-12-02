@@ -1,6 +1,6 @@
 import React from 'react'
 import { MainCont, Title, Shell } from './myStyle.js'; 
-import { ProductCollection } from '../ProductCollection.js'; 
+import { ProductCollection } from '../../data/ProductCollection.js'; 
 import RenderPanel from './productPanel.js'; 
 import uuid from 'react-uuid'; 
 

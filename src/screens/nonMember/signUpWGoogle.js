@@ -1,11 +1,10 @@
 import React, { useCallback } from 'react'; 
 import styled from 'styled-components'
-//import { app } from '../../firebase/initializeFirebase.js'; 
 import { GoogleAuthProvider, signInWithPopup, getAuth  } from 'firebase/auth'
 import { AiOutlineGoogle } from 'react-icons/ai';
 import { useNavigate } from 'react-router-dom'
 import { doc, setDoc } from 'firebase/firestore';
-import { db } from '../../firebase/initializeFirebase.js';
+import { db } from '../../services/firebase/initializeFirebase.js';
 const auth = getAuth();
 
 const SignUpWGoogle = props => {

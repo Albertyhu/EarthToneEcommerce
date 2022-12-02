@@ -1,9 +1,10 @@
 import {TeaData} from './teaData.js';
 import { doc, setDoc } from "firebase/firestore";
-import { db } from '../firebase/initializeFirebase.js';
-import { getAuth } from 'firebase/auth'; 
+import { db } from '../initializeFirebase.js';
 import { genKey } from './randGen.js'; 
 
+//This function is for development purposes and not to be used for the live version
+//It conveniently adds products to firebase 
 export function AddData() {
     TeaData.map(async (tea) => {
         var productID = genKey(20); 

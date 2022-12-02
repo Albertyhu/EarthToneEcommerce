@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react'; 
-import { MyContext } from '../../../components/contextItem.js'; 
-import { PageTemplateContext } from '../../../components/pageTemplateContext.js'; 
+import { MyContext } from '../../../context/contextItem.js'; 
+import { PageTemplateContext } from '../../../context/contextItem.js'; 
 import {
     CTAPanelContainer,
     InnerContainer,
@@ -14,7 +14,7 @@ import {
 import RenderStockSelection from '../functions/stockSelection.js'
 import RenderShippingInfo from '../functions/renderShippingInfo.js'; 
 import { AiFillLock } from 'react-icons/ai';
-import { ProductCollection } from '../../../components/ProductCollection.js'; 
+import { ProductCollection } from '../../../data/ProductCollection.js'; 
 import { useNavigate } from 'react-router-dom'; 
 
 const CTA = props => {

@@ -1,7 +1,6 @@
 import { getAuth } from 'firebase/auth';
 import { doc, setDoc, getDoc } from 'firebase/firestore';
 import { db } from './initializeFirebase.js'; 
-import uuid from 'react-uuid'
 const auth = getAuth(); 
 
 //handles adding items to cart, wishlist or orders into Firestore

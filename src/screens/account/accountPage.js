@@ -1,17 +1,13 @@
-import React, {useState, useContext, useEffect, useCallback } from 'react'
+import React, {useState, useContext } from 'react'
 import {
     OuterShell, 
-    Title, 
     DetailTable, 
     TH
 } from '../../style/globalStyledComp.js';
 import { GreenButton } from '../../style/styledButton.js';
 import PageTemplate from '../../PageTemplate.js';
-import { PageTemplateContext } from '../../components/pageTemplateContext.js'; 
+import { MyContext, PageTemplateContext } from '../../context/contextItem.js'; 
 import ShippingForm from '../shipping/shippingForm.js'; 
-import { MyContext } from '../../components/contextItem.js'; 
-
-import { Shell, } from './accountStyledComponents.js'; 
 
 const AccountPage = props => {
 

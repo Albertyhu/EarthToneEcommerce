@@ -1,4 +1,4 @@
-import { teaArray } from './teaImages.js';
+import { teaArray } from '../images/teaImages.js';
 
 const importCol = (col) => {
     return col.keys().map(col); 

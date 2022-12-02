@@ -1,10 +1,10 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import SlidingPanel from 'react-sliding-side-panel';
-import { MyContext } from '../../components/contextItem.js';
+import { MyContext } from '../../context/contextItem.js';
 import '../../style/button.css'; 
 import './account.css'; 
-import { Link, useNavigate } from 'react-router-dom'; 
-import { HandleSignOut } from '../../components/signOut.js'; 
+import { useNavigate } from 'react-router-dom'; 
+import { HandleSignOut } from '../../services/firebase/hooks/signOut.js'; 
 import { MenuOptions, OptionsContainer, ImageLogo } from './accountStyledComponents.js'; 
 import Logo from '../../base_elements/logo/Earth Tone-white-transparent.png';
 import { LogoContainer } from '../../base_elements/headerStyle.js'
@@ -24,8 +24,6 @@ const AccountPanel = props => {
         return ()=> document.removeEventListener("mousedown", checkIfClickedOutside)
     }, [openPanel])
 
-    const [screenWidth, setScreenWidth] = useState(window.innerWidth);
-    const [ panelWidth, setPanelWidth ] = useState(50)
     const goCheckout = useCallback(() => navigate('../checkout', {  }), [navigate])
     const goWishlist = useCallback(() => navigate('../wishlist', {  }), [navigate])
     const goCart = useCallback(() => navigate('../cart', {  }), [navigate])

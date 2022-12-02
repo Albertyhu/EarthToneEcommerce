@@ -1,8 +1,8 @@
-import React, { useState, useCallback, useEffect, useContext } from 'react'; 
+import React, { useState, useEffect, useContext } from 'react'; 
 import styled from 'styled-components';
-import { checkEmail } from '../../screens/nonMember/checkEmail.js'
+import { checkEmail } from '../../hooks/checkEmail.js'
 import { FiCheckCircle } from "react-icons/fi";
-import { MyContext } from '../../components/contextItem.js'; 
+import { MyContext } from '../../context/contextItem.js'; 
 
 const RenderNewLetterSubsc = props => {
     const {desktopView} = useContext(MyContext)

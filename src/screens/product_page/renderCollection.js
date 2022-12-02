@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ProductCollection } from '../../components/ProductCollection.js'; 
+import { ProductCollection } from '../../data/ProductCollection.js'; 
 import uuid from 'react-uuid'
 import RenderProduct from './renderProduct.js'; 
 import styled from 'styled-components'; 

@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect, useCallback } from 'react'; 
+import React, { useContext, useCallback } from 'react'; 
 import { Link } from 'react-router-dom'; 
 import {
     HeaderTagLine,
@@ -8,7 +8,7 @@ import {
     WelcomeTag,
     MobileSignInText, 
 } from './headerStyle.js'; 
-import { MyContext } from '../components/contextItem.js';
+import { MyContext } from '../context/contextItem.js';
 import { BsFilePersonFill, BsCartFill  } from 'react-icons/bs';
 import HamburgerIcon from '../images/icon/hamburger_menu_white.png';
 import {
@@ -16,48 +16,14 @@ import {
     EarthToneIMG
 } from './headerStyle.js';
 import { BsPersonSquare } from 'react-icons/bs';
-import { getAuth, onAuthStateChanged} from 'firebase/auth'
-import { doc, getDoc} from 'firebase/firestore' 
-import { db } from '../firebase/initializeFirebase.js';
+import { getAuth} from 'firebase/auth'
 import EarthToneTextLogo from './logo/EarthToneTextLogoTan.png'; 
 import {useNavigate} from 'react-router-dom'
 import styled from 'styled-components'
 
-const auth = getAuth() 
-
-
 const SecondaryHeaderBar = props => {
     const { openAccountPanel, toggleHamburgerPanel, desktopView, data } = useContext(MyContext); 
-    const [isMobile, setIsMobile] = useState(window.innerWidth > 540 ? false : true)
     const handleOpenPanel = () => { openAccountPanel() }; 
-
-    //determines if the app is being viewed on mobile or not. 
-    const handleWindowResize = (event) => {
-        if (window.innerWidth <= 540) {
-            setIsMobile(true)
-        }
-        else {
-            setIsMobile(false)
-        }
-    }
-
-
-    useEffect(() => {
-        window.addEventListener('resize', handleWindowResize)
-
-        //The following code is necessary. The component needs to unmount for sliding panel to work
-        return () => {
-            //unsubscribe();
-            window.removeEventListener('resize', handleWindowResize)
-        } 
-        
-    }, [])
-
-    useEffect(() => {
-        if (data !== null) {
-            console.log(data)
-        }
-    }, [data])
 
     const navigate = useNavigate(); 
     const goCart = useCallback(() => navigate('../cart', {replace:true}), [navigate])
@@ -118,18 +84,7 @@ const styledLink = {
 
 export default SecondaryHeaderBar; 
 
-const iconStyle = {
-    color: "#ffffff",
-    width: "25px",
-    height: "25px",
-    marginRight: "10px",
-    marginTop: "auto",
-    marginBottom: 'auto',
-    marginLeft: "10px",
-}
-
 const IconWrapper = styled.div`
- 
 position: relative;
 & > *{
     color: #ffffff;

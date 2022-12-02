@@ -1,10 +1,10 @@
 import React, { useState, useCallback, useEffect, useContext } from 'react';
 import PageTemplate from '../../PageTemplate.js';
-import { PageTemplateContext } from '../../components/pageTemplateContext.js';
+import { PageTemplateContext } from '../../context/contextItem.js';
 import { SecondInnerCont } from '../../style/globalStyledComp.js'
 import { WhiteButton } from '../../style/styledButton.js';
 import { useNavigate } from 'react-router-dom';
-import { checkEmail } from '../nonMember/checkEmail.js';
+import { checkEmail } from '../../hooks/checkEmail.js';
 import {
     Paragraph,
     InputField,

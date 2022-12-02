@@ -1,6 +1,5 @@
 import React, { useCallback } from 'react'; 
 import styled from 'styled-components'
-//import { app } from '../../firebase/initializeFirebase.js'; 
 import { GoogleAuthProvider, signInWithPopup, getAuth  } from 'firebase/auth'
 import { AiOutlineGoogle } from 'react-icons/ai';
 import {useNavigate} from 'react-router-dom'

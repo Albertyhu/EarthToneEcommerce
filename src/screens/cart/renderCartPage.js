@@ -1,22 +1,18 @@
-import React, { useEffect, useState, useCallback, useContext } from 'react'
+import React, { useState, useCallback, useContext } from 'react'
 import RenderList from '../checkout/renderList.js';  
-import { ProductCollection } from '../../components/ProductCollection.js'; 
+import { ProductCollection } from '../../data/ProductCollection.js'; 
 import { useNavigate } from 'react-router-dom'; 
 import PageTemplate from '../../PageTemplate.js'; 
-import { PageTemplateContext } from '../../components/pageTemplateContext.js'; 
+import { MyContext } from '../../context/contextItem.js'; 
 import { SecondInnerCont, Title, NoItemScreen } from '../../style/globalStyledComp.js'; 
-import { MyContext } from '../../components/contextItem.js';
 import { RenderSubtotal } from './renderTotal.js'; 
-
 import uuid from 'react-uuid'; 
 import {
-
     CheckOutContainer,
     Shell, 
     OuterShell, 
 } from './cartStyledComp.js'; 
-import { TanButton, BrownButton, CartPageButtons } from '../../style/styledButton.js';
-import styled from 'styled-components'; 
+import {  CartPageButtons } from '../../style/styledButton.js';
 
 const RenderCartPage = props => {
     const {
@@ -40,13 +36,10 @@ const RenderCartPage = props => {
 
 const MainContent = props => {
     const { 
-        addProductMessage, 
         cart
     } = props;
 
-    const { changeMessage, makePageAuto, makePageInherit } = useContext(PageTemplateContext)
     const { } = useContext(MyContext)
-
 
     const loadData = () => {
         var arr = []; 
@@ -98,21 +91,6 @@ const MainContent = props => {
     }
     const [totalItems, setTotalItems] = useState(returnTotal);
     const [subtotal, setSubtotal] = useState(returnSubtotal)
-    const [displayUpdate, setDisplayUpdate] = useState(false)
-    //not used 
-    const calItemsAndSubtotal = () => {
-        if (cartList !== null && cartList.length > 0) {
-            var newTotal = 0;
-            var newSubtotal = 0;
-            cartList.forEach(val => {
-                newTotal += val.stock;
-                newSubtotal += val.stock * val.price
-            })
-
-            setTotalItems(newTotal);
-            setSubtotal(newSubtotal)
-        }
-    }
 
     const updateSubtotal = (ProdID, newQuan, prodPrice) => {
         var arr = cartList.filter(val => val.ID !== ProdID)

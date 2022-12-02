@@ -1,18 +1,11 @@
 import React, { useEffect, useState, useCallback, useContext } from 'react'; 
 import './product.css';
 import '../../style/button.css'; 
-import { MyContext } from '../../components/contextItem.js'; 
+import { MyContext } from '../../context/contextItem.js'; 
 import { useNavigate } from 'react-router-dom'; 
 import { ProductContext } from './productContext.js';
 import RenderRatings from '../../components/rating/renderRatings.js'; 
-import { PostFirebase } from '../../firebase/firebaseCRUD.js'; 
 
-//What does it need
-//Product ID
-//Product Image 
-//Product Price 
-//Product Details 
-//Product title 
 const RenderProduct = props => {
     const { image, name, price, description, ID, amount, ratingAvg, ratingCount } = props
     const { addProduct, openAddProductMessage, addWish } = React.useContext(MyContext)

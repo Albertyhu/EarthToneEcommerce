@@ -1,6 +1,6 @@
 import React, {useContext} from 'react'; 
 import PageTemplate from '../../PageTemplate.js'; 
-import { PageTemplateContext } from '../../components/pageTemplateContext.js'; 
+import { PageTemplateContext } from '../../context/contextItem.js'; 
 import { SecondInnerCont } from '../../style/globalStyledComp.js'
 
 const PrivacyPolicy = props => {

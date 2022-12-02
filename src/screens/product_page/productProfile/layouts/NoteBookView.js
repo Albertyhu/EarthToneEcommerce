@@ -3,7 +3,7 @@ import '../../product.css';
 import { useLocation, useNavigate } from 'react-router-dom';
 import ImagePanel from './../imagePanel.js';
 import CTAPanel from './../CTApanel.js'
-import { ProductCollection } from '../../../../components/ProductCollection.js';
+import { ProductCollection } from '../../../../data/ProductCollection.js';
 import {
     SecondInnerCont,
     ThirdInnerContainer,
@@ -19,7 +19,7 @@ import {
     NoteBookSectionTwo,
     ReviewSection
 } from '../profileStyledComp.js';
-import { MyContext, ProductProfileContext } from '../../../../components/contextItem.js';
+import { MyContext, ProductProfileContext } from '../../../../context/contextItem.js';
 import styled from 'styled-components';
 import ReviewPanel from './../reviewPanel.js'; 
 import RenderTextPanel from '../textPanel.js'; 

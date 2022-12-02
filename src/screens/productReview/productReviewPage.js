@@ -1,9 +1,9 @@
 import React, { useState, useCallback, useEffect, useContext } from 'react'
 import PageTemplate from '../../PageTemplate.js';
-import { PageTemplateContext } from '../../components/pageTemplateContext.js'; 
-import { MyContext } from '../../components/contextItem.js'; 
+import { PageTemplateContext } from '../../context/contextItem.js'; 
+import { MyContext } from '../../context/contextItem.js'; 
 import { useLocation, useNavigate } from 'react-router-dom'; 
-import { ProductCollection } from '../../components/ProductCollection.js'; 
+import { ProductCollection } from '../../data/ProductCollection.js'; 
 import { SecondInnerCont } from '../../style/globalStyledComp.js'; 
 import styled from 'styled-components'; 
 import { GreenButton, DarkGreenButton } from '../../style/styledButton.js'; 

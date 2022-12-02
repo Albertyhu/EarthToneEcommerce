@@ -1,5 +1,5 @@
-import React, { useEffect, useState, useContext, useCallback} from 'react'; 
-import { MyContext } from '../components/contextItem.js'; 
+import React, { useEffect, useContext, useCallback} from 'react'; 
+import { MyContext } from '../context/contextItem.js'; 
 import SlidingPanel from 'react-sliding-side-panel';
 import { Link, useNavigate } from 'react-router-dom'; 
 import HomeIcon from '../images/icon/Home-black.png';
@@ -7,7 +7,7 @@ import ShoppingIcon from '../images/icon/price-tag-black.png';
 import CartIcon from '../images/icon/shopping-cart-dark.png'; 
 import CloseIcon from '../images/icon/cancel-round-dark.png';
 import Logo from './logo/Earth Tone-white-transparent.png'; 
-import { LogoContainer, LinkCont } from './headerStyle.js'
+import { LogoContainer } from './headerStyle.js'
 import { HiOutlineSwitchHorizontal } from 'react-icons/hi';
 import { GoSignOut } from 'react-icons/go';
 const HamburgerPanel = props => {

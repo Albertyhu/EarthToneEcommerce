@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import '../style/button.css';
 import '../style/myStyle.css'; 
-import { MyContext } from '../components/contextItem.js';
+import { MyContext } from '../context/contextItem.js';
 import CartIcon from '../images/icon/shopping-cart-white.png'; 
 
 const HeaderMenu = () => {

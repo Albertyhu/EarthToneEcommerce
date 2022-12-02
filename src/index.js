@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './firebase/initializeFirebase.js'; 
+import './services/firebase/initializeFirebase.js'; 
 import App from './App';
 
 

@@ -1,4 +1,4 @@
-import React, {useEffect, useContext} from 'react'
+import React from 'react'
 import styled from 'styled-components'; 
 import RenderCartItem from './renderCartItem.js'; 
 import uuid from 'react-uuid'; 

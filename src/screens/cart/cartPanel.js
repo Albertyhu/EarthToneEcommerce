@@ -1,10 +1,9 @@
 import React, { useState, useEffect, useCallback } from 'react';
-//import SlidingPanel from 'react-sliding-side-panel';
-import { MyContext } from '../../components/contextItem.js';
+import { MyContext } from '../../context/contextItem.js';
 import './cart.css';
 import RenderItems from './renderItems.js'; 
 import uuid from 'react-uuid';
-import { ProductCollection } from '../../components/ProductCollection.js'; 
+import { ProductCollection } from '../../data/ProductCollection.js'; 
 import {
     CartPanelButtonContainer,
     SlidingPanel,
@@ -17,11 +16,9 @@ import {
 } from '../../style/styledButton.js';
 import { useNavigate } from 'react-router-dom'; 
 
-
-
 const CartPanel = props => {
     const { openPanel } = props; 
-    const {cart, closeCartPanel, getCart, getRef, calculateTotalCost, calculateTotalItems } = React.useContext(MyContext);
+    const {cart, closeCartPanel, getRef, calculateTotalCost, calculateTotalItems } = React.useContext(MyContext);
     const [subtotal, setSubTotal] = useState(0); 
     const [totalItems, setTotalItems] = useState(0); 
     const navigate = useNavigate(); 
@@ -49,8 +46,6 @@ const CartPanel = props => {
         }
     }, [openPanel])
    
-    const [screenWidth, setScreenWidth] = useState(window.innerWidth);
-
     const determinePanelWidth = () => {
         if (window.innerWidth > 1000) {
             return 100;
@@ -75,7 +70,6 @@ const CartPanel = props => {
 
     useEffect(() => {
         return () => {
-          //  setCart([]);
             window.removeEventListener("resize", handleResize)
         }
     },[])
@@ -88,11 +82,9 @@ const CartPanel = props => {
                 panelContainerClassName="cartPanelContainer"
                 noBackdrop={true}
                 id="CartSlidingPanel"
-                
         >
                 <PanelContainer ref={ref}>
                     <h1>Shopping Cart</h1>
-                    
                     {cart.length > 0 ?
                         (<div id="cartList">
                             <div><b>Number of items in cart:</b> {totalItems}</div>

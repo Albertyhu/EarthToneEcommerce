@@ -1,8 +1,8 @@
-import React, { useState, useContext, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Link, useNavigate } from 'react-router-dom'
-import { MyContext } from '../../components/contextItem.js';
+import { MyContext } from '../../context/contextItem.js';
 import styled from 'styled-components'
-import { ProductCollection } from '../../components/ProductCollection.js'; 
+import { ProductCollection } from '../../data/ProductCollection.js'; 
 import uuid from 'react-uuid'; 
 
 const RenderCartItem = props => {
