@@ -4,13 +4,11 @@
     "\\src",
     "\\src\\components",
     "\\src\\components\\rating",
-    "\\src\\firebase",
     "\\src\\screens",
     "\\src\\screens\\shipping",
     "\\src\\screens\\wishlist",
     "\\src\\searchBar",
     "\\src\\style"
   ],
-  "SelectedNode": "\\src\\firebase\\initializeFirebase.js",
   "PreviewInSolutionExplorer": false
 }
