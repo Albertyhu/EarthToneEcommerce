@@ -3,7 +3,7 @@ import EarthToneLogo from '../../base_elements/logo/Earth Tone-black-transparent
 
 export const InputField = styled.input`
     width: 100%; 
-    font-family: inherit;
+    font-family: 'Raleway-Light';
     padding-left: 10px;
     border: 0px;
     border-radius: 20px;
@@ -43,7 +43,7 @@ export const MainContainer = styled.div`
     background-repeat: no-repeat;
     background-size: cover;
     background-color: #ffffff;
-    font-family: serif;
+    font-family: 'Raleway-Light';
     margin-top: 220px; 
   @media screen and (max-width: 540px) {
      margin-top: 102px; 

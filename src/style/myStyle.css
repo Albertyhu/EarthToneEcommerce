@@ -4,9 +4,10 @@ position: relative;
 
 body {
     width: 100%;
-    font-family: 'Palatino Linotype';
+    /*font-family: 'Palatino Linotype';*/
+    font-family: 'Raleway-Light';
     margin: 0;
-    overflow-x:hidden;
+    overflow-x: hidden;
 }
 
 #headerBar {
@@ -100,11 +101,11 @@ margin-left: 20px;
 
 .hamburgerLinks {
     padding-top: 5px;
-    padding-bottom: 5px; 
+    padding-bottom: 5px;
     text-decoration: none;
     text-align: left;
-    display: flex; 
-    font-family: inherit; 
+    display: flex;
+    font-family: 'Raleway-Light';
     font-weight: bold;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -119,15 +120,16 @@ margin-left: 20px;
 .hamburgerLinks div {
     margin-top: auto;
     margin-bottom: auto;
-    font-family: 'Times New Roman', Times, serif;
+    /* font-family: 'Times New Roman', Times, serif;*/
+    font-family: 'Raleway-Light';
 }
 
-    .burgerIcon {
-        width: 30px;
-        height: 30px;
-        margin-left: 10px;
-        margin-right: 10px;
-    }
+.burgerIcon {
+    width: 30px;
+    height: 30px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
 
 #logoHamburger {
     margin: auto;

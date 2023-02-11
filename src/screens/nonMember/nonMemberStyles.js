@@ -13,7 +13,7 @@ export const InputContainer = styled.div`
 
 export const InputField = styled.input`
     width: 100%; 
-    font-family: 'Palatino Linotype';
+    font-family: 'Raleway-Light';
     border: none;
     border-radius: 20px; 
     padding-left: 10px;
@@ -44,7 +44,7 @@ export const MainSignInContainer = styled.div`
     background-repeat: no-repeat;
     background-size: cover;
     background-color: #ffffff;
-    font-family: serif;
+    font-family: 'Raleway-Light';
     margin-top: 220px; 
    @media screen and (max-width: 540px) {
 
@@ -61,7 +61,7 @@ export const OuterShell = styled.div`
     height: auto;
     align-items: center;
     align-content: center;
-    font-family: inherit;
+    font-family: 'Raleway-Light';
     border: 1px solid rgba(0,0,0, .3); 
     border-radius: 5px; 
     margin-bottom: 20px;
@@ -85,7 +85,7 @@ export const SubmitButton = styled.div`
     width: 114px;
     text-align: center;
     color: #ffffff;
-    font-family: Verdana;
+    font-family: 'Raleway-Light';
     cursor: pointer;
     margin-left: auto;
     margin-right: auto;
@@ -114,7 +114,7 @@ export const Button2 = styled.div`
     width: 114px;
     text-align: center;
     color: #ffffff;
-    font-family: Verdana;
+    font-family: 'Raleway-Light';
     cursor: pointer;
     margin-left: auto;
     margin-right: auto;

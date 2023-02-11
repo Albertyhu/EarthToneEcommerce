@@ -65,7 +65,7 @@ const ListItem = styled.div`
     margin-right: 10px
     margin-top: 20px;
     margin-bottom: 20px;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: "Raleway-Light";
     cursor: pointer;
     &:hover {
      background-color: #cbcbcb;

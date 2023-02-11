@@ -111,7 +111,7 @@ export const MobileSignInText = styled.div`
 `
 
 export const TextLogo = styled.div`
-    font-family: "Linotype Gianotten Black"
+    font-family: 'Raleway-Light';
     color: #ffffff;
 `
 

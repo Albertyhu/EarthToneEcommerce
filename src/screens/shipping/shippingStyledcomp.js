@@ -11,7 +11,7 @@ export const InnerContainer = styled.div`
     width: 100; 
     border: 1px solid rgba(0,0,0,0.3);
     border-radius: 10px;
-        margin-left: auto;
+    margin-left: auto;
     margin-right: auto; 
 `
 

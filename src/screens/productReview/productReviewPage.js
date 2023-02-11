@@ -140,7 +140,7 @@ const Textbox = styled.textarea`
     margin-top: 30px; 
 margin-left: auto;
 margin-right: auto;
-font-family: inherit;
+font-family: 'Raleway-Light';
 padding:10px; 
 resize: none;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;

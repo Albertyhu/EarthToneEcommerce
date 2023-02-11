@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const MainCont = styled.div`
     width: 100%; 
-    font-family: 'serif';
+    font-family: 'Raleway-Light';
     margin: 50px auto 0px auto;
 `
 

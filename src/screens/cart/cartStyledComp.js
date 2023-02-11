@@ -8,7 +8,7 @@ export const MainContainer = styled.div`
     background-repeat: no-repeat;
     background-size: cover;
     background-color: #ffffff;
-    font-family: serif;
+    font-family: 'Raleway-Light';
 `
 
 export const InnerContainer = styled.div`

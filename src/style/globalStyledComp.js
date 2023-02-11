@@ -10,7 +10,8 @@ export const MainContainer = styled.div`
     background-repeat: no-repeat;
     background-size: cover;
     background-color: #ffffff;
-    font-family: serif;
+    //font-family: serif;
+    font-family: 'Raleway-Light'; 
     //margin-top: 210px; 
     position: relative;
 @media screen and (max-width: 540px){
@@ -78,7 +79,8 @@ export const OuterShell = styled.div`
 `
 
 export const Shell = styled.div`
-    font-family: inherit;
+    //font-family: inherit;
+    font-family: 'Raleway-Light'; 
     border: 1px solid rgba(0,0,0, 0.3); 
     border-radius: 10px; 
     margin-left: 10px;

@@ -91,7 +91,7 @@ const TextArea = styled.textarea`
     margin-bottom: 10px;
     margin-left: auto;
     margin-right: auto;
-    font-family: inherit;
+    font-family: 'Raleway-Light';
     padding:10px; 
     resize: none;
     border-radius: 15px;
