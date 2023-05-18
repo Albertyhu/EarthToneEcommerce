@@ -25,7 +25,9 @@ const RenderTeaItems = props => {
             style={linkStyle}
             onClick={closeCartPanel}
         ><div id = "cartItemContainer">
-            <div id = "cartImageContainer"><img src={image} className = "cartItemImage"/></div>
+                <div id="cartImageContainer">
+                    <img src={image} className="cartItemImage" />
+                </div>
                 <div className = "cartItemText">
                     <h2>Item: {name}</h2>
                     <p><b>Amount per bag: </b> {amount} oz.</p>
@@ -35,7 +37,7 @@ const RenderTeaItems = props => {
                     <p><b>Subtotal: </b>${subTotal.toFixed(2)}</p>
                 </div>
             </div>
-            </Link>
+        </Link>
         )
 
 }
@@ -46,4 +48,5 @@ const linkStyle = {
     textDecoration: 'none',
     color: "#000000",
     cursor: "pointer",
+    marginBottom: "10px",
 }

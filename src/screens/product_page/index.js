@@ -9,7 +9,12 @@ import RenderMessage from './addProductMessage/renderMessagePanel.js';
 import RenderPanels from '../../components/renderPanels.js'; 
 import { ProductContext } from './productContext.js'; 
 import { Filler } from '../../style/globalStyledComp.js'; 
-import styled from 'styled-components'; 
+import {
+    MainContainer,
+    ContentContainer,
+} from './productStyledComponents.js'
+
+
 
 const ProductPage = props => {
     const { openPanel, accountPanel, addProductMessage, openHamburger } = props; 
@@ -42,7 +47,7 @@ const ProductPage = props => {
         var heightMultiplier = Math.floor(Object.keys(ProductCollection).length / 3) + ((Object.keys(ProductCollection).length % 3) > 0 ? 1 : 0);
         const newHeight = 582 * heightMultiplier;
         setMainContHeight(newHeight)
-        mainContainer.style.height = `${newHeight}px`; 
+        //mainContainer.style.height = `${newHeight}px`; 
     }, [])
 
     const context = {
@@ -93,22 +98,3 @@ const ProductPage = props => {
 
 export default ProductPage; 
 
-const MainContainer = styled.div`
-width: 100%;
-height: 100vh;
-text-align: center;
-background-image: none;
-background-repeat: no-repeat;
-background-size: cover;
-background-color: #ffffff;
-font-family: serif;
-`
-
-const ContentContainer = styled.div`
-opacity: ${props => props.opacity};
-
-@media screen and (max-width: 540px) {
-       margin-bottom: 31px;
-    
-}
-`

@@ -111,8 +111,12 @@ export default Footer;
 const FooterContainer = styled.div`
     width: 100%; 
     background-color: #000000;
-    position: ${props => props.Position}; 
-    bottom: ${props => props.Bottom}; 
+   // position: ${props => props.Position}; 
+   // bottom: ${props => props.Bottom};
+    position: absolute; 
+    bottom: 0px;
+    left: 0px; 
+    right: 0px; 
 `
 const FooterWrapper = styled.div`
     margin: 0 auto;

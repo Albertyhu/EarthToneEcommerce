@@ -2,20 +2,19 @@ import styled from 'styled-components';
 
 export const MainContainer = styled.div`
     width: 100%;
-    //height: 100vh;
-    //height:  ${props => props.heightChange};
     height: fit-content;
     text-align: center;
     background-image: none;
     background-repeat: no-repeat;
     background-size: cover;
     background-color: #ffffff;
-    //font-family: serif;
     font-family: 'Raleway-Light'; 
-    //margin-top: 210px; 
     position: relative;
-@media screen and (max-width: 540px){
-    // margin-top: 110px; 
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 610px; 
+@media screen and (min-width: 867px){
+        padding-bottom: 200px; 
 }
 `
 
@@ -27,12 +26,13 @@ export const InnerContainer = styled.div`
 & > div#wishlistDiv {
     margin-top: 20px; 
     margin-bottom: 20px;
+    flex-grow: 1;
  
 }
 `
 export const SecondInnerCont = styled.div`
     margin-top: 20px; 
-    margin-bottom: 20px;
+    margin-bottom: 40px;
     opacity: ${props => props.opacityVal};
     &#PrivacyPolicyContainer{
     margin-left: 50px;
@@ -41,14 +41,20 @@ export const SecondInnerCont = styled.div`
     min-height: 60vh;
     }
     &#Checkout_SecondInnerCont{
-        height: 100vh;
-}
+        margin-bottom: 40px;
+    }
     &#ProductProfile_SecondInnerCont{
        min-height: 60vh;
     }
     &#SiteMap_SecondInnerCont, &#AboutUs_SecondInnerCont{
     min-height: 60vh;
 }
+    @media screen and (min-width: 540px){
+        margin-bottom: 117px;
+        &#Checkout_SecondInnerCont{
+            margin-bottom: 30px;
+        }
+    }
     @media screen and (max-width: 540px), and (max-height: 310px){
       height:auto;
      &#SiteMap_SecondInnerCont, &#AboutUs_SecondInnerCont{

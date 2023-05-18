@@ -2,14 +2,16 @@
   "ExpandedNodes": [
     "",
     "\\src",
+    "\\src\\base_elements",
+    "\\src\\base_elements\\footerSections",
     "\\src\\components",
+    "\\src\\components\\newsLetterSubsc",
     "\\src\\components\\rating",
-    "\\src\\screens",
-    "\\src\\screens\\shipping",
-    "\\src\\screens\\wishlist",
-    "\\src\\searchBar",
-    "\\src\\style"
+    "\\src\\screens\\account",
+    "\\src\\screens\\account_panel",
+    "\\src\\screens\\home_page\\SectionTwo",
+    "\\src\\screens\\home_page\\SectionTwo\\icons"
   ],
-  "SelectedNode": "\\src\\style\\myStyle.css",
+  "SelectedNode": "\\src\\index.css",
   "PreviewInSolutionExplorer": false
 }

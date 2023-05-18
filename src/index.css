@@ -2,3 +2,9 @@
     font-family: "Raleway-Light"; /*Can be any text*/
     src: local("Raleway-Light"), url("./font/Raleway-Light.ttf") format("truetype");
 }
+
+#root {
+    display: flex;
+    flex-direction: column; 
+    position: relative;
+}

@@ -27,7 +27,7 @@ import ContactUsPage from './screens/contact';
 import FeaturedProducts from './components/featuredProducts/FeaturedProducts.js'; 
 import SectionTwo from './screens/home_page/SectionTwo';
 import { SampleReviews, SampleAddress } from './test/sampleData.js';
-import RenderRoutes from './components/routes.js'
+
 //firebase code 
 import { db } from './services/firebase/initializeFirebase.js';
 import { PostFirebase, GetFirebase } from './services/firebase/firebaseCRUD.js'; 
@@ -260,13 +260,6 @@ function App() {
         desktopView, 
         //data of current user 
         data,
-        loading, 
-        openPanel,
-        hamburgerPanel,
-        accountPanel, 
-        addProductMessage, 
-        wishlist, 
-
     }
 
     const options = {
@@ -281,10 +274,217 @@ function App() {
     return (
       <Elements stripe={stripePromise}>
       <MyContext.Provider value = {context}>
-          <RenderRoutes />
-      </MyContext.Provider>
-      </Elements>
-     );
+      <div className="App" id="rootContainer" >
+          <BrowserRouter>
+              <Routes>
+                <Route
+                    path="/"
+                    element={<Home
+                        openPanel={openPanel}
+                        openHamburger={hamburgerPanel}
+                        accountPanel={accountPanel}
+                    />}
+                /> 
+                <Route
+                    path="/product_page"
+                    element={<ProductPage
+                        openPanel={openPanel}
+                        addProductMessage={addProductMessage}
+                        openHamburger={hamburgerPanel}
+                        accountPanel={accountPanel}
+                    />} />
+                <Route
+                    path='/sign_in'
+                    element={<SignIn
+                        openPanel={openPanel}
+                        openHamburger={hamburgerPanel}
+                        accountPanel={accountPanel}
+                    />}
+                />
+                <Route
+                    path='/sign_up'
+                    element={<SignUp
+                        openPanel={openPanel}
+                        openHamburger={hamburgerPanel}
+                        accountPanel={accountPanel}
+                    />}
+                />
+                <Route
+                    path='/acount_page'
+                    element={<AccountPage
+                        openPanel={openPanel}
+                        openHamburger={hamburgerPanel}
+                        accountPanel={accountPanel}
+                    />}
+                        />
+                    <Route
+                        path='/product_profile'
+                        element={<ProductProfilePage
+                            openPanel={openPanel}
+                            openHamburger={hamburgerPanel}
+                            accountPanel={accountPanel}
+                            addProductMessage={addProductMessage}
+                        />}
+                        />
+                    <Route
+                        path='/checkout'
+                            element={<RenderCheckOut
+                                cart={cart}
+                                openPanel={openPanel}
+                                openHamburger={hamburgerPanel}
+                                accountPanel={accountPanel}
+                                addProductMessage={addProductMessage}
+                        />}
+                        />
+                        <Route
+                            path='/wishlist'
+                            element={<RenderWishList
+                                cart={cart}
+                                openPanel={openPanel}
+                                openHamburger={hamburgerPanel}
+                                accountPanel={accountPanel}
+                                addProductMessage={addProductMessage}
+                                wishlist={wishlist}
+                            />}
+                        />
+                        <Route
+                            path='/cart'
+                            element={<RenderCartPage
+                                cart={cart}
+                                openPanel={openPanel}
+                                openHamburger={hamburgerPanel}
+                                accountPanel={accountPanel}
+                                addProductMessage={addProductMessage}
+                            />}
+                        />
+                        <Route
+                            path='/orders'
+                            element={<OrderPage
+                                cart={cart}
+                                openPanel={openPanel}
+                                openHamburger={hamburgerPanel}
+                                accountPanel={accountPanel}
+                                addProductMessage={addProductMessage}
+                            />}
+                        />
+                    <Route
+                        path='/privacy_policy'
+                        element={<PrivacyPolicy
+                            openPanel={openPanel}
+                            openHamburger={hamburgerPanel}
+                            accountPanel={accountPanel}
+                        />}
+                        />
+                    <Route
+                        path='/order_summary'
+                        element={<OrderCompletePage
+                            openPanel={openPanel}
+                            openHamburger={hamburgerPanel}
+                            accountPanel={accountPanel}
+                        />}
+                            />
+                    <Route
+                        path='/review_product'
+                            element={<ProductReviewPage
+                            openPanel={openPanel}
+                            openHamburger={hamburgerPanel}
+                            accountPanel={accountPanel}
+                            addProductMessage={addProductMessage}
+
+                        />}
+                            />
+                    <Route
+                        path='/return_product'
+                            element={<ReturnProductPage
+                            openPanel={openPanel}
+                            openHamburger={hamburgerPanel}
+                            accountPanel={accountPanel}
+                            addProductMessage={addProductMessage}
+
+                        />}
+                            />
+                    <Route
+                        path='/Return_request_received'
+                            element={<PostReturnRequest
+                            openPanel={openPanel}
+                            openHamburger={hamburgerPanel}
+                            accountPanel={accountPanel}
+                        />}
+                            />
+                    <Route
+                        path='/About_Us'
+                        element={<AboutUsPage
+                            openPanel={openPanel}
+                            openHamburger={hamburgerPanel}
+                            accountPanel={accountPanel}
+                        />}
+                            />
+                    <Route
+                        path='/career'
+                        element={<CareerPage
+                            openPanel={openPanel}
+                            openHamburger={hamburgerPanel}
+                            accountPanel={accountPanel}
+                        />}
+                    />
+                    <Route
+                        path='/sitemap'
+                        element={<RenderSiteMap
+                            openPanel={openPanel}
+                            openHamburger={hamburgerPanel}
+                            accountPanel={accountPanel}
+                        />}
+                            />
+                    <Route
+                        path='/return_and_refund_policy'
+                        element={<RefundPolicy
+                            openPanel={openPanel}
+                            openHamburger={hamburgerPanel}
+                            accountPanel={accountPanel}
+                        />}
+                    />
+                    <Route
+                        path='/terms_and_condition'
+                                element={<TermsAndConditions
+                            openPanel={openPanel}
+                            openHamburger={hamburgerPanel}
+                            accountPanel={accountPanel}
+                        />}
+                            />
+                        <Route
+                            path='/resume_submitted'
+                            element={<PostSubmissionPage
+                                openPanel={openPanel}
+                                openHamburger={hamburgerPanel}
+                                accountPanel={accountPanel}
+                            />}
+                        />
+                        <Route
+                            path='/contact_us'
+                            element={<ContactUsPage
+                                openPanel={openPanel}
+                                openHamburger={hamburgerPanel}
+                                accountPanel={accountPanel}
+                            />}
+                            />
+                            <Route
+                                path='/featured_products'
+                                element={
+                                    <FeaturedProducts />
+                                }
+                            />
+                            <Route
+                                path='/section2'
+                                element={
+                                    <SectionTwo />
+                                }
+                            />
+                        </Routes>
+          </BrowserRouter>    
+          </div>
+    </MyContext.Provider>
+    </Elements>
+  );
 }
 
 export default App;

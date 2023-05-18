@@ -94,14 +94,12 @@ export const MobileMenuCont = styled.div`
 `
 
 export const EarthToneIMG = styled.img`
-    width: auto;
+    width: 100px;
     height: 100%;
     cursor: pointer;
-@media screen and (max-width: 311px){
-    width: 60%; 
-}
-@media screen and (max-width: 311px){
     display: none;
+@media screen and (min-width: 311px){
+    display: block;
 }
 `
 

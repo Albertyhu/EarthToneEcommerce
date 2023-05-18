@@ -115,13 +115,7 @@ const PageTemplate = props => {
                         cart={cart}
                     />
             </InnerContainer>
-
             </MainContainer>
-            <Footer
-                onDynamicPage={onDynamicPage}
-                size={numberOfDyamicItems}
-                MainContainerID={`#${MainContainerID}`}
-            />
         </PageTemplateContext.Provider>
         )
 }

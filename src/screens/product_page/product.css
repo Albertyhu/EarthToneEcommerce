@@ -38,9 +38,9 @@
 
 
 /*product on product collection page*/
-.productDiv {   
+.productDiv {
     width: 350px;
-    height: 100%; 
+    height: 100%;
     display: inline-block;
     border: 1px solid rgba(0,0,0, 0.3);
     border-radius: 5px;

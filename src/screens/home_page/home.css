@@ -74,9 +74,9 @@ height: 200px;
     }
 
     @media screen and (max-width: 660px) {
-        #HomeTitleWrapper {
+/*        #HomeTitleWrapper {
             display: inline-flex;
-        }
+        }*/
 
         #tea_chinese_character {
             height: 150px;
@@ -152,7 +152,7 @@ height: 200px;
             margin-top: 0px;
         }
         #centerElements {
-            top: 7%;
+            top: 3%;
         }
         #title {
             line-height: 35px;
