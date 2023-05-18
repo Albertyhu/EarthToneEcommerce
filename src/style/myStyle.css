@@ -143,6 +143,24 @@ margin-left: 20px;
     height: 100%;
 }
 
+.RouteWrapper {
+    flex-grow: 1; 
+    margin-bottom: 630px;
+}
+
+@media screen and (min-width: 867px) {
+    .RouteWrapper {
+        margin-bottom: 240px;
+    }
+}
+
+@media screen and (min-width: 985px) {
+    .RouteWrapper {
+        margin-bottom: 220px;
+    }
+}
+
+
 @media screen and (max-width: 1300px) {
 }
 
@@ -179,3 +197,4 @@ margin-left: 20px;
         transition-duration: 1s;
     }
 }
+

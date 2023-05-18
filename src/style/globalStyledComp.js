@@ -12,10 +12,6 @@ export const MainContainer = styled.div`
     position: relative;
     display: flex;
     flex-direction: column;
-    padding-bottom: 610px; 
-@media screen and (min-width: 867px){
-        padding-bottom: 200px; 
-}
 `
 
 export const InnerContainer = styled.div`
@@ -32,7 +28,6 @@ export const InnerContainer = styled.div`
 `
 export const SecondInnerCont = styled.div`
     margin-top: 20px; 
-    margin-bottom: 40px;
     opacity: ${props => props.opacityVal};
     &#PrivacyPolicyContainer{
     margin-left: 50px;
@@ -50,7 +45,7 @@ export const SecondInnerCont = styled.div`
     min-height: 60vh;
 }
     @media screen and (min-width: 540px){
-        margin-bottom: 117px;
+       // margin-bottom: 117px;
         &#Checkout_SecondInnerCont{
             margin-bottom: 30px;
         }

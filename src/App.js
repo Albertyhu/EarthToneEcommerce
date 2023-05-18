@@ -73,10 +73,10 @@ function App() {
     const accountPanelRef = useRef()
 
     //Code for determining whether the site should be displayed on desktop view or not 
-    const [desktopView, setDesktopView] = useState(window.innerWidth > 770 ? true : false);
+    const [desktopView, setDesktopView] = useState(window.innerWidth > 852 ? true : false);
 
     const handleResize = () => {
-        if (window.innerWidth <= 770)
+        if (window.innerWidth <= 852)
             setDesktopView(false);
         else
             setDesktopView(true);
