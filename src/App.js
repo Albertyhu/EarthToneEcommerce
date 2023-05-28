@@ -222,7 +222,8 @@ function App() {
         wishlist, 
         message, 
         setMessage, 
-        apiURL: process.env.REACT_APP_DEV_SERVER_URL, 
+        //apiURL: process.env.REACT_APP_DEV_SERVER_URL, 
+        apiURL: process.env.REACT_APP_PROD_SERVER_URL,
     }
 
     useEffect(() => {
