@@ -223,7 +223,7 @@ function App() {
         message, 
         setMessage, 
         //apiURL: process.env.REACT_APP_DEV_SERVER_URL, 
-        apiURL: process.env.REACT_APP_PROD_SERVER_URL,
+        apiURL: "https://earthtone-server.onrender.com",
     }
 
     useEffect(() => {
