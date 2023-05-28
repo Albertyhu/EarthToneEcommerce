@@ -27,7 +27,7 @@ import ContactUsPage from '../screens/contact';
 import FeaturedProducts from '../components/featuredProducts/FeaturedProducts.js';
 import SectionTwo from '../screens/home_page/SectionTwo';
 import Footer from '../base_elements/footer'; 
-
+import RenderMessage from './messageComponent.js'
 import RenderLoadingPage from '../screens/loadingPage/loadingPage.js';
 
 function RenderRoute() {
@@ -42,6 +42,8 @@ function RenderRoute() {
         accountPanel,
         addProductMessage,
         wishlist, 
+        message,
+        setMessage, 
     } = useContext(MyContext)
 
     const options = {
@@ -56,6 +58,10 @@ function RenderRoute() {
     return (
         <BrowserRouter>
             <div className = "RouteWrapper">
+                <RenderMessage
+                    message={message}
+                    dispatch={setMessage}
+                />
                 <Routes>
                     <Route
                         path="/"

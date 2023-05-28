@@ -19,17 +19,24 @@ import PageTemplate from '../../PageTemplate.js';
 import { RenderAddress } from '../account/accountPage.js';
 import RenderShippingForm from '../shipping/shippingForm.js';
 import styled from 'styled-components'
-import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
+import { CardElement, useStripe, useElements, } from '@stripe/react-stripe-js';
 import './stripe.css';
 import axios from 'axios'; 
 import { Bounce } from "react-activity";
 import "react-activity/dist/library.css";
+import {
+    PaymentHook,
+    ValidateAddress,
+    CreateOrderObj,
+} from './checkoutHook.js'; 
+import { genKey } from '../../hooks/randGen.js'; 
+import { getAuth } from 'firebase/auth'; 
 
 //displays shipping information
-//displays order summary 
-//displays Stripe 
+//displays order summary
+//displays Stripe
 //displays list of items in cart and allows ability to change quantity
-
+const auth = getAuth(); 
 const RenderCheckout = props => {
     const {cart, openHamburger, openPanel, accountPanel, addProductMessage, message} = props;
     const [innerContHeight, setInnerContHeight] = useState("inherit")
@@ -57,20 +64,31 @@ const RenderCheckout = props => {
 }
 
 const MainContent = props => {
+    const stripe = useStripe();
+    const elements = useElements();
     const { cart, changeHeight } = props; 
-    const { getShippingAdd,
+    const {
+        getShippingAdd,
         setShippingAdd,
         getBillingAdd,
         setBillingAdd,
         setNewOrder,
         clearCart, 
+        setMessage, 
+        apiURL, 
+        setLoading, 
+        calculateTotalCost, 
+        data, 
     } = React.useContext(MyContext); 
-    const [ checkoutList, setCheckout] = useState(null)
+    const [checkoutList, setCheckout] = useState(null)
     const [editShipping, setEditShipping] = useState(false)
     const [editBilling, setEditBilling] = useState(false)
     const { makePageAuto } = React.useContext(PageTemplateContext)
     const [processingIndicator, setProcessingInd] = useState(false); 
-    const [finalCost, ck_setFinalCost] = useState(0)
+    const [finalCost, ck_setFinalCost] = useState(0);
+    //for disabling the submit button 
+    const [disabled, setDisabled] = useState(false) 
+
 
     const loadData = () => {
         if (cart) {
@@ -98,18 +116,7 @@ const MainContent = props => {
         }
     }
 
-    const refreshList = () => {
-        setCheckout(null)
-        loadData()
-    }
-
-    const removeItem = prodID => {
-        var arr = checkoutList.filter(val => val.ID !== prodID)
-        setCheckout(arr)
-    }
     const navigate = useNavigate();
-    const goProductPage = useCallback(() => navigate('../product_page',
-        { replace: true }), [navigate]) 
 
     useEffect(() => {
         loadData();
@@ -141,90 +148,46 @@ const MainContent = props => {
 
     const goOrderCompletePage = useCallback(() => navigate('../order_summary', {replace: true}), [navigate])
 
-    const confirmShipping = async (e) => {
-        var shipping = getShippingAdd() 
+    var newOrder = {
+        orderID: genKey(10),
+        cart,
+        amountPaid: finalCost,
+        orderDate: new Date(),
+    }
+
+    const { handleSubmit } = PaymentHook(apiURL, setMessage, setLoading, newOrder, setNewOrder, goOrderCompletePage, clearCart); 
+
+    const confirmOrder = async () => {
+        var shippingValid = ValidateAddress(getShippingAdd(), "shipping");
+        var billingValid = ValidateAddress(getBillingAdd(), "billing"); 
         var isValid = true; 
-        var errMessage = "Please, correct the following issues. \n "; 
-        if (shipping.address1 === "") {
-            errMessage += "Please, write your address on Address Line 1."; 
+        if (!shippingValid.isValid) {
+            setMessage([{ msg: shippingValid.errMesage }]); 
             isValid = false; 
         }
-        if (shipping.city === "") {
-            errMessage += "Please, write down your city.";
-            isValid = false;
+        if (!billingValid.isValid) {
+            setMessage([{ msg: billingValid.errMesage }]); 
+            isValid = false; 
         }
-        if (shipping.zipcode === "") {
-            errMessage += "Please, write down your zipcode";
-            isValid = false;
+        const user = auth.currentUser; 
+
+        console.log("user: ", user)
+        if (!user || user === null) {
+
+            setMessage([{msg: "You need to have an account with us to make an order."}])
+            isValid = false; 
         }
 
- 
         if (isValid) {
-           await confirmOrder(e)
+            var customerName = data.last_name ? `${data.last_name}, ${data.first_name ? data.first_name : ""}` : user.displayName ? user.displayName : "";  
+            var customer = {
+                id: user.uid,
+                email: user.email, 
+                name: customerName, 
+            } 
+            var orderObj = CreateOrderObj(cart, calculateTotalCost())
+            handleSubmit(orderObj, customer, setDisabled)
         }
-        else {
-            alert(errMessage)
-        }
-
-    };
-
-    const stripe = useStripe();
-    const elements = useElements();
-    const confirmOrder = async (e) => {
-        e.preventDefault(); 
-        if (!stripe || !elements) {
-            // Stripe.js has not yet loaded.
-            // Make sure to disable form submission until Stripe.js has loaded.
-            return;
-        }
-        var shippingData = getShippingAdd(); 
-        const { error, paymentMethod } = await stripe.createPaymentMethod({
-            type: "card",
-            card: elements.getElement(CardElement),
-            billing_details: {
-                address: {
-                    line1: `${shippingData.address1}`, 
-                    line2: `${shippingData.address2}`, 
-                    city: `${shippingData.city}`,
-                    state: `${shippingData.state}`,
-                    postal_code: `${shippingData.zipcode}`, 
-                    country: `${shippingData.country}`,
-                },
-                email: "",
-                name: "",
-                phone: "", 
-            },
-        })
-
-        if (!error) {
-            try {
-                const { id } = paymentMethod;
-                const amount_to_charge = (finalCost * 100).toFixed(0);
-                var dateObj = new Date();
-                var newOrder = {
-                    orderID: id,
-                    cart,
-                    amountPaid: finalCost,
-                    orderDate: dateObj,
-                }
-
-                const response = await axios.post("http://localhost:4000/payment", {
-                    amount: amount_to_charge,
-                    id,
-                }).then(setProcessingInd(true))
-
-                if (response.data.success) {
-                    setProcessingInd(false);
-                    setNewOrder(newOrder);
-                    goOrderCompletePage();
-                    clearCart(); 
-                }
-            } catch (e) { console.log("[ERROR]" + e) }
-        }
-        else {
-            console.log(error.message)
-        }
-
     }
 
     return (
@@ -256,8 +219,13 @@ const MainContent = props => {
                         }
                     </Shell >
                     <Shell id = "rightPanel">
-                            <CheckOutContainer>
-                            <TanButton id="ContinueButton" onClick={(e) => confirmShipping(e)}>Place Order</TanButton>
+                        <CheckOutContainer>
+                            <TanButton 
+                                id="ContinueButton"
+                                type="button"
+                                onClick={(e) => confirmOrder(e)}
+                                disabled={disabled}
+                            >Place Order</TanButton>
                             <TermsAndCondStatement />
                             <RenderSubtotal shippingFee={5.99}
                                 salesTax={7.75}
@@ -265,8 +233,8 @@ const MainContent = props => {
                                 isCheckout={true}
                             />
                             <h2>Card</h2>
-                            <CardElement className="card" options={CARD_OPTIONS}  />
-                            </CheckOutContainer>
+                            <CardElement className="card" options={CARD_OPTIONS} />
+                        </CheckOutContainer>
                     </Shell>
                     {processingIndicator ?
                         <LoadingContainer>

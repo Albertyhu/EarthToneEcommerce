@@ -118,6 +118,10 @@ export const DetailTable = styled.table`
     text-align: left; 
     display: inline-block; 
     vertical-align: top;
+    padding: 5px;
+    width: 90%;
+    line-height: 25px;
+    font-size: 15px;
  & > tr {
     margin-bottom: 20px;
     max-height: 10px;
@@ -130,17 +134,14 @@ export const DetailTable = styled.table`
 }
 
 &#addressTable{
-    font-size: 25px;
-    width: 50%;
     border: 1px solid rgba(0,0,0, 0.3); 
     border-radius: 5px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     display: inline-table;
     margin-left: auto;
     margin-right: auto;
-@media screen and (max-width: 540px){
-    width: 90%;
-    line-height: 25px;
+@media screen and (min-width: 540px){
+    font-size: 25px;
 }
 
 }
@@ -233,5 +234,24 @@ export const Divider = styled.hr`
     background: radial-gradient(ellipse at center, rgba(0,0,0,0.8) 0%,rgba(0,0,0,0) 56%);
     background-color: #f4f4f4;
     margin: 50px auto;
+
+`
+
+export const OrderCompleteWrapper = styled.div`
+    opacity: ${props => props.opacityVal};
+    margin: 20px auto 50px auto;
+    text-align: left;
+    min-height: 50vh;
+    display: block; 
+    &>div{
+        margin: 10px auto;
+    }
+    &>div>p{
+        margin: 10px auto;
+        text-align: center;
+    }
+    @media screen and (min-width: 867px){
+            min-height: 70vh;
+    }
 
 `

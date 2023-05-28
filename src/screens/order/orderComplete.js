@@ -1,7 +1,9 @@
 import React, {useCallback} from 'react'; 
 import PageTemplate from '../../PageTemplate.js';
 import { PageTemplateContext } from '../../context/contextItem.js';
-import { SecondInnerCont } from '../../style/globalStyledComp.js'
+import {
+    OrderCompleteWrapper
+} from '../../style/globalStyledComp.js'
 import { useNavigate } from 'react-router-dom'
 import { TanButton } from '../../style/styledButton.js'; 
 
@@ -20,11 +22,12 @@ const MainContent = props => {
 
     const goProductPage = useCallback(() => { navigate('../product_page', {replace: true} )}, [navigate])
     return (
-        <SecondInnerCont>
-            The order has been complete. Thank you for your purchase. 
-
-            <TanButton onClick={goProductPage} id = "ContinueBrowsing">Continue browsing our collection</TanButton>
-        </SecondInnerCont>)
+        <OrderCompleteWrapper id="wrapper">
+            <div>
+                 <p>The order has been complete. Thank you for your purchase.</p> 
+                <TanButton onClick={goProductPage} id="ContinueBrowsing">Continue browsing our collection</TanButton>
+            </div>
+        </OrderCompleteWrapper>)
 }
 
 export default OrderCompletePage; 

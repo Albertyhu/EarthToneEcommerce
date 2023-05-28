@@ -74,10 +74,11 @@ export const BrownButton = styled.div`
 
 `
 
-export const TanButton = styled.div`
+export const TanButton = styled.button`
     margin-left: auto;
     margin-right: auto;
     border-radius: 5px;
+    border: none;
     padding: 10px;
     background-color: #D19C4C;
     width: 20%;
@@ -88,6 +89,7 @@ export const TanButton = styled.div`
     font-size: 25px;
     text-transform: uppercase;
     user-select: none;
+    outline: none;
 &:active{
     background-color: #D19C4C;
     transform: translate(4px, 4px)
@@ -124,14 +126,20 @@ export const TanButton = styled.div`
 }
 
 &#ContinueBrowsing{
-        font-size: 20px; 
+    font-size: 15px; 
+    height: fit-content;
+    width: fit-content;
     border-radius: 15px;
     text-transform: none;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    margin-top: 20px;
-    padding: 5px;
-    min-width: 300px;
-    white-space: nowrap;
+    margin: 20px auto;
+    padding: 10px;
+    display: block;
+    @media screen and (min-width: 320px){
+        padding: 10px;
+        white-space: nowrap;
+    }
+  
 }
 
 &#OrderReviewButton{
@@ -171,7 +179,7 @@ export const CartPageButtons = styled.div`
     border-radius: 15px;
     padding: 10px;
     background-color: #D19C4C;
-    width: 185px;
+    width: fit-content;
     text-align: center;
     color: #ffffff;
     cursor: pointer;

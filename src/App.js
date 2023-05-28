@@ -1,31 +1,6 @@
-import React, { useState, useRef, useEffect} from 'react'; 
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from './screens/home_page';
-import ProductPage from './screens/product_page'; 
+import React, { useState, useRef, useEffect} from 'react';  
 import './style/myStyle.css'
 import { MyContext } from './context/contextItem.js'; 
-import SignIn from './screens/nonMember/signIn.js';
-import SignUp from './screens/nonMember/signUp.js'; 
-import AccountPage from './screens/account/accountPage.js';
-import ProductProfilePage from './screens/product_page/productProfile/productProfile.js'; 
-import RenderCheckOut from './screens/checkout/checkoutPage.js'; 
-import RenderWishList from './screens/wishlist/wishlist.js';
-import RenderCartPage from './screens/cart/renderCartPage.js'; 
-import OrderPage from './screens/order'; 
-import OrderCompletePage from './screens/order/orderComplete.js'; 
-import PrivacyPolicy from './screens/policy_statement/privacy_policy.js'; 
-import RefundPolicy from './screens/policy_statement/refund_policy.js'; 
-import TermsAndConditions from './screens/policy_statement/termsAndCondition.js'; 
-import ProductReviewPage from './screens/productReview/productReviewPage.js'; 
-import ReturnProductPage from './screens/productReturn/returnProdPage.js'; 
-import PostReturnRequest from './screens/productReturn/postReturnRequest.js'; 
-import AboutUsPage from './screens/aboutUs/AboutUs.js'; 
-import CareerPage from './screens/career'; 
-import PostSubmissionPage from './screens/career/PostSubmissionPage.js';
-import RenderSiteMap from './screens/sitemap'; 
-import ContactUsPage from './screens/contact'; 
-import FeaturedProducts from './components/featuredProducts/FeaturedProducts.js'; 
-import SectionTwo from './screens/home_page/SectionTwo';
 import { SampleReviews, SampleAddress } from './test/sampleData.js';
 import RenderRoutes from './components/routes.js'
 //firebase code 
@@ -37,16 +12,16 @@ import { doc, getDoc } from "firebase/firestore";
 //stripe
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
-
 import RenderLoadingPage from './screens/loadingPage/loadingPage.js';
 
 const auth = getAuth(); 
-const currentUser = auth.currentUser;
+const currentUser = () => auth.currentUser;
 
 const stripePromise = loadStripe(`${process.env.REACT_APP_PUBLISHABLE_KEY}`);
 
 function App() {
 
+    //items in cart and wishlist are initiatlly retrieved from the Firebase database
     const [cart, setCart] = useState([])
     const [wishlist, setWish] = useState([]); 
     const [ProductCollection, setProductCollection] = useState(null)
@@ -55,8 +30,11 @@ function App() {
     const [hamburgerPanel, setHamburgerPanel] = useState(false); 
     const [accountPanel, setAccountPanel] = useState(false); 
     const [addProductMessage, setAddProductMessage] = useState(false); 
-    const [user, setUser] = useState(currentUser);
+    const [message, setMessage] = useState([]);  
+    const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true); 
+
+    //The useState object data controls whether or not the user is logged in or not. 
     const [data, setData] = useState(null); 
 
     const [pendingOrders, setPendingOrders] = useState([]); 
@@ -83,32 +61,6 @@ function App() {
     }
 
     window.addEventListener('resize', handleResize)
-
-    useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, async (user) => {
-            setLoading(true)
-            if (user) {
-                const docRef = doc(db, "users", user.uid)
-                const docSnap = await getDoc(docRef)
-                    .then(result => {
-                        if (result.exists()) {
-                            setData(result.data());
-                            GetFirebase("cart", setCart)
-                            GetFirebase("wishlist", setWish)
-                        }
-                    })
-                    .catch(e => console.log("Error with initialization: " + e))
-            }
-            else {
-                setData(null)
-            }
-            setLoading(false); 
-        })
-        return () => {
-            window.removeEventListener('resize', handleResize)
-            unsubscribe();
-        }
-    }, [])
 
     const context = {
         addProduct: (productID, additionalStock, ProductPrice) => {
@@ -258,21 +210,46 @@ function App() {
         },
         getProductReviewCol: () => productRevCol, 
         desktopView, 
+        user, 
         //data of current user 
         data,
         loading, 
+        setLoading, 
         openPanel,
         hamburgerPanel,
         accountPanel, 
         addProductMessage, 
         wishlist, 
-
+        message, 
+        setMessage, 
+        apiURL: process.env.REACT_APP_DEV_SERVER_URL, 
     }
 
-    const options = {
-        // passing the client secret obtained from the server
-        clientSecret: '{{CLIENT_SECRET}}',
-    };
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, async (user) => {
+            setLoading(true)
+            if (user) {
+                const docRef = doc(db, "users", user.uid)
+                const docSnap = await getDoc(docRef)
+                    .then(result => {
+                        if (result.exists()) {
+                            setData(result.data());
+                            GetFirebase("cart", setCart)
+                            GetFirebase("wishlist", setWish)
+                        }
+                    })
+                    .catch(e => console.log("Error with initialization: " + e))
+            }
+            else {
+                setData(null)
+            }
+            setLoading(false);
+        })
+        return () => {
+            window.removeEventListener('resize', handleResize)
+            unsubscribe();
+        }
+    }, [])
 
     if (loading) {
         return(<RenderLoadingPage />)

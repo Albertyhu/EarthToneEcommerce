@@ -148,6 +148,47 @@ margin-left: 20px;
     margin-bottom: 630px;
 }
 
+.MessageFadeIn {
+    opacity: 1.0;
+    transform: translateY(100px);
+    transition: opacity 1s ease-in, transform 1s ease-in;
+}
+
+.MessageFadeOut {
+    opacity: 0.0;
+    transform: translateY(-20px);
+    transition: opacity 1s ease-in, transform 1s ease-in;
+}
+
+.box_shadow {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.messageWrapper {
+    position: relative;
+    width: 100%; 
+    height: 100%; 
+}
+
+.Message {
+    background-color: #ECECEC;
+    border-radius: 15px;
+    color: #2e2e2e;
+    font-size: 15px;
+    font-weight: bold;
+    font-family: inherit;
+    text-align: center;
+    /*opacity: 1.0;*/
+    position: fixed;
+    /*transform: translateY(-20px);*/
+    /*transform: translateY(100px);*/
+    transition: opacity 1s ease-in, transform 500ms ease-in !important;
+    z-index: 99;
+    width: 50%;
+    padding: 15px 15px;
+    left: 25%;
+}
+
 @media screen and (min-width: 867px) {
     .RouteWrapper {
         margin-bottom: 240px;

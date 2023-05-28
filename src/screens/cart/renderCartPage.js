@@ -128,20 +128,20 @@ const MainContent = props => {
                 {cartList !== null && cartList.length !== 0 ?
                 <OuterShell id="SC_outerShell">
                         <Shell id = "SC_shell">
-                        <CheckOutContainer> 
-                            {cartList.map(val => <RenderList {...val}
-                                key={uuid()}
-                                removeItem={removeItem}
-                                updateCartList={updateCartList}
-                                updateSubtotal={updateSubtotal}
-                            />)}
-                        </CheckOutContainer> 
+                            <CheckOutContainer> 
+                                {cartList.map(val => <RenderList {...val}
+                                    key={uuid()}
+                                    removeItem={removeItem}
+                                    updateCartList={updateCartList}
+                                    updateSubtotal={updateSubtotal}
+                                />)}
+                            </CheckOutContainer> 
                         </Shell>
                         <Shell id="rightPanel">
                             <CheckOutContainer>
-                            <RenderSubtotal totalItems={totalItems} subtotal={subtotal} /> 
-                            <CartPageButtons id="ContinueToCheckoutButton" onClick={goCheckout}>Continue to Checkout</CartPageButtons>
-                            <CartPageButtons id="ContinueButton" onClick={goProductPage}>Continue Shopping</CartPageButtons>
+                                <RenderSubtotal totalItems={totalItems} subtotal={subtotal} /> 
+                                <CartPageButtons id="ContinueToCheckoutButton" onClick={goCheckout}>Continue to Checkout</CartPageButtons>
+                                <CartPageButtons id="ContinueButton" onClick={goProductPage}>Continue Shopping</CartPageButtons>
                             </CheckOutContainer>
                         </Shell>
                     </OuterShell>
