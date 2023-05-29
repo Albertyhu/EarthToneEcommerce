@@ -5,7 +5,13 @@ import { SampleReviews, SampleAddress } from './test/sampleData.js';
 import RenderRoutes from './components/routes.js'
 //firebase code 
 import { db } from './services/firebase/initializeFirebase.js';
-import { PostFirebase, GetFirebase } from './services/firebase/firebaseCRUD.js'; 
+import {
+    PostFirebase,
+    GetFirebase,
+    PostNewOrders, 
+    ClearFirebaseList, 
+    PostNewReview, 
+} from './services/firebase/firebaseCRUD.js'; 
 import { getAuth, onAuthStateChanged } from 'firebase/auth'; 
 import { doc, getDoc } from "firebase/firestore";
 
@@ -86,12 +92,17 @@ function App() {
         removeFromCart: (productID) => {
             var arr = cart.filter(val => val.ID !== productID);
             setCart(arr);
+            PostFirebase('cart', arr)
 
         },
         clearCart: () => {
             setCart([]); 
+            ClearFirebaseList("cart")
         },
-        updateCart: (newCart) => { setCart(newCart) },
+        updateCart: (newCart) => {
+            setCart(newCart); 
+            PostFirebase('cart', newCart)
+        },
         updateProductStockInCart: (productID, newStock) => {
             var arr = null; 
             if (newStock !== 0) {
@@ -177,6 +188,10 @@ function App() {
             setWish(arr)
             PostFirebase("wishlist", arr)
         }, 
+        clearWishList: () => {
+            setWish([]); 
+            ClearFirebaseList('wishlist')
+        }, 
         getShippingAdd: () => { return shipping },
         setShippingAdd: (address) => {
             setShipping(address)
@@ -189,6 +204,7 @@ function App() {
             var arr = pendingOrders; 
             arr.push(ord); 
             setPendingOrders(arr); 
+            PostNewOrders(ord, shipping, billingAddress)
         }, 
         getOrders: () => pendingOrders, 
         getNumberOfOrders: ()=> pendingOrders.length, 
@@ -198,7 +214,6 @@ function App() {
         }, 
         addProductReview: (productID, Rating, ProductReview) => {
             const arr = productRevCol; 
-
             const obj = {
                 ID: productID, 
                 rating: Rating, 
@@ -207,6 +222,7 @@ function App() {
 
             arr.push(obj);
             setProductRev(arr); 
+            PostNewReview(data, obj)
         },
         getProductReviewCol: () => productRevCol, 
         desktopView, 

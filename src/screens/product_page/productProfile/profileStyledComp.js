@@ -387,23 +387,28 @@ export const SecureTransBlock = styled.div`
     }
 `
 
-
-
 export const ThirdInnerContainer = styled.div`
 `
 
 export const UpperSection = styled.div`
-    display: flex;
     width: 100%; 
     height: 100%;
-    @media screen and (max-width: 540px){
-    
-}
-    @media screen and (max-width: 540px){
-        display: contents;
+    display: contents;
+    @media screen and (min-width: 540px){
+        display: flex;
     }
 `
-export const ReviewSection = styled.div``
+export const ReviewSection = styled.div`
+    margin: 40px auto;
+`
+
+export const ReviewHeader = styled.h2`
+    font-weight: bold; 
+    color: black; 
+    text-center; 
+    font-size: 15px;
+    margin: 0 20px 10px 20px;
+`
 
 export const NoteBookSectionTwo = styled.div`
     display: grid;

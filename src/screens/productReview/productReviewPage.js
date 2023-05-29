@@ -5,7 +5,12 @@ import { MyContext } from '../../context/contextItem.js';
 import { useLocation, useNavigate } from 'react-router-dom'; 
 import { ProductCollection } from '../../data/ProductCollection.js'; 
 import { SecondInnerCont } from '../../style/globalStyledComp.js'; 
-import styled from 'styled-components'; 
+import {
+    ProductContainer,
+    Image,
+    Textbox,
+    ButtonContainer,
+} from './reviewPageStyledComponents.js'; 
 import { GreenButton, DarkGreenButton } from '../../style/styledButton.js'; 
 import RenderRatingInput from '../../components/rating/renderRatingInput.js'; 
 
@@ -95,7 +100,6 @@ const MainContent = props => {
 
     useEffect(() => {
         determineColLength();
-        
         return () => { window.removeEventListener('resize', determineColLength)}
     }, [])
 
@@ -126,30 +130,3 @@ const MainContent = props => {
         )
 }
 
-
-const ProductContainer = styled.div`
-    text-align: center; 
-`
-
-const Image = styled.img`
-width: 200px; 
-height: 200px; 
-`
-
-const Textbox = styled.textarea`
-    margin-top: 30px; 
-margin-left: auto;
-margin-right: auto;
-font-family: 'Raleway-Light';
-padding:10px; 
-resize: none;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-
-`
-const ButtonContainer = styled.div`
-display: flex; 
-width: 80%; 
-margin-left: auto;
-margin-right: auto;
-margin-top: 30px; 
-`

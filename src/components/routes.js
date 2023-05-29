@@ -170,6 +170,16 @@ function RenderRoute() {
                         />}
                     />
                     <Route
+                        path='/review_product/:product_name/:product_ID'
+                        element={<ProductReviewPage
+                            openPanel={openPanel}
+                            openHamburger={hamburgerPanel}
+                            accountPanel={accountPanel}
+                            addProductMessage={addProductMessage}
+
+                        />}
+                    />
+                    <Route
                         path='/review_product'
                         element={<ProductReviewPage
                             openPanel={openPanel}

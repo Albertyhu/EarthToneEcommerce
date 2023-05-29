@@ -1,6 +1,6 @@
 import { ProductCollection } from '../../data/ProductCollection.js'; 
 
-export const PaymentHook = (apiURL, setMessage, setLoading, newOrder, setNewOrder, goOrderCompletePage, clearCart) => {
+export const PaymentHook = (apiURL, setMessage, setLoading, setNewOrder, goOrderCompletePage, clearCart) => {
     const handleSubmit = async (order, customer, setDisabled) => {
         const body = {
             order,
@@ -22,10 +22,13 @@ export const PaymentHook = (apiURL, setMessage, setLoading, newOrder, setNewOrde
             }
         ).then(async response => {
             if (response.ok) {
-                console.log("success")
-                setNewOrder(newOrder)
+                const formattedOrder = order.filter(val => val.name !== "shippping")
+                setNewOrder(formattedOrder)
                 setLoading(false)
+                clearCart(); 
+                console.log("success")
                 goOrderCompletePage();
+
             }
             else {
                 const result = await response.json();
@@ -60,6 +63,7 @@ export const ValidateAddress = (data, type) => {
     return { isValid, errMessage }; 
 }
 
+//This is for sending data to Stripe 
 export const CreateOrderObj = (cart, totalCost) => {
     var orderObj = cart.map(item => { 
         var product = ProductCollection.find(val => val.ID === item.ID)
@@ -68,6 +72,8 @@ export const CreateOrderObj = (cart, totalCost) => {
             description: product.description,
             price: product.price,
             quantity: item.stock, 
+            SKU: product.SKU, 
+            dateCreated: new Date(), 
         } 
     })
     if (totalCost <= 50) {

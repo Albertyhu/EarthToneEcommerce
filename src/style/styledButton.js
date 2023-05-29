@@ -87,7 +87,6 @@ export const TanButton = styled.button`
     cursor: pointer;
     text-decoration: none;
     font-size: 25px;
-    text-transform: uppercase;
     user-select: none;
     outline: none;
 &:active{
@@ -160,6 +159,13 @@ export const TanButton = styled.button`
     text-transform: none;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     margin-bottom: 20px;
+}
+
+&#GoReviewButton{
+    font-size: 15px; 
+    border-radius: 25px !important;
+    width: fit-content; 
+    padding: 5px 15px
 }
 
 @media screen and (max-width: 540px){

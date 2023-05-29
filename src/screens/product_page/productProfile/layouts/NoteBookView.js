@@ -17,12 +17,14 @@ import {
     RowData,
     InfoTable, 
     NoteBookSectionTwo,
-    ReviewSection
+    ReviewSection, 
+    ReviewHeader,
 } from '../profileStyledComp.js';
 import { MyContext, ProductProfileContext } from '../../../../context/contextItem.js';
-import styled from 'styled-components';
 import ReviewPanel from './../reviewPanel.js'; 
 import RenderTextPanel from '../textPanel.js'; 
+import { NavigationHooks } from '../../../../hooks/navigation.js'
+import { TanButton } from '../../../../style/styledButton.js';
 
 const RenderView = props => {
     const {
@@ -42,8 +44,14 @@ const RenderView = props => {
         height,
         ratingAvg,
         ratingCount,
-
     } = product;
+    const navigate = useNavigate();
+
+    const {
+        GoWriteNewProductReview,
+    } = NavigationHooks(navigate)
+
+    
 
     return (
         <ThirdInnerContainer>
@@ -73,13 +81,18 @@ const RenderView = props => {
                 setMessage={handleMessage}
                 />
             </NoteBookSectionTwo>
-            <ReviewSection>
-                {review ? <ReviewPanel
-                    data={review}
+            <ReviewSection id="review_section_mobile">
+                <ReviewHeader>Do you have any experience with this product?</ReviewHeader>
+                <TanButton
+                    onClick={() => GoWriteNewProductReview(productID, product.name)}
+                    id="GoReviewButton"
+                >Share your thoughts</TanButton>
+                {review && review.length > 0 ? <ReviewPanel
+                    reviews={review}
                     productID={productID}
-                />
+                    />
                     :
-                    null
+                    <p>Be the first one to review it.</p>
                 }
             </ReviewSection>
         </ThirdInnerContainer>

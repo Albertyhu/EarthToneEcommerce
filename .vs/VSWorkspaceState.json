@@ -2,12 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\src",
-    "\\src\\hooks",
+    "\\src\\components",
+    "\\src\\data",
     "\\src\\screens",
+    "\\src\\screens\\cart",
     "\\src\\screens\\checkout",
+    "\\src\\screens\\nonMember",
     "\\src\\screens\\order",
     "\\src\\style"
   ],
-  "SelectedNode": "\\src\\style\\styledButton.js",
+  "SelectedNode": "\\.env",
   "PreviewInSolutionExplorer": false
 }

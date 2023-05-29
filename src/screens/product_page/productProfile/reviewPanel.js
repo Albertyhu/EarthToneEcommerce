@@ -4,15 +4,14 @@ import RenderRatings from '../../../components/rating/renderRatings.js';
 import { MdPersonPin } from 'react-icons/md';
 import uuid from 'react-uuid'
 const ReviewPanel = props => {
-    const { data, productID } = props; 
-    var reviews = data.filter(val => val.ID === productID); 
+    const { reviews, productID } = props; 
     return (
         <Panel>
-            {reviews !== null && reviews.length != 0 ? <h3>Reviews about this product</h3> : null}
-            {reviews ? reviews.map(val => <ReviewBlock
+            {reviews !== null && reviews.length > 0 ? <h3>Reviews about this product</h3> : null}
+            {reviews.map(val => <ReviewBlock
                 {...val}
                 key={uuid()}
-            />) : null}
+            />)}
         </Panel>
         )
 
@@ -21,10 +20,12 @@ const ReviewPanel = props => {
 export default ReviewPanel;
 
 const ReviewBlock = props => {
-    const {rating, review} = props; 
+    const { rating, review, author } = props; 
+    console.log("ReviewBlock review: ", review)
     return (
         <Block>
             <MdPersonPin style={avatar} />
+            <div>Author: {author}</div>
             <RenderRatings rating={rating} /> 
             <Text>{review}</Text>
         </Block>

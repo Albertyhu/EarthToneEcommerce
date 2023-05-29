@@ -155,7 +155,7 @@ const MainContent = props => {
         orderDate: new Date(),
     }
 
-    const { handleSubmit } = PaymentHook(apiURL, setMessage, setLoading, newOrder, setNewOrder, goOrderCompletePage, clearCart); 
+    const { handleSubmit } = PaymentHook(apiURL, setMessage, setLoading, setNewOrder, goOrderCompletePage, clearCart); 
 
     const confirmOrder = async () => {
         var shippingValid = ValidateAddress(getShippingAdd(), "shipping");

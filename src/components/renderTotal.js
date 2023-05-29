@@ -49,7 +49,6 @@ export const RenderSubtotal= props => {
     }, [estimatedTaxes])
 
     useEffect(() => {
-        console.log("recalculate")
         recalculate()
     }, [cart])
 

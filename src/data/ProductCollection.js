@@ -27,6 +27,7 @@ export const ProductCollection = [
         returnExpDays: 30, 
         ratingAvg: 4.3, 
         ratingCount: 653,
+        SKU: "BTL48OZBLACKORGANI", 
     },
     {
         ID: 1,
@@ -44,6 +45,7 @@ export const ProductCollection = [
         returnExpDays: 30, 
         ratingAvg: 3.4, 
         ratingCount: 323,
+        SKU: "GH48STD527"
     },
     {
         ID: 2,
@@ -61,6 +63,7 @@ export const ProductCollection = [
         returnExpDays: 30, 
         ratingAvg: 4.6, 
         ratingCount: 1751,
+        SKU: "GTL48STD823"
     },
     {
         ID: 3,
@@ -78,6 +81,7 @@ export const ProductCollection = [
         returnExpDays: 30, 
         ratingAvg: 4.7, 
         ratingCount: 2540,
+        SKU: "IBT48STD136"
     },
     {
         ID: 4,
@@ -95,6 +99,7 @@ export const ProductCollection = [
         returnExpDays: 30, 
         ratingAvg: 4.8, 
         ratingCount: 6411,
+        SKU: "JGT48STD924"
     },
     {
         ID: 5,
@@ -112,6 +117,7 @@ export const ProductCollection = [
         returnExpDays: 30, 
         ratingAvg: 3.8, 
         ratingCount: 402,
+        SKU: "OT48STD437"
     },
     {
         ID: 6,
@@ -129,5 +135,6 @@ export const ProductCollection = [
         returnExpDays: 30, 
         ratingAvg: 3.6, 
         ratingCount: 353,
+        SKU: "LJT60STD689"
     },
 ]
